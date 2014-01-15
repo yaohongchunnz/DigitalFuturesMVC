@@ -175,6 +175,7 @@
     <Compile Include="Controllers\API Controllers\JobControllerAPI.cs" />
     <Compile Include="Controllers\API Controllers\UserControllerAPI.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\JobController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -234,6 +235,8 @@
     <Content Include="Views\Account\Manage.cshtml" />
     <Content Include="Views\Account\Register.cshtml" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
+    <Content Include="Views\Job\CreateJob.cshtml" />
+    <Content Include="Views\Job\ViewJob.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

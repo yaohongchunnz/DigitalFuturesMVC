@@ -1,0 +1,37 @@
+﻿
+@{
+    ViewBag.Title = "CreateJob";
+}
+
+<h2>Create Job</h2>
+
+<div>
+    <div class="input-group">
+        <span class="input-group-addon">Title</span>
+        <input type="text" class="form-control" placeholder="Title of your job.">
+    </div>
+
+    <div class="input-group">
+        <span class="input-group-addon">Description</span>
+        <textarea class="form-control" rows="3" placeholder="Description of your job"></textarea>
+    </div>
+    
+
+    <div class="input-group">
+        <span class="input-group-addon">Job type</span>
+        <div class="dropdown-toggle">
+            <select class="dropdown-backdrop">
+                <option value="Automotive">Automotive</option>
+                <option value="Building/Construction">Building/Construction</option>
+                <option value="Electric/gas">Electric/gas</option>
+                <option value="Plumbing">Plumbing</option>
+                <option value="Roofing">Roofing</option>
+                <option value="Cleaning">Cleaning</option>
+                <option value="Computing">Computing</option>
+                <option value="Moving">Moving</option>
+                <option value="Catering">Catering</option>
+
+            </select>
+        </div>
+    </div>
+</div>
