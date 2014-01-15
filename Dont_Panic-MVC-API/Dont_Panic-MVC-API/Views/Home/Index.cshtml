@@ -1,0 +1,20 @@
+﻿@{
+    ViewBag.Title = "Home Page";
+}
+
+<div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
+    <div class="carousel-inner">
+        <div class="item active">
+            <img src="/BG2.jpg" alt="bg2">
+            <div class="carousel-caption">
+                <h1>Don&#39;t Panic</h1>
+                <p class="lead">Don&#39;t Panic is a free service that allows you to post a job for services you need in a hurry so servicemen like hong can get hold of you fast.</p>
+
+                <input type="button" id="index_button_Have_Job" class="btn btn-primary" value="I have a Job" />
+                <input type="button" id="index_button_Sign_in" class="btn btn-primary" value="Sign In" onclick="location.href='@Url.Action("Login", "Account")'" />
+
+            </div>
+        </div>
+
+    </div>
+</div>
