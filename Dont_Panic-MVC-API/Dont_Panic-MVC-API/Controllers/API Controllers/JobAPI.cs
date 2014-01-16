@@ -64,7 +64,7 @@ namespace Dont_Panic_MVC_API.Controllers.API_Controllers
             db.SaveChanges();
         }
 
-        public override void Dispose()
+        public void Dispose()
         {
             db.Dispose();
         }

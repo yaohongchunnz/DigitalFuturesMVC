@@ -13,7 +13,5 @@ namespace Dont_Panic_MVC_API.Models
             : base("DontPanicDB")
         {
         }
-
-        public System.Data.Entity.DbSet<Dont_Panic_MVC_API.Models.JobModel> JobModels { get; set; }
     }
 }
