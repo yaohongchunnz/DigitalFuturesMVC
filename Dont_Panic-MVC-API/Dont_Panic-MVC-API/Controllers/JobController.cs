@@ -1,8 +1,18 @@
-﻿using System.Linq;
+﻿using System;
+using System.Collections.Generic;
+using System.Data;
+using System.Data.Entity;
+using System.Linq;
 using System.Net;
+using System.Web;
 using System.Web.Mvc;
+using Dont_Panic_MVC_API.Models;
+using System.Net.Http;
+using System.Net.Http.Headers;
 using Dont_Panic_MVC_API.Models.API_Models;
+using Newtonsoft.Json;
 using Dont_Panic_MVC_API.Controllers.API_Controllers;
+using System.Web.Http;
 
 namespace Dont_Panic_MVC_API.Controllers
 {
@@ -102,7 +112,6 @@ namespace Dont_Panic_MVC_API.Controllers
         }
 
         // POST: /Job/Delete/5
-        [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
