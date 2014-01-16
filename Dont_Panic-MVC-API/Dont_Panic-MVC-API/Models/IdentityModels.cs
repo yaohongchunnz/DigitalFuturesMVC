@@ -10,7 +10,7 @@ namespace Dont_Panic_MVC_API.Models
     public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
     {
         public ApplicationDbContext()
-            : base("DefaultConnection")
+            : base("DontPanicDB")
         {
         }
     }

@@ -6,8 +6,6 @@ using System.Web;
 
 namespace Dont_Panic_MVC_API.Models.API_Models
 {
-
-
     public class User
     {
         public int Id { get; set; }
@@ -34,7 +32,6 @@ namespace Dont_Panic_MVC_API.Models.API_Models
         public DateTime opendate { get; set; }
         [Required]
         public DateTime closedate { get; set; }
-
         public virtual User User { get; set; }
     }
 }

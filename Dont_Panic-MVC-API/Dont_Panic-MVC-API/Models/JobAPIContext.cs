@@ -15,8 +15,8 @@ namespace Dont_Panic_MVC_API.Models
         // automatically whenever you change your model schema, please use data migrations.
         // For more information refer to the documentation:
         // http://msdn.microsoft.com/en-us/data/jj591621.aspx
-    
-        public JobAPIContext() : base("name=dontpanicDB")
+
+        public JobAPIContext() : base("name=DontPanicDB")
         {
         }
 
