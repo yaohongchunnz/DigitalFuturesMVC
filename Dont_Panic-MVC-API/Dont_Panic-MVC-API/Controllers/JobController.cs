@@ -12,12 +12,12 @@ namespace Dont_Panic_MVC_API.Controllers
 {
     public class JobController : Controller
     {
-        private ApplicationDbContext db = new ApplicationDbContext();
+        private JobContext db = new JobContext();
 
         // GET: /Job/
         public ActionResult Index()
         {
-            return View(db.JobModels.ToList());
+            return View(db.Jobs.ToList());
         }
 
         // GET: /Job/Details/5
@@ -27,7 +27,7 @@ namespace Dont_Panic_MVC_API.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            JobModel jobmodel = db.JobModels.Find(id);
+            JobModel jobmodel = db.Jobs.Find(id);
             if (jobmodel == null)
             {
                 return HttpNotFound();
@@ -50,7 +50,7 @@ namespace Dont_Panic_MVC_API.Controllers
         {
             if (ModelState.IsValid)
             {
-                db.JobModels.Add(jobmodel);
+                db.Jobs.Add(jobmodel);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
@@ -65,7 +65,7 @@ namespace Dont_Panic_MVC_API.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            JobModel jobmodel = db.JobModels.Find(id);
+            JobModel jobmodel = db.Jobs.Find(id);
             if (jobmodel == null)
             {
                 return HttpNotFound();
@@ -96,7 +96,7 @@ namespace Dont_Panic_MVC_API.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            JobModel jobmodel = db.JobModels.Find(id);
+            JobModel jobmodel = db.Jobs.Find(id);
             if (jobmodel == null)
             {
                 return HttpNotFound();
@@ -109,8 +109,8 @@ namespace Dont_Panic_MVC_API.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            JobModel jobmodel = db.JobModels.Find(id);
-            db.JobModels.Remove(jobmodel);
+            JobModel jobmodel = db.Jobs.Find(id);
+            db.Jobs.Remove(jobmodel);
             db.SaveChanges();
             return RedirectToAction("Index");
         }

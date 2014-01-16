@@ -17,4 +17,9 @@ namespace Dont_Panic_MVC_API.Models
         public string jobtype { get; set; }
     }
 
+    public class JobContext : DbContext
+    {
+        public DbSet<JobModel> Jobs { get; set; }
+    }
+
 }
