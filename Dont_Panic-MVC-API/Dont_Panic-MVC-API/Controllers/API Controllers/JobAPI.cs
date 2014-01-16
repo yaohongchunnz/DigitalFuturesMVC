@@ -71,7 +71,7 @@ namespace Dont_Panic_MVC_API.Controllers.API_Controllers
 
         private bool JobExists(int id)
         {
-            return db.Jobs.Count(e => e.Id == id) > 0;
+            return db.Jobs.Count(e => e.jobid == id) > 0;
         }
     }
 }

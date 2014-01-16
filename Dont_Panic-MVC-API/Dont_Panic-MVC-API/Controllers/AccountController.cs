@@ -9,6 +9,7 @@ using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.EntityFramework;
 using Microsoft.Owin.Security;
 using Dont_Panic_MVC_API.Models;
+using Dont_Panic_MVC_API.API_Models;
 
 namespace Dont_Panic_MVC_API.Controllers
 {

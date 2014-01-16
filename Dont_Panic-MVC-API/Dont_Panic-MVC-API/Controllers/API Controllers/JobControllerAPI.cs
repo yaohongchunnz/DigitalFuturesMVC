@@ -44,7 +44,7 @@ namespace Dont_Panic_MVC_API.Controllers.API_Controllers
                 return BadRequest(ModelState);
             }
 
-            if (id != job.Id)
+            if (id != job.jobid)
             {
                 return BadRequest();
             }
@@ -69,7 +69,7 @@ namespace Dont_Panic_MVC_API.Controllers.API_Controllers
 
             jobAPI.PostJob(job);
 
-            return CreatedAtRoute("DefaultApi", new { id = job.Id }, job);
+            return CreatedAtRoute("DefaultApi", new { id = job.jobid }, job);
         }
 
         // DELETE api/JobControllerAPI/5
