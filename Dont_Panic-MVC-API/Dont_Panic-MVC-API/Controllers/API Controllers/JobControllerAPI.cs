@@ -15,24 +15,24 @@ namespace Dont_Panic_MVC_API.Controllers.API_Controllers
 {
     public class JobControllerAPI : ApiController
     {
-        private JobAPIContext db = new JobAPIContext();
+
+        private JobAPI jobAPI = new JobAPI(); 
 
         // GET api/JobControllerAPI
         public IQueryable<Job> GetJobs()
         {
-            return db.Jobs;
+            return jobAPI.GetJobs();
         }
 
         // GET api/JobControllerAPI/5
         [ResponseType(typeof(Job))]
         public IHttpActionResult GetJob(int id)
         {
-            Job job = db.Jobs.Find(id);
+            Job job = jobAPI.GetJob(id);
             if (job == null)
             {
                 return NotFound();
             }
-
             return Ok(job);
         }
 
@@ -49,23 +49,11 @@ namespace Dont_Panic_MVC_API.Controllers.API_Controllers
                 return BadRequest();
             }
 
-            db.Entry(job).State = EntityState.Modified;
+            bool result = jobAPI.PutJob(id, job);
 
-            try
-            {
-                db.SaveChanges();
-            }
-            catch (DbUpdateConcurrencyException)
-            {
-                if (!JobExists(id))
-                {
+            if (!result)
                     return NotFound();
-                }
-                else
-                {
-                    throw;
-                }
-            }
+
 
             return StatusCode(HttpStatusCode.NoContent);
         }
@@ -79,8 +67,7 @@ namespace Dont_Panic_MVC_API.Controllers.API_Controllers
                 return BadRequest(ModelState);
             }
 
-            db.Jobs.Add(job);
-            db.SaveChanges();
+            jobAPI.PostJob(job);
 
             return CreatedAtRoute("DefaultApi", new { id = job.Id }, job);
         }
@@ -89,15 +76,12 @@ namespace Dont_Panic_MVC_API.Controllers.API_Controllers
         [ResponseType(typeof(Job))]
         public IHttpActionResult DeleteJob(int id)
         {
-            Job job = db.Jobs.Find(id);
+            Job job = jobAPI.GetJob(id);
             if (job == null)
             {
                 return NotFound();
             }
-
-            db.Jobs.Remove(job);
-            db.SaveChanges();
-
+            jobAPI.DeleteJob(job);
             return Ok(job);
         }
 
@@ -105,14 +89,9 @@ namespace Dont_Panic_MVC_API.Controllers.API_Controllers
         {
             if (disposing)
             {
-                db.Dispose();
+                jobAPI.Dispose();
             }
             base.Dispose(disposing);
-        }
-
-        private bool JobExists(int id)
-        {
-            return db.Jobs.Count(e => e.Id == id) > 0;
         }
     }
 }
