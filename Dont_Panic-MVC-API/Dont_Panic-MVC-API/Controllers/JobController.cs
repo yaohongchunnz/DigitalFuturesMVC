@@ -1,18 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Data;
-using System.Data.Entity;
-using System.Linq;
+﻿using System.Linq;
 using System.Net;
-using System.Web;
 using System.Web.Mvc;
-using Dont_Panic_MVC_API.Models;
-using System.Net.Http;
-using System.Net.Http.Headers;
 using Dont_Panic_MVC_API.Models.API_Models;
-using Newtonsoft.Json;
 using Dont_Panic_MVC_API.Controllers.API_Controllers;
-using System.Web.Http;
 
 namespace Dont_Panic_MVC_API.Controllers
 {
@@ -53,6 +43,7 @@ namespace Dont_Panic_MVC_API.Controllers
         // POST: /Job/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
+        [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Create([Bind(Include="jobid,title,description,city,jobtype")] Job jobmodel)
         {
@@ -83,6 +74,7 @@ namespace Dont_Panic_MVC_API.Controllers
         // POST: /Job/Edit/5
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
+        [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Edit([Bind(Include="jobid,title,description,city,jobtype")] int id, Job jobmodel)
         {
@@ -110,6 +102,7 @@ namespace Dont_Panic_MVC_API.Controllers
         }
 
         // POST: /Job/Delete/5
+        [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {

@@ -1,15 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Data;
-using System.Data.Entity;
-using System.Data.Entity.Infrastructure;
-using System.Linq;
+﻿using System.Linq;
 using System.Net;
-using System.Net.Http;
 using System.Web.Http;
 using System.Web.Http.Description;
 using Dont_Panic_MVC_API.Models.API_Models;
-using Dont_Panic_MVC_API.Models;
 
 namespace Dont_Panic_MVC_API.Controllers.API_Controllers
 {
