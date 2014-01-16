@@ -1,13 +1,13 @@
 ﻿@model IEnumerable<Dont_Panic_MVC_API.Models.JobModel>
 
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "Your jobs";
 }
 
-<h2>Index</h2>
+<h2>Your jobs</h2>
 
 <p>
-    @Html.ActionLink("Create New", "Create")
+    @Html.ActionLink("Create New Job", "Create")
 </p>
 <table class="table">
     <tr>
@@ -41,9 +41,9 @@
             @Html.DisplayFor(modelItem => item.jobtype)
         </td>
         <td>
-            @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
-            @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
-            @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
+            @Html.ActionLink("Edit", "Edit", new { id=item.jobid }) |
+            @Html.ActionLink("Details", "Details", new { id=item.jobid }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.jobid })
         </td>
     </tr>
 }

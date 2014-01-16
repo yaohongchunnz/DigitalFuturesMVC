@@ -1,20 +1,21 @@
 ﻿@model Dont_Panic_MVC_API.Models.JobModel
 
 @{
-    ViewBag.Title = "Create Job";
+    ViewBag.Title = "Edit";
 }
 
-<h2>Create your job</h2>
+<h2>Edit your job</h2>
 
 
-@using (Html.BeginForm()) 
+@using (Html.BeginForm())
 {
     @Html.AntiForgeryToken()
     
     <div class="form-horizontal">
-        <h4>Closest relevant service providers will be notified as soon as you create your job!</h4>
+        <h4>Service providers that you have in contact with will be notified when you edit this job.</h4>
         <hr />
         @Html.ValidationSummary(true)
+        @Html.HiddenFor(model => model.jobid)
 
         <div class="form-group">
             @Html.LabelFor(model => model.title, new { @class = "control-label col-md-2" })
@@ -50,7 +51,7 @@
 
         <div class="form-group">
             <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Create" class="btn btn-default" />
+                <input type="submit" value="Save" class="btn btn-default" />
             </div>
         </div>
     </div>

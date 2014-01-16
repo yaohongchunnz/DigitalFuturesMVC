@@ -1,0 +1,50 @@
+﻿@model Dont_Panic_MVC_API.Models.JobModel
+
+@{
+    ViewBag.Title = "Job Details";
+}
+
+<h2>Job details</h2>
+
+<div>
+    <h4>model.title</h4>
+	<hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.title)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.title)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.description)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.description)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.city)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.city)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.jobtype)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.jobtype)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.jobid }) |
+    @Html.ActionLink("Back to your jobs", "Index")
+</p>
