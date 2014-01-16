@@ -53,6 +53,7 @@ namespace Dont_Panic_MVC_API.Controllers
         // POST: /Job/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
+        [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Create([Bind(Include="jobid,title,description,city,jobtype")] Job jobmodel)
         {
@@ -83,6 +84,7 @@ namespace Dont_Panic_MVC_API.Controllers
         // POST: /Job/Edit/5
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
+        [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Edit([Bind(Include="jobid,title,description,city,jobtype")] int id, Job jobmodel)
         {
