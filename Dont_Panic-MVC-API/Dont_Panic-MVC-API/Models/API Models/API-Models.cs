@@ -22,7 +22,7 @@ namespace Dont_Panic_MVC_API.Models.API_Models
     public class Job
     {
         [Key]
-        public int Id { get; set; }
+        public int jobid { get; set; }
         [Required, StringLength(50)]
         public string title { get; set; }
         public string city { get; set; }
