@@ -119,7 +119,11 @@ namespace Dont_Panic_MVC_API.Controllers
         public ActionResult DeleteConfirmed(int id)
         {
             Job jobmodel = jobAPI.GetJob(id);
-            jobAPI.DeleteJob(jobmodel);
+            // Checking for matching UserID so only the user can delete their listing. 
+            if (jobmodel.UserId.Equals(User.Identity.GetUserId()))
+            {
+                jobAPI.DeleteJob(jobmodel);
+            }
             return RedirectToAction("Index");
         }
 
