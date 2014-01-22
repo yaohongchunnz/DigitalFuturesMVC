@@ -29,6 +29,7 @@ namespace Dont_Panic_MVC_API.Models.API_Models
         [Required, StringLength(2048)]
         public string description { get; set; }
         public string jobtype { get; set; }
+        public string UserId { get; set; }
 
     }
 }

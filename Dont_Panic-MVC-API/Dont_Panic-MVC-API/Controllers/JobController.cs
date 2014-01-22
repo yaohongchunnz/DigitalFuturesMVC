@@ -11,6 +11,8 @@ using Dont_Panic_MVC_API.Models.API_Models;
 using Newtonsoft.Json;
 using Dont_Panic_MVC_API.Controllers.API_Controllers;
 using System.Web.Mvc;
+using Microsoft.AspNet.Identity;
+
 
 namespace Dont_Panic_MVC_API.Controllers
 {
@@ -23,7 +25,7 @@ namespace Dont_Panic_MVC_API.Controllers
         // GET: /Job/
         public ActionResult Index()
         {
-            return View(jobAPI.GetJobs().ToList());
+            return View(jobAPI.GetJobs(User.Identity.GetUserId()).ToList());
         }
 
         // GET: /Job/Details/5
@@ -58,6 +60,7 @@ namespace Dont_Panic_MVC_API.Controllers
         {
             if (ModelState.IsValid)
             {
+                jobmodel.UserId = User.Identity.GetUserId();
                 jobAPI.PostJob(jobmodel);
                 return RedirectToAction("Index");
             }

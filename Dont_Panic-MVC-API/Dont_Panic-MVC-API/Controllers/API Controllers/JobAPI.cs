@@ -12,9 +12,9 @@ namespace Dont_Panic_MVC_API.Controllers.API_Controllers
         private JobAPIContext db = new JobAPIContext();
 
         // Get jobs from database.
-        public IQueryable<Job> GetJobs()
+        public IQueryable<Job> GetJobs(string UserId)
         {
-            return db.Jobs;
+            return db.Jobs.Where(j => j.UserId == UserId);
         }
 
         // Get job from database with certain id
