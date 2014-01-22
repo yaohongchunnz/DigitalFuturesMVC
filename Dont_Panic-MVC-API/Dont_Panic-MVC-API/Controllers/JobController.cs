@@ -75,7 +75,13 @@ namespace Dont_Panic_MVC_API.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
+
             Job jobmodel = jobAPI.GetJob(id);
+            if (!User.Identity.GetUserId().Equals(jobmodel.UserId))
+            {
+                return RedirectToAction("Error");
+            }
+
             if (jobmodel == null)
             {
                 return HttpNotFound();
@@ -90,6 +96,12 @@ namespace Dont_Panic_MVC_API.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Edit([Bind(Include="jobid,title,description,city,jobtype")] int id, Job jobmodel)
         {
+            Job job = jobAPI.GetJob(id);
+            if (!User.Identity.GetUserId().Equals(job.UserId))
+            {
+                return RedirectToAction("Error");
+            }
+            jobmodel.UserId = User.Identity.GetUserId();
             if (ModelState.IsValid)
             {
                 jobAPI.PutJob(id, jobmodel);
@@ -127,10 +139,11 @@ namespace Dont_Panic_MVC_API.Controllers
         {
             Job jobmodel = jobAPI.GetJob(id);
             // Checking for matching UserID so only the user can delete their listing. 
-            if (jobmodel.UserId.Equals(User.Identity.GetUserId()))
+            if (!(jobmodel.UserId.Equals(User.Identity.GetUserId())))
             {
-                jobAPI.DeleteJob(jobmodel);
+                RedirectToAction("Error");
             }
+           // jobAPI.DeleteJob(jobmodel);
             return RedirectToAction("Index");
         }
 

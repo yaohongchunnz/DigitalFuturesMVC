@@ -21,7 +21,6 @@ namespace Dont_Panic_MVC_API.Models
         }
 
         public DbSet<Job> Jobs { get; set; }
-        public DbSet<User> User { get; set; }
     
     }
 }
