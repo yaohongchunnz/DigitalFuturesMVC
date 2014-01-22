@@ -105,7 +105,14 @@ namespace Dont_Panic_MVC_API.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
+
             Job jobmodel = jobAPI.GetJob(id);
+
+            if (!User.Identity.GetUserId().Equals(jobmodel.UserId))
+            {
+                return RedirectToAction("Error");
+            }
+
             if (jobmodel == null)
             {
                 return HttpNotFound();
