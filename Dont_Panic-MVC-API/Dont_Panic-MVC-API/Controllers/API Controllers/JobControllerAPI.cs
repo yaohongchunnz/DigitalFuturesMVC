@@ -3,6 +3,8 @@ using System.Net;
 using System.Web.Http;
 using System.Web.Http.Description;
 using Dont_Panic_MVC_API.Models.API_Models;
+using Microsoft.AspNet.Identity;
+
 
 namespace Dont_Panic_MVC_API.Controllers.API_Controllers
 {
@@ -14,7 +16,7 @@ namespace Dont_Panic_MVC_API.Controllers.API_Controllers
         // GET api/JobControllerAPI
         public IQueryable<Job> GetJobs()
         {
-            return jobAPI.GetJobs();
+            return jobAPI.GetJobs(User.Identity.GetUserId());
         }
 
         // GET api/JobControllerAPI/5
