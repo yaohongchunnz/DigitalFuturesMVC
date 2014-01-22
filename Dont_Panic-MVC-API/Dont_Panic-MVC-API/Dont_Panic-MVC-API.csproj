@@ -176,7 +176,6 @@
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\API Controllers\JobAPI.cs" />
     <Compile Include="Controllers\API Controllers\JobControllerAPI.cs" />
-    <Compile Include="Controllers\API Controllers\UserControllerAPI.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\JobController.cs" />
     <Compile Include="Global.asax.cs">
@@ -189,6 +188,10 @@
     <Compile Include="Migrations\201401220038444_test.cs" />
     <Compile Include="Migrations\201401220038444_test.Designer.cs">
       <DependentUpon>201401220038444_test.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201401222242240_deleted User.cs" />
+    <Compile Include="Migrations\201401222242240_deleted User.Designer.cs">
+      <DependentUpon>201401222242240_deleted User.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
@@ -279,6 +282,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201401220038444_test.resx">
       <DependentUpon>201401220038444_test.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201401222242240_deleted User.resx">
+      <DependentUpon>201401222242240_deleted User.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
