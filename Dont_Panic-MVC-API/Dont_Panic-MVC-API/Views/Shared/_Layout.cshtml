@@ -1,4 +1,14 @@
 ﻿<!DOCTYPE html>
+@{var atJobPage = false;}
+@if (@Url.Action().Contains("Job"))
+{
+    atJobPage = true;
+}
+else
+{
+    atJobPage = false;
+}
+
 <html>
 <head>
     <meta charset="utf-8" />
@@ -32,13 +42,66 @@
             </div>
         </div>
     </div>
-    <div class="container body-content">
-        @RenderBody()
-        <hr />
-        <footer>
-            <p>&copy; @DateTime.Now.Year - Rarespawn</p>
-        </footer>
-    </div>
+
+    @if (User.Identity.IsAuthenticated && atJobPage)
+    {
+        <div id="wrapper">
+            <div id="sidebar-wrapper">
+                <ul class="sidebar-nav">
+                    <li class="sidebar-brand">
+                        <a href="/Account/Manage">
+                            Welcome, @User.Identity.Name
+                        </a>
+                    </li>
+                    <li>
+                        <a href="/Job/Index">Your jobs</a>
+                    </li>
+                    <li>
+                        <a href="/Job/Create">Create jobs</a>
+                    </li>
+                    <li>
+                        <a href="#">Previous jobs</a>
+                    </li>
+                    <li>
+                        <a href="#">Account Management</a>
+                    </li>
+                </ul>
+            </div>
+            <div>
+                <div class="page-content inset">
+                    <a id="menu-toggle" href="#" class="btn btn-default">
+                        <span class="icon-bar"></span>
+                    </a>
+                    @RenderBody()
+
+                    <div class="container body-content">
+                        <hr />
+                        <footer>
+                            <p>&copy; @DateTime.Now.Year - Rarespawn</p>
+                        </footer>
+                    </div>
+                </div>
+            </div>
+        </div>
+    }
+    else
+    {
+        if (@Url.Action().Equals("/"))
+        {
+            @RenderBody()
+        }
+        <div class="container body-content">
+            @if (!@Url.Action().Equals("/"))
+            {
+                @RenderBody()
+            }
+            <hr />
+            <footer>
+                <p>&copy; @DateTime.Now.Year - Rarespawn</p>
+            </footer>
+        </div>
+    }
+
 
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")
@@ -51,5 +114,6 @@
             $("#wrapper").toggleClass("active");
         });
     </script>
+
 </body>
 </html>
