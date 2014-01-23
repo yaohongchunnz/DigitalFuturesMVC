@@ -10,9 +10,15 @@ namespace Dont_Panic_MVC_API.Controllers.API_Controllers
     {
         // Database
         private JobAPIContext db = new JobAPIContext();
+        
+        // Returns All Jobs in the database.
+        public IQueryable<Job> GetAllJobs()
+        {
+            return db.Jobs;
+        }
 
         // Get jobs from database.
-        public IQueryable<Job> GetJobs(string UserId)
+        public IQueryable<Job> GetUserJobs(string UserId)
         {
             return db.Jobs.Where(j => j.UserId == UserId);
         }
@@ -26,7 +32,8 @@ namespace Dont_Panic_MVC_API.Controllers.API_Controllers
         // Modify existing job in database.
         public bool PutJob(int id, Job job)
         {
-            db.Entry(job).State = EntityState.Modified;
+
+            Job databaseJob = GetJob(id);
 
             try
             {
