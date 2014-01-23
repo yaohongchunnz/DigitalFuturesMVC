@@ -16,16 +16,22 @@ using Microsoft.AspNet.Identity;
 
 namespace Dont_Panic_MVC_API.Controllers
 {
-    [Authorize]
+   
     public class JobController : Controller
     {
 
         private JobAPI jobAPI = new JobAPI();
 
+        public ActionResult Browse()
+        {
+            return View(jobAPI.GetAllJobs().ToList());
+        }
+
         // GET: /Job/
+        [Authorize]
         public ActionResult Index()
         {
-            return View(jobAPI.GetJobs(User.Identity.GetUserId()).ToList());
+            return View(jobAPI.GetUserJobs(User.Identity.GetUserId()).ToList());
         }
 
         // GET: /Job/Details/5
@@ -46,6 +52,7 @@ namespace Dont_Panic_MVC_API.Controllers
         }
 
         // GET: /Job/Create
+         [Authorize]
         public ActionResult Create()
         {
             return View();
@@ -54,6 +61,7 @@ namespace Dont_Panic_MVC_API.Controllers
         // POST: /Job/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
+        [Authorize]      
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Create([Bind(Include="jobid,title,description,city,jobtype")] Job jobmodel)
@@ -69,6 +77,7 @@ namespace Dont_Panic_MVC_API.Controllers
         }
 
         // GET: /Job/Edit/5
+         [Authorize]
         public ActionResult Edit(int id)
         {
             if (id == null)
@@ -92,7 +101,9 @@ namespace Dont_Panic_MVC_API.Controllers
         // POST: /Job/Edit/5
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
-        [HttpPost]
+
+         [Authorize]
+         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Edit([Bind(Include="jobid,title,description,city,jobtype")] int id, Job jobmodel)
         {
@@ -111,8 +122,14 @@ namespace Dont_Panic_MVC_API.Controllers
         }
 
         // GET: /Job/Delete/5
+
+         [Authorize]
+         [HttpGet]
         public ActionResult Delete(int id)
         {
+
+            System.Diagnostics.Debug.WriteLine("In Delete "); 
+
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
@@ -133,17 +150,21 @@ namespace Dont_Panic_MVC_API.Controllers
         }
 
         // POST: /Job/Delete/5
-        [HttpPost]
+         [Authorize]
+         [HttpPost]
         [ValidateAntiForgeryToken]
+        [ActionName("Delete")]
         public ActionResult DeleteConfirmed(int id)
         {
+            System.Diagnostics.Debug.WriteLine("In DeleteConfirmed"); 
+
             Job jobmodel = jobAPI.GetJob(id);
             // Checking for matching UserID so only the user can delete their listing. 
             if (!(jobmodel.UserId.Equals(User.Identity.GetUserId())))
             {
                 RedirectToAction("Error");
             }
-           // jobAPI.DeleteJob(jobmodel);
+            jobAPI.DeleteJob(jobmodel);
             return RedirectToAction("Index");
         }
 

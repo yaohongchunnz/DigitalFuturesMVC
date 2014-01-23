@@ -16,7 +16,7 @@ namespace Dont_Panic_MVC_API.Controllers.API_Controllers
         // GET api/JobControllerAPI
         public IQueryable<Job> GetJobs()
         {
-            return jobAPI.GetJobs(User.Identity.GetUserId());
+            return jobAPI.GetUserJobs(User.Identity.GetUserId());
         }
 
         // GET api/JobControllerAPI/5
