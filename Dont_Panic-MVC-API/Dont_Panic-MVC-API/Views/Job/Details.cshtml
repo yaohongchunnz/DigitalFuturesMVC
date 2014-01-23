@@ -1,5 +1,5 @@
 ﻿@model Dont_Panic_MVC_API.Models.API_Models.Job
-
+@using Microsoft.AspNet.Identity;
 @{
     ViewBag.Title = "Job Details";
 }
@@ -8,7 +8,7 @@
 
 <div>
     <h4>model.title</h4>
-	<hr />
+    <hr />
     <dl class="dl-horizontal">
         <dt>
             @Html.DisplayNameFor(model => model.title)
@@ -45,6 +45,17 @@
     </dl>
 </div>
 <p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.jobid }) |
-    @Html.ActionLink("Back to your jobs", "Index")
+    @if (User.Identity.IsAuthenticated)
+    {
+
+        if (User.Identity.GetUserId().Equals(Model.jobid))
+        {
+            @Html.ActionLink("Edit", "Edit", new { id = Model.jobid }); 
+        }
+        @Html.ActionLink("Back to your jobs", "Index");
+    }
+    else
+    {
+        @Html.ActionLink("Back to browsing", "Browse")
+    }
 </p>

@@ -45,7 +45,7 @@
     </a>
 </div>
 
-<div class="container whyblock" >
+<div class="container whyblock">
     <h1>Why should I use <font color="#65B5A2">don't</font><font color="#424242">panic</font>?</h1>
     <div class="row container">
         <div class="col-md-3">
@@ -92,12 +92,20 @@
 <div class="container whyblock">
     <div class="row">
         <div class="col-md-6">
-            <a href="/Job"> <img src="~/Images/buttonsTest1.png" /></a>
+            <a href="/Job/Create"> <img src="~/Images/buttonsTest1.png" /></a>
             <h2>Something broken?<br />Post it now.</h2>
         </div>
         <div class="col-md-6">
-            <a href="/Account/Login"> <img src="~/Images/buttonTest2.jpg" /></a>
-            <h2>Sign in now.</h2>
+            @if (User.Identity.IsAuthenticated)
+            {
+                <a href="/Job/Index"> <img src="~/Images/buttonTest2.jpg" /></a>
+                <h2>Manage your Jobs.</h2>
+            }
+            else
+            {
+                <a href="/Account/Login"> <img src="~/Images/buttonTest2.jpg" /></a>
+                <h2>Sign in now.</h2>
+            }
         </div>
 
     </div>

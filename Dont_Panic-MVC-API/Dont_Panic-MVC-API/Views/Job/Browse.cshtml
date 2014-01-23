@@ -4,51 +4,22 @@
     ViewBag.Title = "Browse";
 }
 
-<h2>Browse</h2>
+<h2>Browsing jobs</h2>
 
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
-<table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.title)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.city)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.description)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.jobtype)
-        </th>
-        <th></th>
-    </tr>
+@foreach (var item in Model)
+{
+    <div class="jumbotron">
+        @Html.ActionLink(item.title, "Details", new { id = item.jobid }, new { @style = "text-transform:capitalize;" }) 
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.title)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.city)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.description)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.jobtype)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.UserId)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.jobid }) |
-            @Html.ActionLink("Details", "Details", new { id=item.jobid }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.jobid })
-        </td>
-    </tr>
+        <p class="small">@item.description</p>
+        <blockquote>
+            <small>Located in: @item.city</small>
+        </blockquote>
+        <p class="text-primary small">Posted by: @item.UserId</p>
+
+    </div>
 }
 
-</table>
+<p>
+    @Html.ActionLink("Create your own job", "Create")
+</p>
