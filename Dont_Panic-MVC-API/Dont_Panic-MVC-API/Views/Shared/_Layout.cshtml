@@ -1,6 +1,6 @@
 ﻿<!DOCTYPE html>
 @{var atJobPage = false;}
-@if (@Url.Action().Contains("Job"))
+@if (@Url.Action().ToLower().Contains("job"))
 {
     atJobPage = true;
 }
@@ -37,6 +37,9 @@ else
                     <li>@Html.ActionLink("Home", "Index", "Home")</li>
                     <li>@Html.ActionLink("About", "About", "Home")</li>
                     <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
+                    @if (User.Identity.IsAuthenticated) { 
+                        <li>@Html.ActionLink("Jobs", "Index", "Job")</li>
+                    }
                 </ul>
                 @Html.Partial("_LoginPartial")
             </div>
@@ -86,14 +89,18 @@ else
     }
     else
     {
-        if (@Url.Action().Equals("/"))
+        if (@Url.Action().Equals("/") || @Url.Action().ToLower().Equals("/home/index"))
         {
             @RenderBody()
         }
         <div class="container body-content">
-            @if (!@Url.Action().Equals("/"))
+            @try
             {
                 @RenderBody()
+            }
+            catch (Exception e)
+            {
+
             }
             <hr />
             <footer>
