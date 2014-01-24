@@ -9,11 +9,11 @@
     {
         <div class="jumbotron">
             <h2>@Html.ActionLink(item.title, "Details", new { id = item.jobid }, new { @style = "color:#65B5A2;" }) </h2>
-            <p>@item.description</p>
+            <p style="font-size:14px">@item.description</p>
             <blockquote>
                 <small style="font-size:10px">Located in: @item.city</small>
             </blockquote>
-            <p class="text-primary">Posted by: @item.UserId</p>
+            <p class="text-primary" style="font-size:10px">Posted by: @item.UserId</p>
 
         </div>
     }

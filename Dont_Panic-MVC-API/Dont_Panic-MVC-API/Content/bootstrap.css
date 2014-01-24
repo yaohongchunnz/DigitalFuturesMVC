@@ -5440,6 +5440,7 @@ a.list-group-item.active > .badge,
     line-height: 2.1428571435;
     color: inherit;
     background-color: #ddd;
+    max-width:1024px;
 }
 
     .jumbotron h1,
@@ -5481,7 +5482,7 @@ a.list-group-item.active > .badge,
 
     .jumbotron h2,
     .jumbotron .h2{
-        font-size:20px;
+        font-size:24px;
     }
     .jumbotron p,
     .jumbotron .p{
