@@ -41,7 +41,6 @@ namespace Dont_Panic_MVC_API.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-
             Job job = jobAPI.GetJob(id);
 
             if (job == null)

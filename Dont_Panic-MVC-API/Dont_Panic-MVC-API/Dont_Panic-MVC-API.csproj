@@ -193,6 +193,10 @@
     <Compile Include="Migrations\201401222242240_deleted User.Designer.cs">
       <DependentUpon>201401222242240_deleted User.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201401240227384_addDatestoJob.cs" />
+    <Compile Include="Migrations\201401240227384_addDatestoJob.Designer.cs">
+      <DependentUpon>201401240227384_addDatestoJob.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\API Models\API-Models.cs" />
@@ -285,6 +289,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201401222242240_deleted User.resx">
       <DependentUpon>201401222242240_deleted User.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201401240227384_addDatestoJob.resx">
+      <DependentUpon>201401240227384_addDatestoJob.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
