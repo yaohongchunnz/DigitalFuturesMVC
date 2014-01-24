@@ -1,5 +1,5 @@
 #wrapper {
-    padding-left: 250px;
+    padding-left: 150px;
     transition: all 0.4s ease 0s;
     font-weight: bold;
 }
@@ -7,7 +7,7 @@
 #sidebar-wrapper {
     margin-left: -250px;
     left: 250px;
-    width: 250px;
+    width: 150px;
     background: #FFFFFF;
     position: fixed;
     height: 100%;
