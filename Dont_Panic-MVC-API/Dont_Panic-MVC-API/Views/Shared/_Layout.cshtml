@@ -21,7 +21,7 @@ else
     <link href="~/Content/simple-sidebar.css" rel="stylesheet">
 </head>
 <body>
-    <div class="navbar navbar-inverse navbar-fixed-top">
+    <div class="navbar navbar-inverse navbar-fixed-top drop-shadow green-border">
         <div class="container">
             <div class="navbar-header">
                 <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
@@ -38,7 +38,8 @@ else
                     <!---li>@Html.ActionLink("About", "About", "Home")</!--li>
                     <li>@Html.ActionLink("Contact", "Contact", "Home")</li>-->
                     <li>@Html.ActionLink("Browse Jobs", "Browse", "Job")</li>
-                    @if (User.Identity.IsAuthenticated) { 
+                    @if (User.Identity.IsAuthenticated)
+                    {
                         <li>@Html.ActionLink("Manage Jobs", "Index", "Job")</li>
                     }
                 </ul>
@@ -78,8 +79,32 @@ else
                     </a>
                     @RenderBody()
 
-                    <div class="container body-content">
-                        <hr />
+                    <hr />
+                    <div class="container">
+                        <table class=" table-striped">
+                            <tbody>
+                                <tr>
+                                    <td>
+                                        <a href="/Home/About"><h4>About</h4></a>
+                                    </td>
+                                    <td>
+                                        <h4> | </h4>
+                                    </td>
+                                    <td>
+                                        <a href="/Home/Contact"><h4>Contact</h4></a>
+                                    </td>
+                                    <td>
+                                        <h4> | </h4>
+                                    </td>
+                                    <td>
+                                        <a href="/Home/Support"><h4>Support</h4></a>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <hr />
+                    <div class="container">
                         <footer>
                             <p>&copy; @DateTime.Now.Year - Rarespawn</p>
                         </footer>
@@ -103,12 +128,41 @@ else
             {
 
             }
-            <hr />
+        </div>
+
+        <hr />
+        <div class="container table-responsive">
+            <table class="table-condensed">
+                <tbody>
+                    <tr>
+                        <td>
+                            <a href="/Home/About"><h4>About</h4></a>
+                        </td>
+                        <td>
+                            <h4> | </h4>
+                        </td>
+                        <td>
+                            <a href="/Home/Contact"><h4>Contact</h4></a>
+                        </td>
+                        <td>
+                            <h4> | </h4>
+                        </td>
+                        <td>
+                            <a href="/Home/Support"><h4>Support</h4></a>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <hr />
+        <div class="container">
             <footer>
                 <p>&copy; @DateTime.Now.Year - Rarespawn</p>
             </footer>
         </div>
+
     }
+
 
 
     @Scripts.Render("~/bundles/jquery")

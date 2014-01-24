@@ -45,32 +45,33 @@
     </a>
 </div>
 
-<div class="container whyblock">
-    <h1>Why should I use <font color="#65B5A2">don't</font><font color="#424242">panic</font>?</h1>
-    <div class="row container">
-        <div class="col-md-3">
-            <h3>Multiple quotes</h3>
-            <h5>Get <font color="#65B5A2">several</font> options</h5>
-        </div>
-        <div class="col-md-3">
-            <h3>Compare prices</h3>
-            <h5>Get a great <font color="#65B5A2">deal</font></h5>
-        </div>
-        <div class="col-md-3">
-            <h3>Verified reviews</h3>
-            <h5>Hire the <font color="#65B5A2">best</font> pro</h5>
-        </div>
-        <div class="col-md-3">
-            <h3>Free to use</h3>
-            <h5>No <font color="#65B5A2">obligation</font> to hire</h5>
+<div class="whyblock">
+    <div class="container ">
+        <h1>Why should I use <font color="#65B5A2">don't</font><font color="#424242">panic</font>?</h1>
+        <div class="row container">
+            <div class="col-md-3">
+                <h3>Multiple quotes</h3>
+                <h5>Get <font color="#65B5A2">several</font> options</h5>
+            </div>
+            <div class="col-md-3">
+                <h3>Compare prices</h3>
+                <h5>Get a great <font color="#65B5A2">deal</font></h5>
+            </div>
+            <div class="col-md-3">
+                <h3>Verified reviews</h3>
+                <h5>Hire the <font color="#65B5A2">best</font> pro</h5>
+            </div>
+            <div class="col-md-3">
+                <h3>Free to use</h3>
+                <h5>No <font color="#65B5A2">obligation</font> to hire</h5>
+            </div>
+
         </div>
 
     </div>
-
 </div>
 
-
-<div class="howitworksblock">
+<div class="howitworksblock inner-shadow">
     <div class="container">
         <h1>How does <font color="#FFFFF">don't</font><font color="#424242">panic</font> work?</h1><br />
         <div class="row">
@@ -88,27 +89,28 @@
     </div>
 </div>
 
+<div class="whyblock">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6">
+                <a href="/Job/Create"> <img src="~/Images/buttonsTest1.png" /></a>
+                <h2>Something broken?<br />Post it now.</h2>
+            </div>
+            <div class="col-md-6">
+                @if (User.Identity.IsAuthenticated)
+                {
+                    <a href="/Job/Index"> <img src="~/Images/buttonTest2.jpg" /></a>
+                    <h2>Manage your Jobs.</h2>
+                }
+                else
+                {
+                    <a href="/Account/Login"> <img src="~/Images/buttonTest2.jpg" /></a>
+                    <h2>Sign in now.</h2>
+                }
+            </div>
 
-<div class="container whyblock">
-    <div class="row">
-        <div class="col-md-6">
-            <a href="/Job/Create"> <img src="~/Images/buttonsTest1.png" /></a>
-            <h2>Something broken?<br />Post it now.</h2>
-        </div>
-        <div class="col-md-6">
-            @if (User.Identity.IsAuthenticated)
-            {
-                <a href="/Job/Index"> <img src="~/Images/buttonTest2.jpg" /></a>
-                <h2>Manage your Jobs.</h2>
-            }
-            else
-            {
-                <a href="/Account/Login"> <img src="~/Images/buttonTest2.jpg" /></a>
-                <h2>Sign in now.</h2>
-            }
         </div>
 
     </div>
 
 </div>
-

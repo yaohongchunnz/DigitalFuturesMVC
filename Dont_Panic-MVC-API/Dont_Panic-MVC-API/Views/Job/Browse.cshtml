@@ -3,23 +3,21 @@
 @{
     ViewBag.Title = "Browse";
 }
+<div class="container">
+    <h2 class="green-text">Available jobs</h2>
+    @foreach (var item in Model)
+    {
+        <div class="jumbotron">
+            <h2>@Html.ActionLink(item.title, "Details", new { id = item.jobid }, new { @style = "color:#65B5A2;" }) </h2>
+            <p>@item.description</p>
+            <blockquote>
+                <small style="font-size:10px">Located in: @item.city</small>
+            </blockquote>
+            <p class="text-primary">Posted by: @item.UserId</p>
 
-<h2>Browsing jobs</h2>
-
-@foreach (var item in Model)
-{
-    <div class="jumbotron">
-        @Html.ActionLink(item.title, "Details", new { id = item.jobid }, new { @style = "text-transform:capitalize;" }) 
-
-        <p class="small">@item.description</p>
-        <blockquote>
-            <small>Located in: @item.city</small>
-        </blockquote>
-        <p class="text-primary small">Posted by: @item.UserId</p>
-
-    </div>
-}
-
-<p>
-    @Html.ActionLink("Create your own job", "Create")
-</p>
+        </div>
+    }
+    <p>
+        @Html.ActionLink("Create your own job", "Create")
+    </p>
+</div>

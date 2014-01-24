@@ -5010,7 +5010,6 @@ textarea.input-group-sm > .input-group-btn > .btn {
 
 .navbar-inverse {
     background-color: #FFF;
-    border-color: #65B5A2;
 }
 
     .navbar-inverse .navbar-brand {
@@ -5440,13 +5439,16 @@ a.list-group-item.active > .badge,
     font-weight: 200;
     line-height: 2.1428571435;
     color: inherit;
-    background-color: #eeeeee;
+    background-color: #ddd;
 }
 
     .jumbotron h1,
     .jumbotron .h1 {
         line-height: 1;
-        color: inherit;
+    }
+    .jumbotron h2,
+    .jumbotron .h2{
+        line-height: 1;
     }
 
     .jumbotron p {
@@ -5463,8 +5465,8 @@ a.list-group-item.active > .badge,
 
 @media screen and (min-width: 768px) {
     .jumbotron {
-        padding-top: 48px;
-        padding-bottom: 48px;
+        padding-top: 8px;
+        padding-bottom: 8px;
     }
 
     .container .jumbotron {
@@ -5475,6 +5477,15 @@ a.list-group-item.active > .badge,
     .jumbotron h1,
     .jumbotron .h1 {
         font-size: 63px;
+    }
+
+    .jumbotron h2,
+    .jumbotron .h2{
+        font-size:20px;
+    }
+    .jumbotron p,
+    .jumbotron .p{
+        font-size:12px;
     }
 }
 
