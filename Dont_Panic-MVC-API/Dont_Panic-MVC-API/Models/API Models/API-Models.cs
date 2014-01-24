@@ -6,8 +6,6 @@ using System.Web;
 
 namespace Dont_Panic_MVC_API.Models.API_Models
 {
-
-
     public class Job
     {
         [Key]
@@ -19,6 +17,7 @@ namespace Dont_Panic_MVC_API.Models.API_Models
         public string description { get; set; }
         public string jobtype { get; set; }
         public string UserId { get; set; }
-
+        public DateTime submitDate { get; set; }
+        public DateTime expireDate { get; set; }
     }
 }
