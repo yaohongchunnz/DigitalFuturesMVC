@@ -19,5 +19,42 @@ namespace Dont_Panic_MVC_API.Models.API_Models
         public string UserId { get; set; }
         public DateTime submitDate { get; set; }
         public DateTime expireDate { get; set; }
+        public Dictionary<int, string> jtype { get; set; }
+
+        public Job()
+        {
+            jtype = new Dictionary<int, string>(){
+                {0, "Plumbing"},
+                {1, "Catering"},
+                {2, "Electrical"},
+                {3, "Construction"}
+            };
+        }
     }
+
+    public class ServiceProvider
+    {
+        [Key]
+        public int provider_id { get; set; }
+
+        public string business_name { get; set; }
+        public string address { get; set; }
+
+        // about service
+        public string about { get; set; }
+        public string services { get; set; }
+        public string areas_serviced { get; set; }
+        public string availability { get; set; }
+        public string description { get; set; }
+
+        // Service provider contact details
+        public string contact_name { get; set; }
+        public string email { get; set; }
+        public string contact_number_1 { get; set; }
+        public string contact_number_2 { get; set; }
+        public string website_address { get; set; }
+
+        //
+    }
+
 }
