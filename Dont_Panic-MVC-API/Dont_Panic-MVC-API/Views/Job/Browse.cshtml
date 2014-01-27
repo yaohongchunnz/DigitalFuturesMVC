@@ -10,10 +10,25 @@
         <div class="jumbotron">
             <h2>@Html.ActionLink(item.title, "Details", new { id = item.jobid }, new { @style = "color:#65B5A2;" }) </h2>
             <p style="font-size:14px">@item.description</p>
-            <blockquote>
-                <small style="font-size:12px">Located in: @item.city</small>
-            </blockquote>
-            <p class="text-primary" style="font-size:12px">Posted by: @item.UserId</p>
+
+
+            <div class="row">
+                <div class="col-md-4">
+                    <p class="text-primary" style="font-size:12px">Category: @item.jobtype</p>
+                </div>
+                <div class="col-md-4">
+                    <p class="text-primary" style="font-size:12px">Located in: @item.city</p>
+                </div>
+                <div class="col-md-4">
+                    <p class="text-primary" style="font-size:12px">Posted by: @item.username</p>
+                </div>
+                <div class="col-md-4">
+                    <p class="text-info" style="font-size:12px">Created on: @item.submitDate</p>
+                </div>
+                <div class="col-md-4">
+                    <p class="text-info" style="font-size:12px">Expires on: @item.expireDate</p>
+                </div>
+            </div>
 
         </div>
     }
