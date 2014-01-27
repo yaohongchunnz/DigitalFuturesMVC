@@ -174,11 +174,11 @@
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\AccountController.cs" />
-    <Compile Include="Controllers\API Controllers\JobAPI.cs" />
+    <Compile Include="Controllers\API Controllers\API.cs" />
     <Compile Include="Controllers\API Controllers\JobControllerAPI.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\JobController.cs" />
-    <Compile Include="Controllers\ServiceProviderDetailController.cs" />
+    <Compile Include="Controllers\ServiceProviderController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -198,13 +198,9 @@
     <Compile Include="Migrations\201401240227384_addDatestoJob.Designer.cs">
       <DependentUpon>201401240227384_addDatestoJob.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201401270111470_serviceprovidercontroller.cs" />
-    <Compile Include="Migrations\201401270111470_serviceprovidercontroller.Designer.cs">
-      <DependentUpon>201401270111470_serviceprovidercontroller.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201401270121035_updateJobmodel.cs" />
-    <Compile Include="Migrations\201401270121035_updateJobmodel.Designer.cs">
-      <DependentUpon>201401270121035_updateJobmodel.cs</DependentUpon>
+    <Compile Include="Migrations\201401272154138_serviceproviders.cs" />
+    <Compile Include="Migrations\201401272154138_serviceproviders.Designer.cs">
+      <DependentUpon>201401272154138_serviceproviders.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
@@ -278,7 +274,7 @@
     <Content Include="Views\Job\Edit.cshtml" />
     <Content Include="Views\Job\Index.cshtml" />
     <Content Include="Views\Job\Browse.cshtml" />
-    <Content Include="Views\ServiceProviderDetail\Index.cshtml" />
+    <Content Include="Views\ServiceProvider\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -303,11 +299,8 @@
     <EmbeddedResource Include="Migrations\201401240227384_addDatestoJob.resx">
       <DependentUpon>201401240227384_addDatestoJob.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201401270111470_serviceprovidercontroller.resx">
-      <DependentUpon>201401270111470_serviceprovidercontroller.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201401270121035_updateJobmodel.resx">
-      <DependentUpon>201401270121035_updateJobmodel.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201401272154138_serviceproviders.resx">
+      <DependentUpon>201401272154138_serviceproviders.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

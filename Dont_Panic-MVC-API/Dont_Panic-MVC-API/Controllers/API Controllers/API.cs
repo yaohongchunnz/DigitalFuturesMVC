@@ -6,10 +6,20 @@ using System.Linq;
 
 namespace Dont_Panic_MVC_API.Controllers.API_Controllers
 {
+
+    // API for querying the database for Service Providers.
+    public class ServiceAPI
+    {
+        
+
+
+    }
+
+    // API for querying Jobs in the database.
     public class JobAPI
     {
         // Database
-        private JobAPIContext db = new JobAPIContext();
+        private APIContext db = new APIContext();
         
         // Returns All Jobs in the database.
         public IQueryable<Job> GetAllJobs()
