@@ -7,7 +7,7 @@
     <h2 class="green-text">Available jobs</h2>
     @foreach (var item in Model)
     {
-        <div class="jumbotron">
+        <div class="jumbotron drop-shadow-lite">
             <h2>@Html.ActionLink(item.title, "Details", new { id = item.jobid }, new { @style = "color:#65B5A2;" }) </h2>
             <p style="font-size:14px">@item.description</p>
 
