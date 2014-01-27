@@ -2117,9 +2117,9 @@ output {
     line-height: 1.428571429;
     color: #555555;
     vertical-align: middle;
-    background-color: #ffffff;
+    background-color: rgba(225, 225, 225, 0.68);
     background-image: none;
-    border: 1px solid #cccccc;
+    border: 1px solid #65B5A2;
     border-radius: 4px;
     -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
     box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
@@ -2135,20 +2135,20 @@ output {
     }
 
     .form-control:-moz-placeholder {
-        color: #999999;
+        color: rgba(73, 73, 73, 0.58);;
     }
 
     .form-control::-moz-placeholder {
-        color: #999999;
+        color: rgba(73, 73, 73, 0.58);
         opacity: 1;
     }
 
     .form-control:-ms-input-placeholder {
-        color: #999999;
+        color: rgba(73, 73, 73, 0.58);;
     }
 
     .form-control::-webkit-input-placeholder {
-        color: #999999;
+        color: rgba(73, 73, 73, 0.58);;
     }
 
     .form-control[disabled],
@@ -2389,6 +2389,7 @@ textarea.input-lg {
 .form-horizontal .checkbox,
 .form-horizontal .radio-inline,
 .form-horizontal .checkbox-inline {
+    color: #65B5A2;
     padding-top: 7px;
     margin-top: 0;
     margin-bottom: 0;
@@ -7413,3 +7414,5 @@ td.visible-print {
         display: none !important;
     }
 }
+
+

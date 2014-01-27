@@ -173,3 +173,15 @@
 .green-text{
     color:#65B5A2;
 }
+.rounded-corners {
+    border: 2px solid #65B5A2;
+    padding: 10px 40px;
+    background: #FFFFFF;
+    max-width:500px;
+    border-radius: 25px;
+}
+.drop-shadow-lite {
+  -moz-box-shadow:    0px 0px 4px 1px #000;
+  -webkit-box-shadow: 0px 0px 4px 1px #000;
+  box-shadow:         0px 0px 4px 1px #000;
+}
