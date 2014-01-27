@@ -178,6 +178,7 @@
     <Compile Include="Controllers\API Controllers\JobControllerAPI.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\JobController.cs" />
+    <Compile Include="Controllers\ServiceProviderDetailController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -269,6 +270,7 @@
     <Content Include="Views\Job\Edit.cshtml" />
     <Content Include="Views\Job\Index.cshtml" />
     <Content Include="Views\Job\Browse.cshtml" />
+    <Content Include="Views\ServiceProviderDetail\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

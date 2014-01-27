@@ -46,5 +46,4 @@ namespace Dont_Panic_MVC_API.Models.API_Models
 
         //
     }
-
 }
