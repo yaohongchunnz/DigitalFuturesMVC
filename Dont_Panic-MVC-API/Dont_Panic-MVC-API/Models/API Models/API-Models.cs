@@ -17,19 +17,9 @@ namespace Dont_Panic_MVC_API.Models.API_Models
         public string description { get; set; }
         public string jobtype { get; set; }
         public string UserId { get; set; }
+        public string username { get; set; }
         public DateTime submitDate { get; set; }
         public DateTime expireDate { get; set; }
-        public Dictionary<int, string> jtype { get; set; }
-
-        public Job()
-        {
-            jtype = new Dictionary<int, string>(){
-                {0, "Plumbing"},
-                {1, "Catering"},
-                {2, "Electrical"},
-                {3, "Construction"}
-            };
-        }
     }
 
     public class ServiceProvider
