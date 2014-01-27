@@ -198,6 +198,14 @@
     <Compile Include="Migrations\201401240227384_addDatestoJob.Designer.cs">
       <DependentUpon>201401240227384_addDatestoJob.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201401270111470_serviceprovidercontroller.cs" />
+    <Compile Include="Migrations\201401270111470_serviceprovidercontroller.Designer.cs">
+      <DependentUpon>201401270111470_serviceprovidercontroller.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201401270121035_updateJobmodel.cs" />
+    <Compile Include="Migrations\201401270121035_updateJobmodel.Designer.cs">
+      <DependentUpon>201401270121035_updateJobmodel.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\API Models\API-Models.cs" />
@@ -294,6 +302,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201401240227384_addDatestoJob.resx">
       <DependentUpon>201401240227384_addDatestoJob.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201401270111470_serviceprovidercontroller.resx">
+      <DependentUpon>201401270111470_serviceprovidercontroller.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201401270121035_updateJobmodel.resx">
+      <DependentUpon>201401270121035_updateJobmodel.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

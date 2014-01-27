@@ -32,7 +32,6 @@ namespace Dont_Panic_MVC_API.Controllers.API_Controllers
         // Modify existing job in database.
         public bool PutJob(int id, Job job)
         {
-
             Job databaseJob = GetJob(id);
 
             try
