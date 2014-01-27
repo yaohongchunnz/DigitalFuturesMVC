@@ -4,13 +4,25 @@ using System.Data.Entity;
 using System.Data.Entity.Infrastructure;
 using System.Linq;
 
+// File contains
+    // Service Provider API
+    // Jobn API
+
 namespace Dont_Panic_MVC_API.Controllers.API_Controllers
 {
 
     // API for querying the database for Service Providers.
     public class ServiceAPI
     {
-        
+        private APIContext db = new APIContext();
+
+        // Inserts service provider into the database.
+        public void addProvider(ServiceProvider provider){
+            db.ServiceProviders.Add(provider);
+            db.SaveChanges();
+        }
+
+
 
 
     }
