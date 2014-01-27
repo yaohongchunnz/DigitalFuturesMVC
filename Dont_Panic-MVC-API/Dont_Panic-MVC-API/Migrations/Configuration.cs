@@ -5,7 +5,7 @@ namespace Dont_Panic_MVC_API.Migrations
     using System.Data.Entity.Migrations;
     using System.Linq;
 
-    internal sealed class Configuration : DbMigrationsConfiguration<Dont_Panic_MVC_API.Models.JobAPIContext>
+    internal sealed class Configuration : DbMigrationsConfiguration<Dont_Panic_MVC_API.Models.APIContext>
     {
         public Configuration()
         {
@@ -13,7 +13,7 @@ namespace Dont_Panic_MVC_API.Migrations
             ContextKey = "Dont_Panic_MVC_API.Models.JobAPIContext";
         }
 
-        protected override void Seed(Dont_Panic_MVC_API.Models.JobAPIContext context)
+        protected override void Seed(Dont_Panic_MVC_API.Models.APIContext context)
         {
             //  This method will be called after migrating to the latest version.
 

@@ -7,7 +7,7 @@ using System.Web;
 
 namespace Dont_Panic_MVC_API.Models
 {
-    public class JobAPIContext : DbContext
+    public class APIContext : DbContext
     {
         // You can add custom code to this file. Changes will not be overwritten.
         // 
@@ -16,11 +16,12 @@ namespace Dont_Panic_MVC_API.Models
         // For more information refer to the documentation:
         // http://msdn.microsoft.com/en-us/data/jj591621.aspx
 
-        public JobAPIContext() : base("name=DontPanicDB")
+        public APIContext() : base("name=DontPanicDB")
         {
         }
 
         public DbSet<Job> Jobs { get; set; }
+        public DbSet<ServiceProvider> ServiceProviders { get; set; }
     
     }
 }

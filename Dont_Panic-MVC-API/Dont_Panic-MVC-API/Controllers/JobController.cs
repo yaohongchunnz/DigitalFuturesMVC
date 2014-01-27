@@ -51,7 +51,6 @@ namespace Dont_Panic_MVC_API.Controllers
         }
 
         // GET: /Job/Create
-         [Authorize]
         public ActionResult Create()
         {
             return View();

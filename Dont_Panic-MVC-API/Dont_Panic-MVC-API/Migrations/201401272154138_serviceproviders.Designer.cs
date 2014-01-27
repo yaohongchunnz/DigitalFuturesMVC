@@ -7,13 +7,13 @@ namespace Dont_Panic_MVC_API.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.0.2-21211")]
-    public sealed partial class updateJobmodel : IMigrationMetadata
+    public sealed partial class serviceproviders : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(updateJobmodel));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(serviceproviders));
         
         string IMigrationMetadata.Id
         {
-            get { return "201401270121035_updateJobmodel"; }
+            get { return "201401272154138_serviceproviders"; }
         }
         
         string IMigrationMetadata.Source
