@@ -67,7 +67,10 @@ namespace Dont_Panic_MVC_API.Controllers
         {
             if (ModelState.IsValid)
             {
+                jobmodel.submitDate = DateTime.Today;
+                jobmodel.expireDate = DateTime.Today.AddDays(2);
                 jobmodel.UserId = User.Identity.GetUserId();
+                jobmodel.username = User.Identity.GetUserName();
                 jobAPI.PostJob(jobmodel);
                 return RedirectToAction("Index");
             }
