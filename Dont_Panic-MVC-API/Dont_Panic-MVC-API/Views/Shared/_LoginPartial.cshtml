@@ -21,7 +21,7 @@
 else
 {
     <ul class="nav navbar-nav navbar-right">
-        <li @if (@ViewContext.RouteData.GetRequiredString("action").ToLower() == "register") { @Html.AttributeEncode("class=active")     ; }>@Html.ActionLink("Sign up", "Register", "Account", routeValues: null, htmlAttributes: new { id = "registerLink" })</li>
+        <li @if (@ViewContext.RouteData.GetRequiredString("action").ToLower() == "register") { @Html.AttributeEncode("class=active")     ; }>@Html.ActionLink("Sign up", "Signup", "Account", routeValues: null, htmlAttributes: new { id = "registerLink" })</li>
         <li @if (@ViewContext.RouteData.GetRequiredString("action").ToLower() == "login") { @Html.AttributeEncode("class=active")     ; }>@Html.ActionLink("Log in", "Login", "Account", routeValues: null, htmlAttributes: new { id = "loginLink" })</li>
     </ul>
 }
