@@ -1,14 +1,16 @@
 ﻿@model Dont_Panic_MVC_API.Models.API_Models.ServiceProvider
 
+
 @{
-    ViewBag.Title = "Create";
+    ViewBag.Title = "Signup";
 }
 
-<h2>Register service</h2>
+<h2>Signup</h2>
 
 
 <div class="container">
-    <h2>Register to become a don't panic service provider</h2>
+    <h2>Signup to become a don't panic service provider and access leads for jobs and grow your business</h2>
+    
     <br />
     <div>
         @using (Html.BeginForm())
@@ -107,7 +109,15 @@
                     <div class="col-md-offset-2 col-md-10">
                         <input type="submit" value="Register" class="btn btn-default" />
                     </div>
+                    
+
+
+
+                    </div>
+                <div class="col-sm-10">
+                    @Html.DropDownList("Towns", (SelectList)ViewBag.Towns)
                 </div>
+
             </div>
         }
     </div>
