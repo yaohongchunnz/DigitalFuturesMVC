@@ -5,50 +5,50 @@
 }
 
 <div class="container">
-    <h2>Your jobs</h2>
-
+    <h2 class="green-text">Your jobs</h2>
+        @if (Model.Count() == 0)
+    {
+        <p>You currently have no jobs. @Html.ActionLink("Post a job now.", "Create", new { @style = "color:#65B5A2;" })
+        </p>
+        
+    }
+    else
+    {
     <p>
-        @Html.ActionLink("Create New Job", "Create")
+        @Html.ActionLink("Post a job", "Create", new { @style = "color:#65B5A2;" })
     </p>
-    <table class="table">
-        <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.title)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.description)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.city)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.jobtype)
-            </th>
-            <th></th>
-        </tr>
+    }
+    @foreach (var item in Model)
+    {
+        
+        <div class="jumbotron drop-shadow-lite">
+            <h2>@Html.ActionLink(item.title, "Details", new { id = item.jobid }, new { @style = "color:#65B5A2;" }) </h2>
+            <p style="font-size:14px">@item.description</p>
 
-        @foreach (var item in Model)
-        {
-            <tr>
-                <td>
-                    @Html.DisplayFor(modelItem => item.title)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.description)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.city)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.jobtype)
-                </td>
-                <td>
-                    @Html.ActionLink("Edit", "Edit", new { id = item.jobid }) |
-                    @Html.ActionLink("Details", "Details", new { id = item.jobid }) |
-                    @Html.ActionLink("Delete", "Delete", new { id = item.jobid })
-                </td>
-            </tr>
-        }
 
-    </table>
+            <div class="row">
+                <div class="col-md-4">
+                    <p class="text-primary" style="font-size:12px">Category: @item.jobtype</p>
+                </div>
+                <div class="col-md-4">
+                    <p class="text-primary" style="font-size:12px">Located in: @item.city</p>
+                </div>
+                <div class="col-md-4">
+                    <p class="text-info">
+                        @Html.ActionLink("Edit", "Edit", new { id = item.jobid }) |
+                        @Html.ActionLink("Delete", "Delete", new { id = item.jobid })
+                    </p>
+                </div>
+                <div class="col-md-4">
+                    <p class="text-info" style="font-size:12px">Created on: @item.submitDate</p>
+                </div>
+                <div class="col-md-4">
+                    <p class="text-info" style="font-size:12px">Expires on: @item.expireDate</p>
+                </div>
+            </div>
+
+        </div>
+    }
 </div>
+
+
