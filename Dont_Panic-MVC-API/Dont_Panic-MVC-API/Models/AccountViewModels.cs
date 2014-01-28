@@ -45,7 +45,7 @@ namespace Dont_Panic_MVC_API.Models
 
     public class RegisterViewModel
     {
-        [RegularExpression(@"^[a-z ,.'-]+$", ErrorMessage = "Please enter a valid First Name")]
+        [RegularExpression(@"^[a-zA-Z ,.'-]+$", ErrorMessage = "Please enter a valid First Name")]
         [Required]
         [Display(Name = "First Name")]
         public string first_name { get; set; }

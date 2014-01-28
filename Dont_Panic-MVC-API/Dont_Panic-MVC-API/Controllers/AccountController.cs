@@ -63,19 +63,19 @@ namespace Dont_Panic_MVC_API.Controllers
         }
 
         //
-        // GET: /Account/Register
+        // GET: /Account/Signup
         [AllowAnonymous]
-        public ActionResult Register()
+        public ActionResult Signup()
         {
             return View();
         }
 
         //
-        // POST: /Account/Register
+        // POST: /Account/Signup
         [HttpPost]
         [AllowAnonymous]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Register(RegisterViewModel model)
+        public async Task<ActionResult> Signup(RegisterViewModel model)
         {
             if (ModelState.IsValid)
             {
