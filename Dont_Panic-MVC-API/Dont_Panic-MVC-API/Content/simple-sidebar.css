@@ -237,3 +237,10 @@
 .centertext {
     text-align:center;    
 }
+
+.user-register-form{    
+    border: 0.5px solid #65B5A2;
+    background: #FFFFFF;
+    max-width: 550px;
+    border-radius: 25px;
+}
