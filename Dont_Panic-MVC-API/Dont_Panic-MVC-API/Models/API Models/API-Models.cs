@@ -59,6 +59,5 @@ namespace Dont_Panic_MVC_API.Models.API_Models
         public string contact_number_1 { get; set; }
         public string contact_number_2 { get; set; }
         public string website_address { get; set; }
-        //
     }
 }
