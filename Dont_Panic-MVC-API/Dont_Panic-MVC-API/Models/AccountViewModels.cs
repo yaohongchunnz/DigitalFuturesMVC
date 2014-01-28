@@ -45,12 +45,12 @@ namespace Dont_Panic_MVC_API.Models
 
     public class RegisterViewModel
     {
-        [RegularExpression("/^[a-z ,.'-]+$/i", ErrorMessage = "Please enter a valid First Name")]
+        [RegularExpression(@"^[A-Z]'?[- a-zA-Z]( [a-zA-Z])*$", ErrorMessage = "Please enter a valid First Name")]
         [Required]
         [Display(Name = "First Name")]
         public string first_name { get; set; }
 
-        [RegularExpression("/^[a-z ,.'-]+$/i", ErrorMessage = "Please enter a valid Last Name")]
+        [RegularExpression(@"^[A-Z]'?[- a-zA-Z]( [a-zA-Z])*$", ErrorMessage = "Please enter a valid Last Name")]
         [Required]
         [Display(Name = "Last Name")]
         public string last_name { get; set; }
