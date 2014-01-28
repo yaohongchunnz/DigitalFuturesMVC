@@ -4,45 +4,47 @@
     ViewBag.Title = "Job Details";
 }
 
-
 <div class="container">
     <h2>Job details</h2>
-    <h4>model.title</h4>
-    <hr />
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.title)
-        </dt>
+    <div class="jumbotron drop-shadow-lite">
+        <h3 class="green-text">@Html.DisplayFor(model => model.title)</h3>
 
-        <dd>
-            @Html.DisplayFor(model => model.title)
-        </dd>
+        <p style="font-size:14px">@Html.DisplayFor(model => model.description)</p>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.description)
-        </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.description)
-        </dd>
+        <div class="row">
+            <div class="col-md-4">
+                <p class="text-primary" style="font-size:12px">Category: @Html.DisplayFor(model => model.jobtype)</p>
+            </div>
+            <div class="col-md-4">
+                <p class="text-primary" style="font-size:12px">Located in: @Html.DisplayFor(model => model.city)</p>
+            </div>
+            <div class="col-md-4">
+                @if (User.Identity.Name.Equals(Model.username))
+                {
+                    <p class="text-info">
+                        @Html.ActionLink("Edit", "Edit", new { id = Model.jobid }) |
+                        @Html.ActionLink("Delete", "Delete", new { id = Model.jobid })
+                    </p>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.city)
-        </dt>
+                }
+                else
+                {
+                    <p class="text-primary">
+                        Posted by: @Model.username
+                    </p>
+                }
+            </div>
+            <div class="col-md-4">
+                <p class="text-info" style="font-size:12px">Created on: @Model.submitDate</p>
+            </div>
+            <div class="col-md-4">
+                <p class="text-info" style="font-size:12px">Expires on: @Model.expireDate</p>
+            </div>
+        </div>
 
-        <dd>
-            @Html.DisplayFor(model => model.city)
-        </dd>
+    </div>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.jobtype)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.jobtype)
-        </dd>
-
-    </dl>
 </div>
 <p>
     @if (User.Identity.IsAuthenticated)
@@ -50,7 +52,7 @@
 
         if (User.Identity.GetUserId().Equals(Model.jobid))
         {
-            @Html.ActionLink("Edit", "Edit", new { id = Model.jobid }); 
+            @Html.ActionLink("Edit", "Edit", new { id = Model.jobid });
         }
         @Html.ActionLink("Back to your jobs", "Index");
     }
