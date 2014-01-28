@@ -24,10 +24,10 @@
 
                     <label for="description" class="col-sm-2 control-label">description</label>
                     <div class="col-sm-10">
-                        <textarea rows="3" name="description" required id="description" class=" form-control" > </textarea>
+                        <textarea rows="3" name="description" required id="description" class=" form-control"></textarea>
                     </div>
                 </div>
-                
+
                 <div class="form-group">
 
                     <label for="city" class="col-sm-2 control-label">city</label>
@@ -71,9 +71,20 @@
             </div>
         }
 
-        <div>
-            @Html.ActionLink("Back to your jobs", "Index")
-        </div>
+        @if (User.Identity.IsAuthenticated)
+        {
+
+            <div>
+                @Html.ActionLink("Back to your jobs", "Index")
+            </div>
+        }
+        else
+        {
+            <div>
+                @Html.ActionLink("Back", "Browse")
+            </div>
+
+        }
     </div>
 </div>
 
