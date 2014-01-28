@@ -56,7 +56,7 @@ namespace Dont_Panic_MVC_API.Models
             DistrictList = new SelectList(listItems, "Value", "Text");
         }
 
-        [Display(Name = "Region")]
+        [Display(Name = "District")]
         public int ActionId { get; set; }
         public SelectList DistrictList { get; set; } 
     }
