@@ -17,14 +17,11 @@ namespace Dont_Panic_MVC_API.Controllers.API_Controllers
         private APIContext db = new APIContext();
 
         // Inserts service provider into the database.
-        public void addProvider(ServiceProvider provider){
+        public void addProvider(ServiceProvider provider)
+        {
             db.ServiceProviders.Add(provider);
             db.SaveChanges();
         }
-
-
-
-
     }
 
     // API for querying Jobs in the database.

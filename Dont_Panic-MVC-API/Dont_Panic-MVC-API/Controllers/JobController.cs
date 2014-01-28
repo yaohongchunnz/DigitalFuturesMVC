@@ -59,13 +59,19 @@ namespace Dont_Panic_MVC_API.Controllers
         // POST: /Job/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
-        [Authorize]      
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Create([Bind(Include="jobid,title,description,city,jobtype")] Job jobmodel)
         {
+            if (!User.Identity.IsAuthenticated)
+            {
+                return RedirectToAction("Login", "Account",
+                           new { returnUrl = "/Job/AuthCreate", FormMethod.Post });
+            }
+
             if (ModelState.IsValid)
             {
+                
                 jobmodel.submitDate = DateTime.Today;
                 jobmodel.expireDate = DateTime.Today.AddDays(2);
                 jobmodel.UserId = User.Identity.GetUserId();
@@ -75,6 +81,24 @@ namespace Dont_Panic_MVC_API.Controllers
             }
 
             return View(jobmodel);
+        }
+
+        [Authorize]
+        public string AuthCreate(string title){
+
+
+          
+         //   if (ModelState.IsValid)
+         //   {
+        //        jobmodel.submitDate = DateTime.Today;
+         //       jobmodel.expireDate = DateTime.Today.AddDays(2);
+         //       jobmodel.UserId = User.Identity.GetUserId();
+         //       jobmodel.username = User.Identity.GetUserName();
+        //        jobAPI.PostJob(jobmodel);
+      //          return ("Is valid");               // return RedirectToAction("Index");
+        //    }
+            return title;
+          //  return RedirectToAction("Create", jobmodel);
         }
 
         // GET: /Job/Edit/5
