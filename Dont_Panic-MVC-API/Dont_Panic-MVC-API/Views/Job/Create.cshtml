@@ -32,12 +32,9 @@
 
                     <label for="city" class="col-sm-2 control-label">city</label>
                     <div class="col-sm-10">
-                        <select class="form-control" required id="city" name="city">
-                            <option>Wellington</option>
-                            <option>Auckland</option>
-                            <option>Hamilton</option>
-                            <option>Christchurch</option>
-                        </select>
+                        @Html.DropDownListFor(model=>model.city, (SelectList)ViewBag.City, new { @class = "form-control", @id = "city" })
+
+
                     </div>
 
                 </div>

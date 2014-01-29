@@ -12,7 +12,7 @@ using Newtonsoft.Json;
 using Dont_Panic_MVC_API.Controllers.API_Controllers;
 using System.Web.Mvc;
 using Microsoft.AspNet.Identity;
-
+using Dont_Panic_MVC_API.Models;
 
 namespace Dont_Panic_MVC_API.Controllers
 {
@@ -53,6 +53,7 @@ namespace Dont_Panic_MVC_API.Controllers
         // GET: /Job/Create
         public ActionResult Create()
         {
+            ViewBag.City = (new RegionDropDown()).RegionList;
             return View();
         }
 
