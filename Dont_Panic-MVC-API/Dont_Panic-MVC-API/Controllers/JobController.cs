@@ -62,17 +62,25 @@ namespace Dont_Panic_MVC_API.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include="jobid,title,description,city,jobtype")] Job jobmodel)
+        public ActionResult Create([Bind(Include="title,description,region,jobtype,username")] FakeJob fakejobmodel)
         {
             if (!User.Identity.IsAuthenticated)
             {
                 return RedirectToAction("Login", "Account",
                            new { returnUrl = "/Job/AuthCreate", FormMethod.Post });
             }
+            
+            Job jobmodel = new Job();
 
             if (ModelState.IsValid)
             {
-                
+               // Console.WriteLine(fakejobmodel.region.Text.ToString());
+                jobmodel.city = fakejobmodel.region;
+                jobmodel.description = fakejobmodel.description;
+                jobmodel.jobtype = fakejobmodel.jobtype;
+                jobmodel.title = fakejobmodel.title;
+                jobmodel.username = fakejobmodel.username;
+
                 jobmodel.submitDate = DateTime.Today;
                 jobmodel.expireDate = DateTime.Today.AddDays(2);
                 jobmodel.UserId = User.Identity.GetUserId();
@@ -80,8 +88,9 @@ namespace Dont_Panic_MVC_API.Controllers
                 jobAPI.PostJob(jobmodel);
                 return RedirectToAction("Index");
             }
+            ViewBag.City = (new RegionDropDown()).RegionList;
 
-            return View(jobmodel);
+            return View(fakejobmodel);
         }
 
         [Authorize]

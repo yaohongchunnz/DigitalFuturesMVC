@@ -1,4 +1,4 @@
-﻿@model Dont_Panic_MVC_API.Models.API_Models.Job
+﻿@model Dont_Panic_MVC_API.Models.FakeJob
 
 @{
     ViewBag.Title = "Create Job";
@@ -30,9 +30,9 @@
 
                 <div class="form-group">
 
-                    <label for="city" class="col-sm-2 control-label">city</label>
+                    <label for="region" class="col-sm-2 control-label">region</label>
                     <div class="col-sm-10">
-                        @Html.DropDownListFor(model=>model.city, (SelectList)ViewBag.City, new { @class = "form-control", @id = "city" })
+                        @Html.DropDownListFor(model=>model.region, (SelectList)ViewBag.City, "Select your region" ,new { @class = "form-control", @id="region"})
 
 
                     </div>

@@ -6,13 +6,24 @@ using System.Web.Mvc;
 
 namespace Dont_Panic_MVC_API.Models
 {
+
+    public class FakeJob
+    {
+        public string title { get; set; }
+        public string city { get; set; }
+        public string description { get; set; }
+        public string jobtype { get; set; }
+        public string username { get; set; }
+        public string region { get; set; }
+
+    }
     public class RegionDropDown
     {
         public RegionDropDown(){
 
             List<SelectListItem> listItems = new List<SelectListItem>();
 
-            listItems.Add(new SelectListItem(){ Value = "1",  Text = "Northland "    });
+            listItems.Add(new SelectListItem(){ Value = "1",  Text = "Northland"     });
             listItems.Add(new SelectListItem(){ Value = "2",  Text = "Auckland"      });
             listItems.Add(new SelectListItem(){ Value = "3",  Text = "Waikato"       });
             listItems.Add(new SelectListItem(){ Value = "4",  Text = "Bay of Plenty" });
@@ -32,6 +43,7 @@ namespace Dont_Panic_MVC_API.Models
             listItems.Add(new SelectListItem(){ Value = "18", Text = "Southland"     });
 
             RegionList = new SelectList(listItems, "Value", "Text");
+            
         }
         [Display(Name="Region")]
         public int ActionId { get; set; }

@@ -232,6 +232,7 @@
     <Content Include="Images\Mitchplaceholder.jpg" />
     <Content Include="Images\Zachholdplace.jpg" />
     <Content Include="Images\Zachplaceholder.jpg" />
+    <Content Include="Scripts\Areas.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="ClassDiagram1.cd" />
