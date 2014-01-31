@@ -62,7 +62,7 @@ namespace Dont_Panic_MVC_API.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include="title,description,region,jobtype,username")] FakeJob fakejobmodel)
+        public ActionResult Create([Bind(Include="title,description,region,jobtype,username")] ViewJob viewJob)
         {
             if (!User.Identity.IsAuthenticated)
             {
@@ -75,11 +75,15 @@ namespace Dont_Panic_MVC_API.Controllers
             if (ModelState.IsValid)
             {
                // Console.WriteLine(fakejobmodel.region.Text.ToString());
-                jobmodel.city = fakejobmodel.region;
-                jobmodel.description = fakejobmodel.description;
-                jobmodel.jobtype = fakejobmodel.jobtype;
-                jobmodel.title = fakejobmodel.title;
-                jobmodel.username = fakejobmodel.username;
+
+                RegionDropDown regions = new RegionDropDown();
+
+
+                jobmodel.city = regions.RegionList.ElementAt(viewJob.region-1).Text;
+                jobmodel.description = viewJob.description;
+                jobmodel.jobtype = viewJob.jobtype;
+                jobmodel.title = viewJob.title;
+                jobmodel.username = viewJob.username;
 
                 jobmodel.submitDate = DateTime.Today;
                 jobmodel.expireDate = DateTime.Today.AddDays(2);
@@ -90,7 +94,7 @@ namespace Dont_Panic_MVC_API.Controllers
             }
             ViewBag.City = (new RegionDropDown()).RegionList;
 
-            return View(fakejobmodel);
+            return View(viewJob);
         }
 
         [Authorize]

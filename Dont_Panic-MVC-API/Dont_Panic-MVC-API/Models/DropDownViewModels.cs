@@ -7,16 +7,18 @@ using System.Web.Mvc;
 namespace Dont_Panic_MVC_API.Models
 {
 
-    public class FakeJob
+    public class ViewJob
     {
         public string title { get; set; }
         public string city { get; set; }
         public string description { get; set; }
         public string jobtype { get; set; }
         public string username { get; set; }
-        public string region { get; set; }
-
+        public int region { get; set; }
+        public int district { get; set; }
+        public int suburb { get; set; }
     }
+
     public class RegionDropDown
     {
         public RegionDropDown(){
@@ -41,7 +43,7 @@ namespace Dont_Panic_MVC_API.Models
             listItems.Add(new SelectListItem(){ Value = "16", Text = "Timaru"        });
             listItems.Add(new SelectListItem(){ Value = "17", Text = "Otago"         });
             listItems.Add(new SelectListItem(){ Value = "18", Text = "Southland"     });
-
+            
             RegionList = new SelectList(listItems, "Value", "Text");
             
         }
@@ -141,11 +143,8 @@ namespace Dont_Panic_MVC_API.Models
 
             SuburbList = new SelectList(listItems, "Value", "Text");
         }
-
         [Display(Name = "Suburb")]
         public int ActionId { get; set; }
         public SelectList SuburbList { get; set; } 
     }
-
-
 }

@@ -175,6 +175,7 @@
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\API Controllers\API.cs" />
+    <Compile Include="Controllers\API Controllers\DropDownController.cs" />
     <Compile Include="Controllers\API Controllers\JobControllerAPI.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\JobController.cs" />
@@ -209,7 +210,7 @@
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\API Models\API-Models.cs" />
-    <Compile Include="Models\DropDownModels.cs" />
+    <Compile Include="Models\DropDownViewModels.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\JobAPIContext.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
