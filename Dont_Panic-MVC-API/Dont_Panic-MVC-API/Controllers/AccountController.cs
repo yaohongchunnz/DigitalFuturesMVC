@@ -53,6 +53,13 @@ namespace Dont_Panic_MVC_API.Controllers
             if (ModelState.IsValid)
             {
                 var user = await UserManager.FindAsync(model.UserName, model.Password);
+                
+                if (user == null)
+                {
+                    
+
+                }
+
                 if (user != null)
                 {
                     await SignInAsync(user, model.RememberMe);
@@ -89,6 +96,10 @@ namespace Dont_Panic_MVC_API.Controllers
                 var result = await UserManager.CreateAsync(user, model.Password);
                 if (result.Succeeded)
                 {
+                    user.email = model.email;
+                    user.first_name = model.first_name;
+                    user.last_name = model.last_name;
+
                     await SignInAsync(user, isPersistent: false);
                     return RedirectToAction("Index", "Home");
                 }
