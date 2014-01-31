@@ -282,6 +282,7 @@
     <Content Include="Views\Job\Index.cshtml" />
     <Content Include="Views\Job\Browse.cshtml" />
     <Content Include="Views\ServiceProvider\Signup.cshtml" />
+    <Content Include="Views\Account\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

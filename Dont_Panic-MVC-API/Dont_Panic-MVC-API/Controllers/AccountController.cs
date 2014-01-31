@@ -37,6 +37,12 @@ namespace Dont_Panic_MVC_API.Controllers
             return View();
         }
 
+        [AllowAnonymous]
+        public ActionResult Index()
+        {
+            return View();
+        }
+
         //
         // POST: /Account/Login
         [HttpPost]
