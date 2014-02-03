@@ -7,7 +7,7 @@
 <div class="container drop-shadow-lite rounded-corners">
     <h3 class="centertext">Create a new account.</h3>
     <hr />
-    @using (Html.BeginForm("Register", "Account", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+    @using (Html.BeginForm("Signup", "Account", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
     {
         @Html.AntiForgeryToken()
 
