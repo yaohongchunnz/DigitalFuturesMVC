@@ -10,6 +10,7 @@ using Microsoft.AspNet.Identity.EntityFramework;
 using Microsoft.Owin.Security;
 using Dont_Panic_MVC_API.Models;
 using Dont_Panic_MVC_API.API_Models;
+using System.Web.Security;
 
 namespace Dont_Panic_MVC_API.Controllers
 {
@@ -52,23 +53,31 @@ namespace Dont_Panic_MVC_API.Controllers
         {
             if (ModelState.IsValid)
             {
-                var user = await UserManager.FindAsync(model.UserName, model.Password);
-                
-                if (user == null)
+                if (model.UserName.Contains("@"))
                 {
-                    
+                    APIContext context = new APIContext();
+                    Email email = await context.emailAndUser.FindAsync(model.UserName);
 
-                }
+                    var user = await UserManager.FindAsync(email.userName, model.Password);
 
-                if (user != null)
-                {
-                    await SignInAsync(user, model.RememberMe);
-                    return RedirectToLocal(returnUrl);
+                    if (user != null)
+                    {
+                        await SignInAsync(user, model.RememberMe);
+                        return RedirectToLocal(returnUrl);
+                    }
                 }
                 else
                 {
-                    ModelState.AddModelError("", "Invalid username or password.");
+                    var user = await UserManager.FindAsync(model.UserName, model.Password);
+
+                    if (user != null)
+                    {
+                        await SignInAsync(user, model.RememberMe);
+                        return RedirectToLocal(returnUrl);
+                    }
                 }
+                
+                ModelState.AddModelError("", "Invalid username or password.");
             }
 
             // If we got this far, something failed, redisplay form
@@ -92,14 +101,17 @@ namespace Dont_Panic_MVC_API.Controllers
         {
             if (ModelState.IsValid)
             {
-                var user = new ApplicationUser() { UserName = model.UserName };
+                var user = new ApplicationUser() { UserName = model.UserName, first_name=model.first_name, last_name=model.last_name };
                 var result = await UserManager.CreateAsync(user, model.Password);
                 if (result.Succeeded)
                 {
-                    user.email = model.email;
-                    user.first_name = model.first_name;
-                    user.last_name = model.last_name;
-
+                    APIContext context = new APIContext();
+                    Email email = new Email();
+                    email.email = model.email;
+                    email.userName = model.UserName;
+                    context.emailAndUser.Add(email);
+                    context.SaveChanges();
+                    
                     await SignInAsync(user, isPersistent: false);
                     return RedirectToAction("Index", "Home");
                 }
@@ -108,7 +120,7 @@ namespace Dont_Panic_MVC_API.Controllers
                     AddErrors(result);
                 }
             }
-
+            
             // If we got this far, something failed, redisplay form
             return View(model);
         }
