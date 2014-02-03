@@ -3,23 +3,27 @@
 }
 
 <div class="centertext">
-    <h2>Create an account</h2>
+        <h2>Create an account</h2>
 </div>
 <div class="row container">
     <div class="col-md-6">
-        <div>
+        <div class="sloth-container inner-signup">
             <h3>I want to hire professionals</h3>
             <p>Request services, get quotes and hire professionals.</p>
-            <input type="button" class="btn btn-primary" onclick="location.href='@Url.Action("Signup", "Account")'" value="Create account" />
-
+            
+            <div class="btn-signup">
+                <input type="button" class="btn btn-primary" onclick="location.href='@Url.Action("Signup", "Account")'" value="Create account" />
+            </div>
         </div>
     </div>
     <div class="col-md-6">
-        <div>
+        <div class="sloth-container inner-signup">
             <h3>I want to grow my business</h3>
             <p>Reply to leads, close jobs and grow your business.</p>
-            <input type="button" onclick="location.href='@Url.Action("Signup", "ServiceProvider")'" class="btn btn-primary" value="Create account" />
-
+            
+            <div class="btn-signup">
+                <input type="button" onclick="location.href='@Url.Action("Signup", "ServiceProvider")'" class="btn btn-primary" value="Create account" />
+            </div>
          </div>
     </div>
 </div>
