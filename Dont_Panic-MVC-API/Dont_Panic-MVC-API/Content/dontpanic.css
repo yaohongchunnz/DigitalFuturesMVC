@@ -7,8 +7,9 @@
 }
 
 .inner-signup {
-    width: 75%;
-    margin:40px auto;
+    padding-left:10px;
+    padding-right:10px;
+    margin:15px auto;
 }   
 
 .btn-signup{
@@ -18,3 +19,4 @@
 .btn-signup > input{
     width:90%;
 }
+
