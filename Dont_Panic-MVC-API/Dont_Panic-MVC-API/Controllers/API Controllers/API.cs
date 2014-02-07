@@ -1,4 +1,5 @@
-﻿using Dont_Panic_MVC_API.Models;
+﻿using Dont_Panic_MVC_API.API_Models;
+using Dont_Panic_MVC_API.Models;
 using Dont_Panic_MVC_API.Models.API_Models;
 using System.Data.Entity;
 using System.Data.Entity.Infrastructure;
@@ -17,9 +18,9 @@ namespace Dont_Panic_MVC_API.Controllers.API_Controllers
         private APIContext db = new APIContext();
 
         // Inserts service provider into the database.
-        public void addProvider(ServiceProvider provider)
+        public void addProvider(ServiceProviderDetails provider)
         {
-            db.ServiceProviders.Add(provider);
+            db.ServiceProvidersDetails.Add(provider);
             db.SaveChanges();
         }
     }

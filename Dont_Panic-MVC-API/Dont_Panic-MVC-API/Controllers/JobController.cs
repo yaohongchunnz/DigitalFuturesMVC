@@ -12,7 +12,6 @@ using Newtonsoft.Json;
 using Dont_Panic_MVC_API.Controllers.API_Controllers;
 using System.Web.Mvc;
 using Microsoft.AspNet.Identity;
-using Dont_Panic_MVC_API.Models;
 
 namespace Dont_Panic_MVC_API.Controllers
 {
@@ -195,8 +194,6 @@ namespace Dont_Panic_MVC_API.Controllers
         [ActionName("Delete")]
         public ActionResult DeleteConfirmed(int id)
         {
-            System.Diagnostics.Debug.WriteLine("In DeleteConfirmed"); 
-
             Job jobmodel = jobAPI.GetJob(id);
             // Checking for matching UserID so only the user can delete their listing. 
             if (!(jobmodel.UserId.Equals(User.Identity.GetUserId())))

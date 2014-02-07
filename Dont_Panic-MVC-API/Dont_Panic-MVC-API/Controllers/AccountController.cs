@@ -11,6 +11,8 @@ using Microsoft.Owin.Security;
 using Dont_Panic_MVC_API.Models;
 using Dont_Panic_MVC_API.API_Models;
 using System.Web.Security;
+using Dont_Panic_MVC_API.Controllers.API_Controllers;
+using Dont_Panic_MVC_API.Models.API_Models;
 
 namespace Dont_Panic_MVC_API.Controllers
 {
@@ -83,12 +85,86 @@ namespace Dont_Panic_MVC_API.Controllers
             // If we got this far, something failed, redisplay form
             return View(model);
         }
+        
+        /*  Called when a user clicks to sign up for a service provider account 
+         *  GET: /Account/ProviderSignup 
+         */
+        [HttpGet]
+        [AllowAnonymous]
+        public ActionResult ProviderSignup()
+        {
+            return View();
+        }
 
-        //
+        // POST: /Account/ProviderSignup
+        [HttpPost]
+        [AllowAnonymous]
+        public ActionResult ProviderSignup(RegisterProviderViewModel model)
+        {
+            return RedirectToAction("ProviderSignupDetails", model);
+        }
+
+        [HttpGet]
+        [AllowAnonymous]
+        public ActionResult ProviderSignupDetails(RegisterProviderViewModel model)
+        {
+            return View(model);
+        }
+
+        // POST: /Account/ProviderSignupDetails
+        [HttpPost]
+        [AllowAnonymous]
+        [ActionName("ProviderSignupDetails")]
+        public async Task<ActionResult> ProviderSignupDetailsPost(RegisterProviderViewModel model)
+        {
+            if (ModelState.IsValid)
+            {
+                var user = new ApplicationUser() { UserName = model.UserName, signupDate = DateTime.Now };
+                var result = await UserManager.CreateAsync(user, model.Password);
+                if (result.Succeeded)
+                {
+                    APIContext context = new APIContext();
+                    Email email = new Email();
+                    email.email = model.email;
+                    email.userName = model.UserName;
+                    context.emailAndUser.Add(email);
+
+                    ServiceProviderDetails details = new ServiceProviderDetails();
+                    details.about = model.about;
+                    details.address = model.address;
+                    details.areas_serviced = model.areas_serviced;
+                    details.availability = model.availability;
+                    details.business_name = model.businessName;
+                    details.contact_name = model.contact_name;
+                    details.contact_number_1 = model.contact_number_1;
+                    details.contact_number_2 = model.contact_number_2;
+                    details.description = model.description;
+
+
+                    if (!Roles.RoleExists("Provider"))
+                        Roles.CreateRole("Provider");
+
+                    Roles.AddUserToRole(model.UserName, "Provider");
+
+                    await SignInAsync(user, isPersistent: false);
+                    return RedirectToAction("Index", "Home");
+                }
+                else
+                {
+                    AddErrors(result);
+                }
+            }
+
+            // If we got this far, something failed, redisplay form
+            return View(model);
+        }
+
         // GET: /Account/Signup
+        [HttpGet]
         [AllowAnonymous]
         public ActionResult Signup()
         {
+            ViewBag.Towns = (new RegionDropDown()).RegionList;
             return View();
         }
 
@@ -101,7 +177,7 @@ namespace Dont_Panic_MVC_API.Controllers
         {
             if (ModelState.IsValid)
             {
-                var user = new ApplicationUser() { UserName = model.UserName, first_name=model.first_name, last_name=model.last_name };
+                var user = new ApplicationUser() { UserName = model.UserName, signupDate = DateTime.Now};
                 var result = await UserManager.CreateAsync(user, model.Password);
                 if (result.Succeeded)
                 {
@@ -110,8 +186,19 @@ namespace Dont_Panic_MVC_API.Controllers
                     email.email = model.email;
                     email.userName = model.UserName;
                     context.emailAndUser.Add(email);
+
+                    UserDetails details = new UserDetails();
+                    details.userId = user.Id;
+                    details.first_name = model.first_name;
+                    details.last_name = model.last_name;
+                    context.userDetails.Add(details);
                     context.SaveChanges();
-                    
+
+                    if (!Roles.RoleExists("User"))
+                        Roles.CreateRole("User");
+
+                    Roles.AddUserToRole(model.UserName, "User");
+
                     await SignInAsync(user, isPersistent: false);
                     return RedirectToAction("Index", "Home");
                 }

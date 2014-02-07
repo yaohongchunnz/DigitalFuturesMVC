@@ -179,7 +179,6 @@
     <Compile Include="Controllers\API Controllers\JobControllerAPI.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\JobController.cs" />
-    <Compile Include="Controllers\ServiceProviderController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -211,11 +210,19 @@
     <Compile Include="Migrations\201402030150086_qwerty.Designer.cs">
       <DependentUpon>201402030150086_qwerty.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201402070055581_dscsc.cs" />
+    <Compile Include="Migrations\201402070055581_dscsc.Designer.cs">
+      <DependentUpon>201402070055581_dscsc.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201402070248472_dscscd.cs" />
+    <Compile Include="Migrations\201402070248472_dscscd.Designer.cs">
+      <DependentUpon>201402070248472_dscscd.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\API Models\API-Models.cs" />
     <Compile Include="Models\DropDownViewModels.cs" />
-    <Compile Include="Models\Email.cs" />
+    <Compile Include="Models\UserModels.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\JobAPIContext.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -288,8 +295,9 @@
     <Content Include="Views\Job\Edit.cshtml" />
     <Content Include="Views\Job\Index.cshtml" />
     <Content Include="Views\Job\Browse.cshtml" />
-    <Content Include="Views\ServiceProvider\Signup.cshtml" />
+    <Content Include="Views\Account\ProviderSignupDetails.cshtml" />
     <Content Include="Views\Account\Index.cshtml" />
+    <Content Include="Views\Account\ProviderSignup.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -322,6 +330,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201402030150086_qwerty.resx">
       <DependentUpon>201402030150086_qwerty.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201402070055581_dscsc.resx">
+      <DependentUpon>201402070055581_dscsc.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201402070248472_dscscd.resx">
+      <DependentUpon>201402070248472_dscscd.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

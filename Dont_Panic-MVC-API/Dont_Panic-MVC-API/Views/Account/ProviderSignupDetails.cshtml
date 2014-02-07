@@ -1,0 +1,98 @@
+﻿@model Dont_Panic_MVC_API.Models.RegisterProviderViewModel
+
+
+
+@{
+    ViewBag.Title = "Signup";
+}
+
+<h2>Signup</h2>
+
+
+<div class="container">
+    <h2>Signup to become a don't panic service provider and access leads for jobs and grow your business</h2>
+
+    <br />
+    <div>
+        @using (Html.BeginForm())
+        {
+        @Html.AntiForgeryToken()
+
+        <div class="form-horizontal">
+            <hr />
+            @Html.ValidationSummary(true)
+            <div class="form-group">
+                @Html.LabelFor(model => model.address, new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.address)
+                    @Html.ValidationMessageFor(model => model.address)
+                </div>
+            </div>
+            <div class="form-group">
+                @Html.LabelFor(model => model.about, new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.about)
+                    @Html.ValidationMessageFor(model => model.about)
+                </div>
+            </div>
+            <div class="form-group">
+                @Html.LabelFor(model => model.services, new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.services)
+                    @Html.ValidationMessageFor(model => model.services)
+                </div>
+            </div>
+
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(model => model.availability, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.availability)
+                @Html.ValidationMessageFor(model => model.availability)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.description, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.description)
+                @Html.ValidationMessageFor(model => model.description)
+            </div>
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(model => model.contact_name, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.contact_name)
+                @Html.ValidationMessageFor(model => model.contact_name)
+            </div>
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(model => model.contact_number_1, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.contact_number_1)
+                @Html.ValidationMessageFor(model => model.contact_number_1)
+            </div>
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(model => model.contact_number_2, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.contact_number_2)
+                @Html.ValidationMessageFor(model => model.contact_number_2)
+            </div>
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(model => model.website_address, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.website_address)
+                @Html.ValidationMessageFor(model => model.website_address)
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Register" class="btn btn-default" />
+            </div>
+        </div>
+
+        }
+    </div>
+

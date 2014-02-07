@@ -75,4 +75,56 @@ namespace Dont_Panic_MVC_API.Models
         [Compare("Password", ErrorMessage = "The password and confirmation password do not match.")]
         public string ConfirmPassword { get; set; }
     }
+
+    public class RegisterProviderViewModel
+    {
+        [Required]
+        [Display(Name = "Business Name")]
+        public string businessName { get; set; }
+
+        [Required]
+        [Display(Name = "User name")]
+        public string UserName { get; set; }
+
+        [RegularExpression(@"^([a-zA-Z0-9_\-\.]+)@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.)|(([a-zA-Z0-9\-]+\.)+))([a-zA-Z]{2,4}|[0-9]{1,3})(\]?)$", ErrorMessage = "Please enter a valid e-mail adress")]
+        [Required]
+        [Display(Name = "Email")]
+        public string email { get; set; }
+
+        [Required]
+        [StringLength(100, ErrorMessage = "The {0} must be at least {2} characters long.", MinimumLength = 6)]
+        [DataType(DataType.Password)]
+        [Display(Name = "Password")]
+        public string Password { get; set; }
+
+        [Required]
+        [DataType(DataType.Password)]
+        [Display(Name = "Confirm password")]
+        [Compare("Password", ErrorMessage = "The password and confirmation password do not match.")]
+        public string ConfirmPassword { get; set; }
+
+        [Required]
+        public string address { get; set; }
+
+        // about service
+        [Required]
+        public string about { get; set; }
+        [Required]
+        public string services { get; set; }
+        [Required]
+        public string areas_serviced { get; set; }
+        [Required]
+        public string availability { get; set; }
+        [Required]
+        public string description { get; set; }
+
+        // Service provider contact details
+        [Required]
+        public string contact_name { get; set; }
+
+        [Required]
+        public string contact_number_1 { get; set; }
+        public string contact_number_2 { get; set; }
+        public string website_address { get; set; }
+    }
 }
