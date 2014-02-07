@@ -198,7 +198,7 @@
     height: 270px;
 }
 
-@media (max-width: 2400px) {
+@media (max-width: 4000px) {
     .introblock {
         padding-left: 400px;
         padding-right: 400px;
