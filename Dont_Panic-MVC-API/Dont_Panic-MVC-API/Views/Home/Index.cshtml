@@ -4,54 +4,53 @@
     ViewBag.Title = "Home Page";
 }
 <div class="outerintroblock">
-    <div class="introblock container">
+        <div class="introblock ">
+            <div class="row">
+                <div class="col-md-6">
+                    @using (Html.BeginForm("Create", "Job", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+                    {
+                        @Html.AntiForgeryToken()
+                        <div class="postajob-body">
+                            <div class="postajob-title">
+                                <h2>POST A JOB</h2>
+                            </div>
 
-        <div class="row">
-            <div class="col-md-6">
-                @using (Html.BeginForm("Create", "Job", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
-                {
-                    @Html.AntiForgeryToken()
-                    <div class="postajob-body">
-                        <div class="postajob-title">
-                            <h2>POST A JOB</h2>
+                            <div class="postajob-content">
+                                <p>Get started right away by posting your job!</p>
+
+                                @Html.TextBoxFor(model => model.title, new { @name = "title", @id = "title", @class = "form-control", @placeholder = "Job title", @type = "text" })
+                                <br />
+                                <select class="form-control" required id="jobtype" name="jobtype">
+                                    <option>Plumbing</option>
+                                    <option>Electrical</option>
+                                    <option>Business</option>
+                                    <option>Crafts</option>
+                                    <option>Design and web</option>
+                                    <option>Legal</option>
+                                    <option>Personal</option>
+                                    <option>Pets</option>
+                                    <option>Photography</option>
+                                    <option>Repair services</option>
+                                    <option>Writing/Translation</option>
+                                </select>
+                                <hr />
+                                <input type="submit" value="Post" class="btn-dontpanic" />
+
+                            </div>
+
                         </div>
 
-                        <div class="postajob-content">
-                            <p>Get started right away by posting your job!</p>
-
-                            @Html.TextBoxFor(model => model.title, new { @name = "title", @id = "title", @class = "form-control", @placeholder = "Job title", @type = "text" })
-                            <br />
-                            <select class="form-control" required id="jobtype" name="jobtype">
-                                <option>Plumbing</option>
-                                <option>Electrical</option>
-                                <option>Business</option>
-                                <option>Crafts</option>
-                                <option>Design and web</option>
-                                <option>Legal</option>
-                                <option>Personal</option>
-                                <option>Pets</option>
-                                <option>Photography</option>
-                                <option>Repair services</option>
-                                <option>Writing/Translation</option>
-                            </select>
-                            <hr />
-                            <input type="submit" value="Post" class="btn-dontpanic" />
-
-                        </div>
-
+                    }
+                </div>
+                <div class="col-md-6">
+                    <div class="introblock-text">
+                        <p>Don't Panic has a database of over</p>
+                        <h1>SEVEN (7!!!)</h1>
+                        <h2>Service Providers!</h2>
                     </div>
-
-                }
-            </div>
-            <div class="col-md-6">
-                <div class="introblock-text">
-                    <p>Don't Panic has a database of over</p>
-                    <h1>SEVEN (7!!!)</h1>
-                    <h2>Service Providers!</h2>
                 </div>
             </div>
         </div>
-    </div>
 </div>
 
 <div class="whyblock">

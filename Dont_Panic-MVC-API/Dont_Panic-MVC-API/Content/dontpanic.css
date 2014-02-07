@@ -152,6 +152,7 @@
     border: 3px solid #65A592;
     border-radius: 5px;
     z-index: 100;
+    float:right;
 }
 
 .postajob-title {
@@ -183,12 +184,20 @@
 
 
 .introblock {
-    z-index: 99;
-    margin: 0 auto;
     padding-top: 25px;
     padding-bottom: 10px;
-    width: 100%;
-    position: relative;
+}
+
+.introblock-text {
+    padding-left: 15px;
+    padding-right: 15px;
+    padding-top:15px;
+    text-align: center;
+    vertical-align: middle;
+    float:left;
+}
+
+.outerintroblock{
     background-image: url('../Images/background.jpg');
     background-color:#77B783;
     background-repeat: no-repeat;
@@ -198,59 +207,57 @@
     height: 270px;
 }
 
+
 @media (max-width: 4000px) {
-    .introblock {
+    .outerintroblock {
         padding-left: 600px;
         padding-right: 600px;
     }
 }
 @media (max-width: 1920px) {
-    .introblock {
+    .outerintroblock {
         padding-left: 300px;
         padding-right: 300px;
     }
 }
 @media (max-width: 1357px) {
-    .introblock {
+    .outerintroblock {
     padding-left: 200px;
     padding-right: 200px;
     }
 }
 @media (max-width: 991px) {
-    .introblock {
+    .outerintroblock {
         padding-left: 120px;
         padding-right: 120px;
-        height:500px;
     }
 }
 
-@media (max-width: 768px) {
-    .introblock {
+@media (max-width: 770px) {
+    .outerintroblock {
         padding-left: 120px;
         padding-right: 120px;
-        height:540px;
+        height:auto;
     }
 }
 
 @media (max-width: 545px) {
-    .introblock {
-        height:560px;
+    .outerintroblock {
         padding-left: 25px;
         padding-right: 25px;
     }
 }
 
-.introblock-text {
-    margin: 0 auto;
-    padding-left: 15px;
-    padding-right: 15px;
-    padding-top:15px;
-    text-align: center;
-    vertical-align: middle;
+@media (max-width: 320px) {
+    .outerintroblock {
+        padding-left: 5px;
+        padding-right:5px;
+    }
 }
 
-.outerintroblock{
-    width:100%;
-    position:relative;
-    margin:0 auto;
+.postjob-form{
+}
+
+.postjob-text{
+    
 }
