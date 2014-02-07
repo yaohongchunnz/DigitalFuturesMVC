@@ -6,93 +6,79 @@
 <div class="container drop-shadow-lite rounded-corners">
     <h2 class="centertext"><font color="#65B5A2">post</font> job</h2>
     <hr />
-    <div>
-        @using (Html.BeginForm())
-        {
-            @Html.AntiForgeryToken()
-            <div class="form-horizontal container-form" role="form">
-                @Html.ValidationSummary(true)
+    @using (Html.BeginForm("Create", "Job", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+    {
+        @Html.AntiForgeryToken()
+        @Html.ValidationSummary(true)
+        <div class="container-form">
 
-                <div class="form-group">
-                    <label for="title" class="col-sm-2 control-label">title</label>
-                    <div class="col-sm-10">
-                        <input name="title" required id="title" placeholder="Title of job" class="form-control" type="text" />
-                    </div>
-                </div>
+            <div class="form-group">
+                @Html.LabelFor(model => model.title, new { @class = "control-label" })
+                @Html.TextBoxFor(model => model.title, new { @name = "title", @id = "title", @class = "form-control", @placeholder = "Title of job", @type = "text" })
 
-                <div class="form-group">
-
-                    <label for="description" class="col-sm-2 control-label">description</label>
-                    <div class="col-sm-10">
-                        <textarea rows="3" name="description" required id="description" class=" form-control"></textarea>
-                    </div>
-                </div>
-
-                <div class="form-group">
-                    <label for="region" class="col-sm-2 control-label">region</label>
-                    <div class="col-sm-10">
-                        @Html.DropDownListFor(model=>model.region, (SelectList)ViewBag.City, "Select your region" ,new { @class = "form-control", @id="region", onchange="selectRegion(1)"})
-                    </div>
-                </div>
-
-                <div class="form-group">
-                    <label for="district" class="col-sm-2 control-label">District</label>
-                    <div class="col-sm-10">
-                        @Html.DropDownListFor(model => model.district, Enumerable.Empty<SelectListItem>(), "Select your district", new { @class = "form-control", @id = "district", onchange = "selectRegion(2)" })
-                    </div>
-                </div>
-
-                <div class="form-group">
-                    <label for="suburb" class="col-sm-2 control-label">Suburb</label>
-                    <div class="col-sm-10">
-                        @Html.DropDownListFor(model => model.suburb, Enumerable.Empty<SelectListItem>(), "Select your suburb", new { @class = "form-control", @id = "suburb" })
-                    </div>
-                </div>
-
-                <div class="form-group">
-                    <label for="jobtype" class="col-sm-2 control-label">category</label>
-                    <div class="col-sm-10">
-                        <select class="form-control" required id="jobtype" name="jobtype">
-                            <option>Plumbing</option>
-                            <option>Electrical</option>
-                            <option>Business</option>
-                            <option>Crafts</option>
-                            <option>Design and web</option>
-                            <option>Legal</option>
-                            <option>Personal</option>
-                            <option>Pets</option>
-                            <option>Photography</option>
-                            <option>Repair services</option>
-                            <option>Writing/Translation</option>
-                        </select>
-                    </div>
-                </div>
-
-                <div class="form-group">
-                    <div class="col-sm-offset-2 col-sm-10">
-                        <input type="submit" value="Create" class="btn btn-success" />
-                    </div>
-                </div>
-            </div>
-        }
-
-        @if (User.Identity.IsAuthenticated)
-        {
-
-            <div>
-                @Html.ActionLink("Back to your jobs", "Index")
-            </div>
-        }
-        else
-        {
-            <div>
-                @Html.ActionLink("Back", "Browse")
             </div>
 
-        }
-    </div>
+            <div class="form-group">
+                @Html.LabelFor(model => model.description, new { @class = "control-label" })
+                <textarea rows="3" name="description" required id="description" class=" form-control"></textarea>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.region, new { @class = "control-label" })
+                @Html.DropDownListFor(model => model.region, (SelectList)ViewBag.City, "Select your region", new { @class = "form-control", @id = "region", onchange = "selectRegion(1)" })
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.district, new { @class = "control-label" })
+                @Html.DropDownListFor(model => model.district, Enumerable.Empty<SelectListItem>(), "Select your district", new { @class = "form-control", @id = "district", onchange = "selectRegion(2)" })
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.suburb, new { @class = "control-label" })
+                @Html.DropDownListFor(model => model.suburb, Enumerable.Empty<SelectListItem>(), "Select your suburb", new { @class = "form-control", @id = "suburb" })
+            </div>
+
+            <div class="form-group">
+                <label for="jobtype" class="control-label">category</label>
+                <select class="form-control" required id="jobtype" name="jobtype">
+                    <option>Plumbing</option>
+                    <option>Electrical</option>
+                    <option>Business</option>
+                    <option>Crafts</option>
+                    <option>Design and web</option>
+                    <option>Legal</option>
+                    <option>Personal</option>
+                    <option>Pets</option>
+                    <option>Photography</option>
+                    <option>Repair services</option>
+                    <option>Writing/Translation</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn-dontpanic" />
+                <br />
+                <br />
+                @if (User.Identity.IsAuthenticated)
+                {
+
+                    <p>
+                        @Html.ActionLink("Back to your jobs", "Index")
+                    </p>
+                }
+                else
+                {
+                    <p>
+                        @Html.ActionLink("Back", "Browse")
+                    </p>
+
+                }
+            </div>
+        </div>
+    }
+
+  
 </div>
-
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")
     @Scripts.Render("~/scripts/Areas.js")

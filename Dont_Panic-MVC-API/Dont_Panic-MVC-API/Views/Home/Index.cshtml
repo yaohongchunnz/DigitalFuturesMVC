@@ -1,48 +1,57 @@
-﻿@{
+﻿@model Dont_Panic_MVC_API.Models.ViewJob
+@{
+
     ViewBag.Title = "Home Page";
 }
+<div class="outerintroblock">
+    <div class="introblock">
 
-<div id="dontpaniccarousel" class="carousel slide" data-ride="carousel">
-    <!-- Indicators -->
-    <ol class="carousel-indicators">
-        <li data-target="#dontpaniccarousel" data-slide-to="0" class="active"></li>
-        <li data-target="#dontpaniccarousel" data-slide-to="1"></li>
-        <li data-target="#dontpaniccarousel" data-slide-to="2"></li>
-    </ol>
+        <div class="row">
+            <div class="col-md-4">
+                @using (Html.BeginForm("Create", "Job", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+                {
+                    @Html.AntiForgeryToken()
+                    <div class="postajob-body">
+                        <div class="postajob-title">
+                            <h2>POST A JOB</h2>
+                        </div>
 
-    <!-- Wrapper for slides -->
-    <div class="carousel-inner">
-        <div class="item active">
-            <img src="~/Images/Zachplaceholder.jpg" />
-            <div class="carousel-caption">
-                <p class="lead">Don&#39;t Panic is a free service that allows you to post a job for services you need in a hurry so servicemen like hong can get hold of you fast.</p>
+                        <div class="postajob-content">
+                            <p>Get started right away by posting your job!</p>
 
-                <input type="button" id="index_button_Have_Job" class="btn btn-primary" value="I have a Job " onclick="location.href='@Url.Action("Index", "Job")'" />
-                <input type="button" id="index_button_Sign_in" class="btn btn-primary" value="Sign In" onclick="location.href='@Url.Action("Login", "Account")'" />
+                            @Html.TextBoxFor(model => model.title, new { @name = "title", @id = "title", @class = "form-control", @placeholder = "Job title", @type = "text" })
+                            <br />
+                            <select class="form-control" required id="jobtype" name="jobtype">
+                                <option>Plumbing</option>
+                                <option>Electrical</option>
+                                <option>Business</option>
+                                <option>Crafts</option>
+                                <option>Design and web</option>
+                                <option>Legal</option>
+                                <option>Personal</option>
+                                <option>Pets</option>
+                                <option>Photography</option>
+                                <option>Repair services</option>
+                                <option>Writing/Translation</option>
+                            </select>
+                            <hr />
+                            <input type="submit" value="Post" class="btn-dontpanic" />
 
+                        </div>
+
+                    </div>
+
+                }
             </div>
-        </div>
-        <div class="item">
-            <img src="~/Images/Mitchplaceholder.jpg" />
-            <div class="carousel-caption">
-                mitch place holder. Blah blah blah blah more blah and more blah blah bleh blah bleh blah blehhh
-            </div>
-        </div>
-        <div class="item">
-            <img src="~/Images/Zachholdplace.jpg" />
-            <div class="carousel-caption">
-                hong place holder
+            <div class="col-md-8">
+                <div class="introblock-text">
+                    <p>Don't Panic has a database of over</p>
+                    <h1>SEVEN (7!!!)</h1>
+                    <h2>Service Providers!</h2>
+                </div>
             </div>
         </div>
     </div>
-
-    <!-- Controls -->
-    <a class="left carousel-control" href="#dontpaniccarousel" data-slide="prev">
-        <span class="glyphicon glyphicon-chevron-left"></span>
-    </a>
-    <a class="right carousel-control" href="#dontpaniccarousel" data-slide="next">
-        <span class="glyphicon glyphicon-chevron-right"></span>
-    </a>
 </div>
 
 <div class="whyblock">

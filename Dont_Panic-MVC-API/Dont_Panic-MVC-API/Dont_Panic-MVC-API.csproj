@@ -233,6 +233,7 @@
     <Content Include="Images\1.png" />
     <Content Include="Images\2.png" />
     <Content Include="Images\3.png" />
+    <Content Include="Images\background.jpg" />
     <Content Include="Images\BG2.jpg" />
     <Content Include="Images\buttonsTest1.png" />
     <Content Include="Images\buttonTest2.jpg" />

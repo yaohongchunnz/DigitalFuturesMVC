@@ -35,20 +35,33 @@ else
             </div>
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
-                    <li @if (@ViewContext.RouteData.GetRequiredString("controller").ToLower() == "home") { @Html.AttributeEncode("class=active")    ; }>
-                        @Html.ActionLink("Home", "Index", "Home")
-                    </li>
-                    <li @if (@ViewContext.RouteData.GetRequiredString("controller").ToLower() == "job") { @Html.AttributeEncode("class=active")     ; }>
+                    <li @if (@ViewContext.RouteData.GetRequiredString("controller").ToLower() == "job") { @Html.AttributeEncode("class=active")         ; }>
                         @if (User.Identity.IsAuthenticated)
                         {
                             @Html.ActionLink("Jobs", "Index", "Job")
                         }
                         else
                         {
-                            @Html.ActionLink("Jobs", "Browse", "Job")
+                            @Html.ActionLink("post job", "Create", "Job")
                         }
 
                     </li>
+                    @if (User.IsInRole("User"))
+                    {
+
+                    <!---Current job, previous job, post job-->
+                    @Html.ActionLink("current jobs", "Index", "Job")
+                    @Html.ActionLink("previous jobs", "Index", "Job")
+                    @Html.ActionLink("post job", "Create", "Job")
+                    }
+                    else if (User.IsInRole("Provider"))
+                    {
+                    <!---Current job, previous job, browse job-->
+                    @Html.ActionLink("current jobs", "Index", "Job")
+                    @Html.ActionLink("previous jobs", "Index", "Job")
+                    @Html.ActionLink("browse jobs", "Create", "Job")
+
+                    }
                 </ul>
                 @Html.Partial("_LoginPartial")
             </div>
@@ -62,16 +75,16 @@ else
 
                 <ul class="nav nav-tabs navbar-nav">
 
-                    <li @if (@ViewContext.RouteData.GetRequiredString("action").ToLower() == "index") { @Html.AttributeEncode("class=active")    ; }>
+                    <li @if (@ViewContext.RouteData.GetRequiredString("action").ToLower() == "index") { @Html.AttributeEncode("class=active")        ; }>
                         <a href="/Job/Index">Your jobs</a>
                     </li>
-                    <li @if (@ViewContext.RouteData.GetRequiredString("action").ToLower() == "create") { @Html.AttributeEncode("class=active")    ; }>
+                    <li @if (@ViewContext.RouteData.GetRequiredString("action").ToLower() == "create") { @Html.AttributeEncode("class=active")        ; }>
                         <a href="/Job/Create">Post a job</a>
                     </li>
-                    <li @if (@ViewContext.RouteData.GetRequiredString("action").ToLower() == "browse") { @Html.AttributeEncode("class=active")    ; }>
+                    <li @if (@ViewContext.RouteData.GetRequiredString("action").ToLower() == "browse") { @Html.AttributeEncode("class=active")        ; }>
                         <a href="/Job/Browse">Browse jobs</a>
                     </li>
-                    <li @if (@ViewContext.RouteData.GetRequiredString("action").ToLower() == "settings") { @Html.AttributeEncode("class=active")     ; }>
+                    <li @if (@ViewContext.RouteData.GetRequiredString("action").ToLower() == "settings") { @Html.AttributeEncode("class=active")         ; }>
                         <a href="#">Settings</a>
                     </li>
                 </ul>
@@ -167,7 +180,7 @@ else
     @Scripts.Render("~/bundles/bootstrap")
     @RenderSection("scripts", required: false)
 
-    
+
 
 
 </body>
