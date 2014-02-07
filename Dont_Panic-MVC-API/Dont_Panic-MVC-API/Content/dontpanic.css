@@ -189,9 +189,8 @@
     padding-bottom: 10px;
     width: 100%;
     position: relative;
-    padding-left: 200px;
-    padding-right: 200px;
     background-image: url('../Images/background.jpg');
+    background-color:#77B783;
     background-repeat: no-repeat;
     background-position: center;
     border: 3px solid #65A592;
@@ -199,6 +198,24 @@
     height: 270px;
 }
 
+@media (max-width: 2400px) {
+    .introblock {
+        padding-left: 400px;
+        padding-right: 400px;
+    }
+}
+@media (max-width: 1920px) {
+    .introblock {
+        padding-left: 300px;
+        padding-right: 300px;
+    }
+}
+@media (max-width: 1357px) {
+    .introblock {
+    padding-left: 200px;
+    padding-right: 200px;
+    }
+}
 @media (max-width: 991px) {
     .introblock {
         padding-left: 120px;
