@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
 using System.Web;
+using Dont_Panic_MVC_API.API_Models;
 
 namespace Dont_Panic_MVC_API.Models
 {
@@ -21,7 +22,8 @@ namespace Dont_Panic_MVC_API.Models
         }
 
         public DbSet<Job> Jobs { get; set; }
-        public DbSet<ServiceProvider> ServiceProviders { get; set; }
+        public DbSet<ServiceProviderDetails> ServiceProvidersDetails { get; set; }
         public DbSet<Email> emailAndUser { get; set; }
+        public DbSet<UserDetails> userDetails { get; set; }
     }
 }
