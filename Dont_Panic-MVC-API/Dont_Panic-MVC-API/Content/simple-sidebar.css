@@ -12,7 +12,7 @@
     overflow-y: auto;
     z-index: 1000;
     transition: all 0.4s ease 0s;
-    border-right: 1px solid #65B5A2;
+    border-right: 1px solid #65A592;
 }
 
 #page-content-wrapper {
@@ -40,7 +40,7 @@
         }
 
             .sidebar-nav LI A:hover {
-                color: #65B5A2;
+                color: #65A592;
                 background: rgba(51, 128, 0, 0.2);
                 text-decoration: none;
             }
@@ -60,7 +60,7 @@
         }
 
             .sidebar-nav > .sidebar-brand A:hover {
-                color: #65B5A2;
+                color: #65A592;
                 background: #E2E2E2;
             }
 
@@ -119,7 +119,7 @@
     padding-bottom: 60px;
     text-align: center;
     font-family: 'Century Gothic';
-    background-color: #65B5A2;
+    background-color: #65A592;
 }
 
 .wrapper {
@@ -167,15 +167,15 @@
 }
 
 .green-border {
-    border-color: #65B5A2;
+    border-color: #65A592;
 }
 
 .green-text {
-    color: #65B5A2;
+    color: #65A592;
 }
 
 .rounded-corners {
-    border: 0.5px solid #65B5A2;
+    border: 0.5px solid #65A592;
     background: #FFFFFF;
     max-width: 420px;
     border-radius: 25px;
@@ -237,7 +237,7 @@
 }
 
 .user-register-form{    
-    border: 0.5px solid #65B5A2;
+    border: 0.5px solid #65A592;
     background: #FFFFFF;
     max-width: 550px;
     border-radius: 25px;
