@@ -4,27 +4,30 @@
 
 <div class="centertext titledisplay">
         <h2>Create an account</h2>
+    <br />
 </div>
-<div class="row container">
-    <div class="drop-shadow col-md-6">
-        <div class="sloth-container inner-signup">
-            <h3>I want to hire professionals</h3>
-            <p>Request services, get quotes and hire professionals.</p>
-            
-            <div class="btn-signup">
-                <input type="button" class="btn-dontpanic" onclick="location.href='@Url.Action("Signup", "Account")'" value="SIGN UP" />
+<div class="container">
+    <div class="row">
+        <div class="signup-userbox drop-shadow col-md-6">
+            <div class="inner-signup">
+                <h3>I want to hire professionals</h3>
+                <p>Request services, get quotes and hire professionals.</p>
+
+                <div class="btn-signup">
+                    <input type="button" class="btn-dontpanic" onclick="location.href='@Url.Action("Signup", "Account")'" value="SIGN UP" />
+                </div>
             </div>
         </div>
-    </div>
-    <div class="col-md-6">
-        <div class="sloth-container inner-signup">
-            <h3>I want to grow my business</h3>
-            <p>Reply to leads, close jobs and grow your business.</p>
-            
-            <div class="btn-signup">
-                <input type="button" onclick="location.href='@Url.Action("Signup", "ServiceProvider")'" class="btn-dontpanic" value="SIGN UP" />
+        <div class="signup-servicebox drop-shadow-lite col-md-6"  >
+            <div class="inner-signup">
+                <h3>I want to grow my business</h3>
+                <p>Reply to leads, close jobs and grow your business.</p>
+
+                <div class="btn-signup">
+                    <input type="button" onclick="location.href='@Url.Action("Signup", "ServiceProvider")'" class="btn-dontpanic" value="SIGN UP" />
+                </div>
             </div>
-         </div>
+        </div>
     </div>
 </div>
 <br />

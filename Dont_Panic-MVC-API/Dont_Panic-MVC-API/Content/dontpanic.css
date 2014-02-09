@@ -1,9 +1,6 @@
 ﻿body {
 }
 
-.sloth-container {
-    margin: 10px;
-}
 
 .titledisplay {
     padding-top: 5px;
@@ -11,24 +8,31 @@
 }
 
 .inner-signup {
-    padding-left: 10px;
-    padding-right: 10px;
-    margin: 15px auto;
+    padding:10px;
 }
 
+.signup-userbox{
+    background-color:#efefef;
+}
+
+.signup-servicebox{
+    background-color:#fff;
+    text-align:right;   
+}
 .btn-signup {
 }
 
     .btn-signup > input {
+        width:100%;
     }
 
 .btn-dontpanic {
-    background: #bbf0de;
-    background-image: -webkit-linear-gradient(top, #bbf0de, #abd6cb);
-    background-image: -moz-linear-gradient(top, #bbf0de, #abd6cb);
-    background-image: -ms-linear-gradient(top, #bbf0de, #abd6cb);
-    background-image: -o-linear-gradient(top, #bbf0de, #abd6cb);
-    background-image: linear-gradient(to bottom, #bbf0de, #abd6cb);
+    background-color: #65A591;
+    background-image: -webkit-linear-gradient(top, #75bfa9, #65A591);
+    background-image: -moz-linear-gradient(top, #75bfa9, #65A591);
+    background-image: -ms-linear-gradient(top, #75bfa9, #65A591);
+    background-image: -o-linear-gradient(top, #75bfa9, #65A591);
+    background-image: linear-gradient(to bottom, #75bfa9, #65A591);
     -webkit-border-radius: 7;
     -moz-border-radius: 7;
     border-radius: 7px;
@@ -40,16 +44,15 @@
     padding: 1px 37px 1px 37px;
     border: solid rgba(94, 133, 121, 0.60) 1.5px;
     text-decoration: none;
-    position: relative;
 }
 
     .btn-dontpanic:hover {
-        background: #75bfa9;
-        background-image: -webkit-linear-gradient(top, #75bfa9, #65a592);
-        background-image: -moz-linear-gradient(top, #75bfa9, #65a592);
-        background-image: -ms-linear-gradient(top, #75bfa9, #65a592);
-        background-image: -o-linear-gradient(top, #75bfa9, #65a592);
-        background-image: linear-gradient(to bottom, #75bfa9, #65a592);
+        background-color: #497769;
+        background-image: -webkit-linear-gradient(top, #65A591, #497769);
+        background-image: -moz-linear-gradient(top, #65A591, #497769);
+        background-image: -ms-linear-gradient(top, #65A591, #497769);
+        background-image: -o-linear-gradient(top, #65A591, #497769);
+        background-image: linear-gradient(to bottom, #65A591, #497769);
         text-decoration: none;
     }
 
@@ -60,7 +63,7 @@
     padding-bottom: 60px;
     text-align: center;
     font-family: 'Century Gothic';
-    background-color: #65A592;
+    background-color: #fff;
 }
 
 .wrapper {
@@ -260,4 +263,35 @@
 
 .postjob-text{
     
+}
+
+.supportBar{
+    background-color:#fff;
+    margin:0;
+    padding-bottom:10px;
+    text-align:center;
+}
+
+.supportBar > p > a{
+    color:#497769;
+}
+
+.footerBar{
+    margin:0;
+    padding-top:10px;
+    padding-bottom:3px;
+    text-align:center;
+    background-color:#497769;
+}
+
+.footerBar > footer > p {
+    color:#fff;
+}
+
+.contentBackground{
+
+    background-image: url('../Images/background.jpg');
+    background-color:#77B783;
+    background-repeat: no-repeat;
+    background-position: center;
 }
