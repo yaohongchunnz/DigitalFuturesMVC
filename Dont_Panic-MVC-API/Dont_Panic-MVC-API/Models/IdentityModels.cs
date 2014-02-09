@@ -73,6 +73,19 @@ namespace Dont_Panic_MVC_API.API_Models
             return idResult.Succeeded;
         }
 
+        public bool UserContainsRole(string userId, string roleName)
+        {
+            var um = new UserManager<ApplicationUser>(
+                new UserStore<ApplicationUser>(new ApplicationDbContext()));
+            var user = um.FindById(userId);
+            var currentRoles = new List<IdentityUserRole>();
+            currentRoles.AddRange(user.Roles);
+            foreach (var role in currentRoles)
+            {
+                if (role.Role.Name.Equals(roleName)) return true;
+            }
+            return false;
+        }
 
         public void ClearUserRoles(string userId)
         {

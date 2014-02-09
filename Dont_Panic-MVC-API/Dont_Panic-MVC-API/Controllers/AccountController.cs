@@ -36,7 +36,7 @@ namespace Dont_Panic_MVC_API.Controllers
         [AllowAnonymous]
         public ActionResult Login(string returnUrl)
         {
-            ViewBag.ReturnUrl = returnUrl;
+            ViewBag.ReturnUrl = returnUrl;        
             return View();
         }
 
@@ -55,6 +55,7 @@ namespace Dont_Panic_MVC_API.Controllers
         {
             if (ModelState.IsValid)
             {
+
                 if (model.UserName.Contains("@"))
                 {
                     APIContext context = new APIContext();
@@ -71,6 +72,7 @@ namespace Dont_Panic_MVC_API.Controllers
                 else
                 {
                     var user = await UserManager.FindAsync(model.UserName, model.Password);
+
 
                     if (user != null)
                     {
@@ -197,7 +199,7 @@ namespace Dont_Panic_MVC_API.Controllers
                     context.userDetails.Add(details);
                     context.SaveChanges();
 
-           
+
                     await SignInAsync(user, isPersistent: false);
                     return RedirectToAction("Index", "Home");
                 }
