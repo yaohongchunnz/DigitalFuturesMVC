@@ -245,6 +245,12 @@
     <Content Include="Images\buttonsTest1.png" />
     <Content Include="Images\buttonTest2.jpg" />
     <Content Include="Images\Mitchplaceholder.jpg" />
+    <Content Include="Images\noteGreen.png" />
+    <Content Include="Images\noteGrey.png" />
+    <Content Include="Images\phoneGreen.png" />
+    <Content Include="Images\phoneGrey.png" />
+    <Content Include="Images\revGreen.png" />
+    <Content Include="Images\RevGrey.png" />
     <Content Include="Images\Zachholdplace.jpg" />
     <Content Include="Images\Zachplaceholder.jpg" />
     <Content Include="Scripts\Areas.js" />
