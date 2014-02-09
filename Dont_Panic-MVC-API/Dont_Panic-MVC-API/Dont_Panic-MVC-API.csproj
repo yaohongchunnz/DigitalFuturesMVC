@@ -244,6 +244,7 @@
     <Content Include="Images\BG2.jpg" />
     <Content Include="Images\buttonsTest1.png" />
     <Content Include="Images\buttonTest2.jpg" />
+    <Content Include="Images\favi.png" />
     <Content Include="Images\Mitchplaceholder.jpg" />
     <Content Include="Images\noteGreen.png" />
     <Content Include="Images\noteGrey.png" />
