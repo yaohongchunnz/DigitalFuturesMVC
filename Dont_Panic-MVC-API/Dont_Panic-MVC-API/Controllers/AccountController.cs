@@ -177,9 +177,12 @@ namespace Dont_Panic_MVC_API.Controllers
         {
             if (ModelState.IsValid)
             {
-                var user = new ApplicationUser() { UserName = model.UserName, signupDate = DateTime.Now};
-                var result = await UserManager.CreateAsync(user, model.Password);
-                if (result.Succeeded)
+                IdentityManager Im = new IdentityManager();
+
+                ApplicationUser user = new ApplicationUser() { UserName = model.UserName, signupDate = DateTime.Now };
+
+                bool result = Im.CreateUserWithRole(user, model.Password, "User");
+                if (result)
                 {
                     APIContext context = new APIContext();
                     Email email = new Email();
@@ -194,18 +197,11 @@ namespace Dont_Panic_MVC_API.Controllers
                     context.userDetails.Add(details);
                     context.SaveChanges();
 
-                    if (!Roles.RoleExists("User"))
-                        Roles.CreateRole("User");
-
-                    Roles.AddUserToRole(model.UserName, "User");
-
+           
                     await SignInAsync(user, isPersistent: false);
                     return RedirectToAction("Index", "Home");
                 }
-                else
-                {
-                    AddErrors(result);
-                }
+                
             }
             
             // If we got this far, something failed, redisplay form

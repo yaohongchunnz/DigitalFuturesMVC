@@ -46,16 +46,12 @@ else
                         }
 
                     </li>
-                    @if (User.IsInRole("User"))
-                    {
 
                     <!---Current job, previous job, post job-->
                     @Html.ActionLink("current jobs", "Index", "Job")
                     @Html.ActionLink("previous jobs", "Index", "Job")
                     @Html.ActionLink("post job", "Create", "Job")
-                    }
-                    else if (User.IsInRole("Provider"))
-                    {
+   
                     <!---Current job, previous job, browse job-->
                     @Html.ActionLink("current jobs", "Index", "Job")
                     @Html.ActionLink("previous jobs", "Index", "Job")
