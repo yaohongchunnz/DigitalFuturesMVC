@@ -307,8 +307,7 @@
     background-image: url('../Images/background.jpg');
     background-color: #77B783;
     background-repeat: no-repeat;
-    position: fixed;
-    bottom:0px;
+    background-position:center;
 
 }
 

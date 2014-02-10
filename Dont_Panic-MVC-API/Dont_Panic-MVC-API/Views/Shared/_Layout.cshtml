@@ -2,15 +2,6 @@
 @using Dont_Panic_MVC_API.Models;
 @using System.Web.Security;
 @using Microsoft.AspNet.Identity;
-@{var atJobPage = false;}
-@if (@Url.Action().ToLower().Contains("job"))
-{
-    atJobPage = true;
-}
-else
-{
-    atJobPage = false;
-}
 
 @{
     Dont_Panic_MVC_API.API_Models.IdentityManager im = new Dont_Panic_MVC_API.API_Models.IdentityManager();
@@ -88,10 +79,6 @@ else
 
                         </li>
                     }
-                    <!---Current job, previous job, post job
-                    -->
-                    <!---Current job, previous job, browse job
-                    -->
 
 
                 </ul>
