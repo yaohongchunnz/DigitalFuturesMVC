@@ -3,13 +3,22 @@
 
     ViewBag.Title = "Find local trades and services in New Zealand";
 }
+<script type="text/javascript" language="javascript">
+    function postJob() {
+        var titlebox = document.getElementById("title");
+        var category = document.getElementById("jobtype");
+        if (titlebox.value.length > 0) {
+            sessionStorage.jobtitle = titlebox.value;
+            sessionStorage.jobtype = category.value;
+            window.location.href = "/Job/Create";
+        }
+    }
+
+</script>
 <div class="outerintroblock">
     <div class="introblock ">
         <div class="row">
             <div class="col-md-6">
-                @using (Html.BeginForm("Create", "Job", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
-                {
-                    @Html.AntiForgeryToken()
                     <div class="postajob-body drop-shadow">
                         <div class="postajob-title">
                             <h2>POST A JOB</h2>
@@ -17,8 +26,9 @@
 
                         <div class="postajob-content">
                             <p>Get started right away by posting your job!</p>
-
-                            @Html.TextBoxFor(model => model.title, new { @name = "title", @id = "title", @class = "form-control", @placeholder = "Job title", @type = "text" })
+                            <p id="test"></p>
+                            @Html.TextBoxFor(model => model.title, new { @required=true, @name = "title", @id = "title", @class = "form-control", @placeholder = "Job title", @type = "text" })
+                            
                             <br />
                             <select class="form-control" required id="jobtype" name="jobtype">
                                 <option>Plumbing</option>
@@ -34,13 +44,12 @@
                                 <option>Writing/Translation</option>
                             </select>
                             <hr />
-                            <input type="submit" value="Post" class="btn-dontpanic" />
+                            <input type="submit" onclick="postJob()" value="Post" class="btn-dontpanic" />
 
                         </div>
 
                     </div>
 
-                }
             </div>
             <div class="col-md-6">
                 <div class="introblock-text">

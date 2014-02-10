@@ -4,7 +4,20 @@
     ViewBag.Title = "Post Job";
 }
 <br />
-
+<script language="javascript" type="text/javascript">
+    window.onload = function () {
+        if (sessionStorage.jobtitle != null) {
+            document.getElementById("title").value = sessionStorage.jobtitle;
+            var jobselect = document.getElementById("jobtype");
+            for (var i = 0; i < jobselect.length; i++) {
+                if (jobselect.options[i].text == sessionStorage.jobtype) {
+                    jobselect.options[i].selected = true;
+                }
+            }
+            sessionStorage.clear();
+        }
+    }
+</script>
 <div class="container rounded-corners">
     <h2 class="centertext"><font color="#65B5A2">post</font> job</h2>
     <hr />
