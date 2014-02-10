@@ -155,6 +155,8 @@ namespace Dont_Panic_MVC_API.Controllers
                     details.contact_number_2 = model.contact_number_2;
                     details.description = model.description;
 
+                    context.SaveChanges();
+
                     await SignInAsync(user, isPersistent: false);
                     return RedirectToAction("Index", "Home");
                 }
