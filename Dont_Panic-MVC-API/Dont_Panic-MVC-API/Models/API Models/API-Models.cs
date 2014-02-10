@@ -13,7 +13,11 @@ namespace Dont_Panic_MVC_API.Models.API_Models
         [Required, StringLength(50)]
         public string title { get; set; }
         [Required]
-        public string city { get; set; }
+        public string region { get; set; }
+        [Required]
+        public string district { get; set; }
+        [Required]
+        public string suburb { get; set; }
         [Required, StringLength(2048)]
         public string description { get; set; }
         [Required]

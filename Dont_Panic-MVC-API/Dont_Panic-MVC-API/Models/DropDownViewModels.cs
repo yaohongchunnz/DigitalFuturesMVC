@@ -9,14 +9,22 @@ namespace Dont_Panic_MVC_API.Models
 
     public class ViewJob
     {
+        [Required]
         public string title { get; set; }
-        public string city { get; set; }
+        [Required]
         public string description { get; set; }
+        [Required]
         public string jobtype { get; set; }
+        [Required]        
         public string username { get; set; }
+        [Required]        
         public int region { get; set; }
+        [Required]        
         public int district { get; set; }
+        [Required]        
         public int suburb { get; set; }
+        [Required]
+        public int duration { get; set; }
     }
 
     public class RegionDropDown
