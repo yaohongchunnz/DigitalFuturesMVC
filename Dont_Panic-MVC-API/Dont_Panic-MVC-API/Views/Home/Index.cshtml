@@ -10,7 +10,7 @@
                 @using (Html.BeginForm("Create", "Job", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
                 {
                     @Html.AntiForgeryToken()
-                    <div class="postajob-body">
+                    <div class="postajob-body drop-shadow">
                         <div class="postajob-title">
                             <h2>POST A JOB</h2>
                         </div>
@@ -44,6 +44,7 @@
             </div>
             <div class="col-md-6">
                 <div class="introblock-text">
+                    <br />
                     <p>Don’t Panic is a free web-tool connecting you with available service providers for a fast, quality solution</p>
                 </div>
             </div>

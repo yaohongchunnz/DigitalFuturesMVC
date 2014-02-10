@@ -4,51 +4,49 @@
     ViewBag.Title = "Your jobs";
 }
 
-<div class="container">
-    <h2 class="green-text">Your jobs</h2>
-        @if (Model.Count() == 0)
+<br />
+<div class="container drop-shadow browse-jobs-block">
+    <h3 class="centertext"><font color="#65B5A2">your</font> jobs</h3>
+    <br />
+    @if (Model.Count() == 0)
     {
-        <p>You currently have no jobs. @Html.ActionLink("Post a job now.", "Create", new { @style = "color:#65B5A2;" })
+        <p>
+            You currently have no jobs. @Html.ActionLink("Post a job now.", "Create", new { @style = "color:#65B5A2;" })
         </p>
-        
+
     }
     else
     {
-    <p>
-        @Html.ActionLink("Post a job", "Create", new { @style = "color:#65B5A2;" })
-    </p>
+        <p>
+            @Html.ActionLink("Post a job", "Create", new { @style = "color:#65B5A2;" })
+        </p>
     }
+    <br />
     @foreach (var item in Model)
     {
-        
-        <div class="jumbotron drop-shadow-lite">
-            <h2>@Html.ActionLink(item.title, "Details", new { id = item.jobid }, new { @style = "color:#65B5A2;" }) </h2>
-            <p style="font-size:14px">@item.description</p>
+        <div class="job-block drop-shadow-lite">
 
 
             <div class="row">
-                <div class="col-md-4">
-                    <p class="text-primary" style="font-size:12px">Category: @item.jobtype</p>
-                </div>
-                <div class="col-md-4">
-                    <p class="text-primary" style="font-size:12px">Located in: @item.city</p>
-                </div>
-                <div class="col-md-4">
-                    <p class="text-info">
-                        @Html.ActionLink("Edit", "Edit", new { id = item.jobid }) |
-                        @Html.ActionLink("Delete", "Delete", new { id = item.jobid })
-                    </p>
-                </div>
-                <div class="col-md-4">
-                    <p class="text-info" style="font-size:12px">Created on: @item.submitDate</p>
-                </div>
-                <div class="col-md-4">
-                    <p class="text-info" style="font-size:12px">Expires on: @item.expireDate</p>
+                <div class="col-md-3"><img src="~/Images/nophotoavailable.jpg" class="img-responsive job-block-image img-rounded" /></div>
+                <div class="col-md-9">
+                    <p class="job-block-title">@Html.ActionLink(item.title, "Details", new { id = item.jobid }, new { @style = "color:#497769;" }) </p>
+
+                    <p style="font-size:14px">@item.description</p>
+
+                    <div class="row">
+                        <div class="job-block-detail-left col-md-6">
+                            <p class="text-primary" style="font-size:12px">Category: @item.jobtype<br />Located in: @item.city</p>
+                        </div>
+                        <div class="job-block-detail-right col-md-6">
+
+                            <input type="button" onclick="location.href='/Job/Details/@item.jobid'" value="View Job" class="btn-dontpanic" />
+                        </div>
+                    </div>
                 </div>
             </div>
 
         </div>
+        <br />
     }
 </div>
-
-

@@ -8,22 +8,23 @@
 }
 
 .inner-signup {
-    padding:10px;
+    padding: 10px;
 }
 
-.signup-userbox{
-    background-color:#efefef;
+.signup-userbox {
+    background-color: #efefef;
 }
 
-.signup-servicebox{
-    background-color:#fff;
-    text-align:right;   
+.signup-servicebox {
+    background-color: #fff;
+    text-align: right;
 }
+
 .btn-signup {
 }
 
     .btn-signup > input {
-        width:100%;
+        width: 100%;
     }
 
 .btn-dontpanic {
@@ -119,10 +120,13 @@
 }
 
 .rounded-corners {
-    border: 0.5px solid #65A592;
-    background: #FFFFFF;
+    border: 3px solid #65A592;
+    background-color: #efefef;
+    border-radius: 5px;
+    -moz-box-shadow: 0px 0px 8px 1px #000;
+    -webkit-box-shadow: 0px 0px 8px 1px #000;
+    box-shadow: 0px 0px 8px 1px #000;
     max-width: 400px;
-    border-radius: 25px;
 }
 
 .drop-shadow-lite {
@@ -155,7 +159,7 @@
     border: 3px solid #65A592;
     border-radius: 5px;
     z-index: 100;
-    float:right;
+    float: right;
 }
 
 .postajob-title {
@@ -194,19 +198,17 @@
 .introblock-text {
     padding-left: 15px;
     padding-right: 15px;
-    padding-top:15px;
-    text-align: center;
-    font-weight:bold;
-    vertical-align: middle;
-    float:left;
-    color:#fff;
-    font-size:24px;
-    text-shadow: 0px 0px 1.5px 2.5px rgba(0, 0, 0, 0.50);
+    padding-top: 15px;
+    text-align: left;
+    font-weight: bold;
+    float: left;
+    color: rgba(0, 0, 0, 0.50);
+    font-size: 22px;
 }
 
-.outerintroblock{
+.outerintroblock {
     background-image: url('../Images/background.jpg');
-    background-color:#77B783;
+    background-color: #77B783;
     background-repeat: no-repeat;
     background-position: center;
     border: 3px solid #65A592;
@@ -221,22 +223,33 @@
         padding-right: 600px;
     }
 }
+
 @media (max-width: 1920px) {
     .outerintroblock {
         padding-left: 300px;
         padding-right: 300px;
     }
 }
+
 @media (max-width: 1357px) {
     .outerintroblock {
-    padding-left: 200px;
-    padding-right: 200px;
+        padding-left: 200px;
+        padding-right: 200px;
     }
 }
+
 @media (max-width: 991px) {
     .outerintroblock {
         padding-left: 120px;
         padding-right: 120px;
+        height: auto;
+    }
+
+    .introblock-text {
+        text-align: center;
+    }
+    .postajob-body {
+        float:none;
     }
 }
 
@@ -244,7 +257,6 @@
     .outerintroblock {
         padding-left: 120px;
         padding-right: 120px;
-        height:auto;
     }
 }
 
@@ -258,59 +270,74 @@
 @media (max-width: 320px) {
     .outerintroblock {
         padding-left: 5px;
-        padding-right:5px;
+        padding-right: 5px;
     }
 }
 
-.postjob-form{
+.postjob-form {
 }
 
-.postjob-text{
-    
+.postjob-text {
 }
 
-.supportBar{
-    background-color:#fff;
-    margin:0;
-    padding-bottom:10px;
-    text-align:center;
+.supportBar {
+    background-color: #fff;
+    margin: 0;
+    padding-bottom: 10px;
+    text-align: center;
 }
 
-.supportBar > p > a{
-    color:#497769;
+    .supportBar > p > a {
+        color: #497769;
+    }
+
+.footerBar {
+    margin: 0;
+    padding-top: 10px;
+    padding-bottom: 3px;
+    text-align: center;
+    background-color: #497769;
 }
 
-.footerBar{
-    margin:0;
-    padding-top:10px;
-    padding-bottom:3px;
-    text-align:center;
-    background-color:#497769;
-}
+    .footerBar > footer > p {
+        color: #fff;
+    }
 
-.footerBar > footer > p {
-    color:#fff;
-}
-
-.contentBackground{
-
+.contentBackground {
     background-image: url('../Images/background.jpg');
-    background-color:#77B783;
+    background-color: #77B783;
     background-repeat: no-repeat;
     background-position: center;
 }
 
-.browse-jobs-block{    
-    border: 0.5px solid #65A592;
-    background: #FFFFFF;
+.browse-jobs-block {
+    border: 3px solid #65A592;
+    background-color: #efefef;
+    border-radius: 5px;
     max-width: 625px;
-    border-radius: 25px;
 }
 
-.job-block{
-    padding:10px;
-    border: 0.5px solid #65A592;
-    background: #FFFFFF;
-    border-radius: 25px;
+.job-block {
+    padding: 5px;
+    border: 1.5px solid #65A592;
+    border-radius: 5px;
+    background-color: rgba(117, 191, 169, 0.36);
+}
 
+.job-block-title {
+    font-size: 24px;
+    color: #497769;
+}
+
+.job-block-detail-left {
+    text-align: left;
+}
+
+.job-block-detail-right {
+    text-align: right;
+}
+
+.job-block-image {
+    border: 1.5px solid #65A592;
+    border-radius: 5px;
 }

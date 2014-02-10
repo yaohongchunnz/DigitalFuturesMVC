@@ -4,8 +4,8 @@
 }
 
 <br />
-<div class="container drop-shadow-lite rounded-corners">
-    <h3 class="centertext">Create a new account.</h3>
+<div class="container rounded-corners">
+    <h2 class="centertext"><font color="#65B5A2">create</font> account</h2>
     <hr />
     @using (Html.BeginForm("ProviderSignup", "Account", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
     {
@@ -16,59 +16,39 @@
 
             <div class="form-group">
 
-                @Html.LabelFor(m => m.businessName, new { @class = "col-md-2 control-label"})
-                <div class="col-md-10">
-                    @Html.TextBoxFor(m => m.businessName, new { @class = "form-control", @placeholder = "Business Name" })
-                </div>
+                @Html.LabelFor(m => m.businessName, new { @class = "control-label" })
+                @Html.TextBoxFor(m => m.businessName, new { @class = "form-control", @placeholder = "Business Name" })
 
-                <div class="col-md-offset-2 col-md-10">
-                    @Html.ValidationMessageFor(m => m.businessName)
-                </div>
-            </div>
-           
-            <div class="form-group">
-                @Html.LabelFor(m => m.UserName, new { @class = "col-md-2 control-label" })
-                <div class="col-md-10">
-                    @Html.TextBoxFor(m => m.UserName, new { @class = "form-control", @placeholder = "Display name" })
-                </div>
+                @Html.ValidationMessageFor(m => m.businessName)
             </div>
 
             <div class="form-group">
-                @Html.LabelFor(m => m.email, new { @class = "col-md-2 control-label" })
-                <div class="col-md-10">
-                    @Html.TextBoxFor(m => m.email, new { @class = "form-control", @placeholder = "Email" })
-                </div>
-                <div class="col-md-offset-2 col-md-10">
-                    @Html.ValidationMessageFor(m => m.email)
-                </div>
+                @Html.LabelFor(m => m.UserName, new { @class = "control-label" })
+                @Html.TextBoxFor(m => m.UserName, new { @class = "form-control", @placeholder = "Display name" })
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(m => m.email, new { @class = "control-label" })
+                @Html.TextBoxFor(m => m.email, new { @class = "form-control", @placeholder = "Email" })
+                @Html.ValidationMessageFor(m => m.email)
             </div>
 
 
             <div class="form-group">
-                @Html.LabelFor(m => m.Password, new { @class = "col-md-2 control-label" })
-                <div class="col-md-10">
-                    @Html.PasswordFor(m => m.Password, new { @class = "form-control", @placeholder = "Password" })
-                </div>
-                <div class="col-md-offset-2 col-md-10">
-                    @Html.ValidationMessageFor(m => m.Password)
-                </div>
+                @Html.LabelFor(m => m.Password, new { @class = "control-label" })
+                @Html.PasswordFor(m => m.Password, new { @class = "form-control", @placeholder = "Password" })
+                @Html.ValidationMessageFor(m => m.Password)
             </div>
 
             <div class="form-group">
-                @Html.LabelFor(m => m.ConfirmPassword, new { @class = "col-md-2 control-label" })
-                <div class="col-md-10">
-                    @Html.PasswordFor(m => m.ConfirmPassword, new { @class = "form-control", @placeholder = "Re-enter Password" })
-                </div>
-                <div class="col-md-offset-2 col-md-10">
-                    @Html.ValidationMessageFor(m => m.ConfirmPassword)
-                </div>
+                @Html.LabelFor(m => m.ConfirmPassword, new { @class = "control-label" })
+                @Html.PasswordFor(m => m.ConfirmPassword, new { @class = "form-control", @placeholder = "Re-enter Password" })
+                @Html.ValidationMessageFor(m => m.ConfirmPassword)
 
             </div>
 
             <div class="form-group">
-                <div class="col-md-offset-2 col-md-10">
-                    <input type="submit" class="btn btn-success" value="Sign up" />
-                </div>
+                    <input type="submit" class="btn-dontpanic" value="Sign up" />
             </div>
         </div>
     }

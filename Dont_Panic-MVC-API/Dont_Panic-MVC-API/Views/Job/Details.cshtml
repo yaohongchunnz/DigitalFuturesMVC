@@ -3,61 +3,66 @@
 @{
     ViewBag.Title = "Job Details";
 }
-
-<div class="container">
-    <h2>Job details</h2>
-    <div class="jumbotron drop-shadow-lite">
-        <h3 class="green-text">@Html.DisplayFor(model => model.title)</h3>
-
-        <p style="font-size:14px">@Html.DisplayFor(model => model.description)</p>
+<br />
+<div class="container drop-shadow browse-jobs-block">
+    <h3 class="centertext"><font color="#65B5A2">job</font> details</h3>
+    <br />
+    <br />
+    <div class="job-block drop-shadow-lite">
 
 
         <div class="row">
-            <div class="col-md-4">
-                <p class="text-primary" style="font-size:12px">Category: @Html.DisplayFor(model => model.jobtype)</p>
-            </div>
-            <div class="col-md-4">
-                <p class="text-primary" style="font-size:12px">Located in: @Html.DisplayFor(model => model.city)</p>
-            </div>
-            <div class="col-md-4">
-                @if (User.Identity.Name.Equals(Model.username))
-                {
-                    <p class="text-info">
-                        @Html.ActionLink("Edit", "Edit", new { id = Model.jobid }) |
-                        @Html.ActionLink("Delete", "Delete", new { id = Model.jobid })
-                    </p>
+            <div class="col-md-3"><img src="~/Images/nophotoavailable.jpg" class="img-responsive job-block-image img-rounded" /></div>
+            <div class="col-md-9">
+                <p class="job-block-title">@Model.title</p>
 
-                }
-                else
-                {
-                    <p class="text-primary">
-                        Posted by: @Model.username
-                    </p>
-                }
-            </div>
-            <div class="col-md-4">
-                <p class="text-info" style="font-size:12px">Created on: @Model.submitDate</p>
-            </div>
-            <div class="col-md-4">
-                <p class="text-info" style="font-size:12px">Expires on: @Model.expireDate</p>
+                <p style="font-size:14px">@Model.description</p>
+
+                <div class="row">
+                    <div class="job-block-detail-left col-md-6">
+                        @if (User.Identity.Name.Equals(Model.username))
+                        {
+                            <p class="text-primary">
+                                Category: @Model.jobtype<br />Located in: @Model.city<br />
+                                @Html.ActionLink("Edit", "Edit", new { id = Model.jobid }) |
+                                @Html.ActionLink("Delete", "Delete", new { id = Model.jobid })
+                            </p>
+
+                        }
+                        else
+                        {
+                            <p class="text-primary">
+                                Category: @Model.jobtype<br />Located in: @Model.city<br />
+                                Posted by: @Model.username
+                            </p>
+                        }
+                    </div>
+                    <div class="job-block-detail-right col-md-6">
+
+                        <input type="button" onclick="location.href='/Job/Details/@Model.jobid'" value="View Job" class="btn-dontpanic" />
+                    </div>
+                </div>
             </div>
         </div>
 
     </div>
+    <br />
 
-</div>
-<p>
-    @if (User.Identity.IsAuthenticated)
-    {
 
-        if (User.Identity.GetUserId().Equals(Model.jobid))
+    <p>
+        @if (User.Identity.IsAuthenticated)
         {
-            @Html.ActionLink("Edit", "Edit", new { id = Model.jobid });
+
+            if (User.Identity.GetUserId().Equals(Model.jobid))
+            {
+                @Html.ActionLink("Edit", "Edit", new { id = Model.jobid });
+            }
+            @Html.ActionLink("Back to your jobs", "Index");
         }
-        @Html.ActionLink("Back to your jobs", "Index");
-    }
-    else
-    {
-        @Html.ActionLink("Back to browsing", "Browse")
-    }
-</p>
+        else
+        {
+            @Html.ActionLink("Back to browsing", "Browse")
+        }
+    </p>
+</div>
+

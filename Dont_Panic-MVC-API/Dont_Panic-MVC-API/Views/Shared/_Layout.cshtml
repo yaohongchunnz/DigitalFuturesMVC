@@ -1,4 +1,7 @@
 ﻿<!DOCTYPE html>
+@using Dont_Panic_MVC_API.Models;
+@using System.Web.Security;
+@using Microsoft.AspNet.Identity;
 @{var atJobPage = false;}
 @if (@Url.Action().ToLower().Contains("job"))
 {
@@ -8,6 +11,12 @@ else
 {
     atJobPage = false;
 }
+
+@{
+    Dont_Panic_MVC_API.API_Models.IdentityManager im = new Dont_Panic_MVC_API.API_Models.IdentityManager();
+
+}
+
 <link rel="icon" type="img/png" href="~/Images/favi.png">
 <html>
 
@@ -36,84 +45,79 @@ else
             </div>
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
-                    <li @if (@ViewContext.RouteData.GetRequiredString("controller").ToLower() == "job") { @Html.AttributeEncode("class=active")            ; }>
-                        @if (User.Identity.IsAuthenticated)
+
+                    @if (User.Identity.IsAuthenticated)
+                    {
+                        if (im.UserContainsRole(User.Identity.GetUserId(), "User"))
                         {
-                            @Html.ActionLink("Jobs", "Index", "Job")
+                            <li @if (@ViewContext.RouteData.GetRequiredString("action").ToLower() == "index" && @ViewContext.RouteData.GetRequiredString("controller").ToLower() == "job") { @Html.AttributeEncode("class=active")                       ; }>
+                                @Html.ActionLink("current jobs", "Index", "Job")
+                            </li>
+                            <li @if (@ViewContext.RouteData.GetRequiredString("action").ToLower() == "previous" && @ViewContext.RouteData.GetRequiredString("controller").ToLower() == "job") { @Html.AttributeEncode("class=active")                       ; }>
+
+                                @Html.ActionLink("previous jobs", "Index", "Job")
+                            </li>
+                            <li @if (@ViewContext.RouteData.GetRequiredString("action").ToLower() == "create" && @ViewContext.RouteData.GetRequiredString("controller").ToLower() == "job") { @Html.AttributeEncode("class=active")                      ; }>
+
+                                @Html.ActionLink("post job", "Create", "Job")
+                            </li>
                         }
-                        else
+                        else if (im.UserContainsRole(User.Identity.GetUserId(), "Provider"))
                         {
+                            <li @if (@ViewContext.RouteData.GetRequiredString("action").ToLower() == "index" && @ViewContext.RouteData.GetRequiredString("controller").ToLower() == "job") { @Html.AttributeEncode("class=active")                      ; }>
+
+                                @Html.ActionLink("current jobs", "Index", "Job")
+                            </li>
+                            <li @if (@ViewContext.RouteData.GetRequiredString("action").ToLower() == "previous" && @ViewContext.RouteData.GetRequiredString("controller").ToLower() == "job") { @Html.AttributeEncode("class=active")                      ; }>
+
+                                @Html.ActionLink("previous jobs", "Index", "Job")
+                            </li>
+                            <li @if (@ViewContext.RouteData.GetRequiredString("action").ToLower() == "browse" && @ViewContext.RouteData.GetRequiredString("controller").ToLower() == "job") { @Html.AttributeEncode("class=active")                      ; }>
+
+                                @Html.ActionLink("browse jobs", "Browse", "Job")
+                            </li>
+                        }
+
+                    }
+                    else
+                    {
+                        <li @if (@ViewContext.RouteData.GetRequiredString("controller").ToLower() == "job") { @Html.AttributeEncode("class=active")                       ; }>
+
                             @Html.ActionLink("post job", "Create", "Job")
-                        }
 
-                    </li>
-                   
 
+                        </li>
+                    }
                     <!---Current job, previous job, post job
-                        @Html.ActionLink("current jobs", "Index", "Job")
-                        @Html.ActionLink("previous jobs", "Index", "Job")
-                        @Html.ActionLink("post job", "Create", "Job")
-                   -->
+                    -->
                     <!---Current job, previous job, browse job
-                        @Html.ActionLink("current jobs", "Index", "Job")
-                        @Html.ActionLink("previous jobs", "Index", "Job")
-                        @Html.ActionLink("browse jobs", "Create", "Job")
                     -->
 
-                    
+
                 </ul>
                 @Html.Partial("_LoginPartial")
             </div>
         </div>
     </div>
 
-    @if (User.Identity.IsAuthenticated && atJobPage)
+    @if (@Url.Action().Equals("/") || @Url.Action().ToLower().Equals("/home/index"))
     {
-        <div class="container">
-            <section class="navbar navbar-default ">
-
-                <ul class="nav nav-tabs navbar-nav">
-
-                    <li @if (@ViewContext.RouteData.GetRequiredString("action").ToLower() == "index") { @Html.AttributeEncode("class=active")           ; }>
-                        <a href="/Job/Index">Your jobs</a>
-                    </li>
-                    <li @if (@ViewContext.RouteData.GetRequiredString("action").ToLower() == "create") { @Html.AttributeEncode("class=active")           ; }>
-                        <a href="/Job/Create">Post a job</a>
-                    </li>
-                    <li @if (@ViewContext.RouteData.GetRequiredString("action").ToLower() == "browse") { @Html.AttributeEncode("class=active")           ; }>
-                        <a href="/Job/Browse">Browse jobs</a>
-                    </li>
-                    <li @if (@ViewContext.RouteData.GetRequiredString("action").ToLower() == "settings") { @Html.AttributeEncode("class=active")            ; }>
-                        <a href="#">Settings</a>
-                    </li>
-                </ul>
-
-            </section>
-            @RenderBody()
-
-            <hr />
-        </div>
+        @RenderBody()
     }
-    else
-    {
-        if (@Url.Action().Equals("/") || @Url.Action().ToLower().Equals("/home/index"))
+    <div class="contentBackground body-content">
+        @try
         {
             @RenderBody()
+            <br />
         }
-        <div class="contentBackground body-content">
-            @try
-            {
-                @RenderBody()
-                <br />
-            }
-            catch (Exception e)
-            {
+        catch (Exception e)
+        {
 
-            }
-        </div>
+        }
+    </div>
 
 
-    }
+
 
     <br />
     <div class="supportBar">
