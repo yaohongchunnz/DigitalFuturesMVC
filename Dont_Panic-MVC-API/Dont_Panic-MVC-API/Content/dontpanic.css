@@ -307,7 +307,9 @@
     background-image: url('../Images/background.jpg');
     background-color: #77B783;
     background-repeat: no-repeat;
-    background-position: center;
+    position: fixed;
+    bottom:0px;
+
 }
 
 .browse-jobs-block {

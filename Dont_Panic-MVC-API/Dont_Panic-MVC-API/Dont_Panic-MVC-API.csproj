@@ -306,6 +306,7 @@
     <Content Include="Views\Account\ProviderSignupDetails.cshtml" />
     <Content Include="Views\Account\Index.cshtml" />
     <Content Include="Views\Account\ProviderSignup.cshtml" />
+    <Content Include="Views\Job\Previous.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

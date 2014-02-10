@@ -55,7 +55,7 @@ else
                             </li>
                             <li @if (@ViewContext.RouteData.GetRequiredString("action").ToLower() == "previous" && @ViewContext.RouteData.GetRequiredString("controller").ToLower() == "job") { @Html.AttributeEncode("class=active")                       ; }>
 
-                                @Html.ActionLink("previous jobs", "Index", "Job")
+                                @Html.ActionLink("previous jobs", "Previous", "Job")
                             </li>
                             <li @if (@ViewContext.RouteData.GetRequiredString("action").ToLower() == "create" && @ViewContext.RouteData.GetRequiredString("controller").ToLower() == "job") { @Html.AttributeEncode("class=active")                      ; }>
 
@@ -70,7 +70,7 @@ else
                             </li>
                             <li @if (@ViewContext.RouteData.GetRequiredString("action").ToLower() == "previous" && @ViewContext.RouteData.GetRequiredString("controller").ToLower() == "job") { @Html.AttributeEncode("class=active")                      ; }>
 
-                                @Html.ActionLink("previous jobs", "Index", "Job")
+                                @Html.ActionLink("previous jobs", "Previous", "Job")
                             </li>
                             <li @if (@ViewContext.RouteData.GetRequiredString("action").ToLower() == "browse" && @ViewContext.RouteData.GetRequiredString("controller").ToLower() == "job") { @Html.AttributeEncode("class=active")                      ; }>
 

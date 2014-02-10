@@ -1,17 +1,18 @@
 ﻿@model IEnumerable<Dont_Panic_MVC_API.Models.API_Models.Job>
 
 @{
-    ViewBag.Title = "Your jobs";
+    ViewBag.Title = "Previous Jobs";
 }
+
 
 <br />
 <div class="container drop-shadow browse-jobs-block">
-    <h3 class="centertext"><font color="#65B5A2">your</font> jobs</h3>
+    <h3 class="centertext"><font color="#65B5A2">previous</font> jobs</h3>
     <br />
     @if (Model.Count() == 0)
     {
         <p>
-            You currently have no jobs. @Html.ActionLink("Post a job now.", "Create", new { @style = "color:#65B5A2;" })
+            You have no previous jobs. @Html.ActionLink("Post a new job now.", "Create", new { @style = "color:#65B5A2;" })
         </p>
 
     }
@@ -24,11 +25,9 @@
     <br />
     @foreach (var item in Model)
     {
-
-        if (item.expireDate > DateTime.Now)
+        if (item.expireDate < DateTime.Now)
         {
             <div class="job-block drop-shadow-lite">
-
 
                 <div class="row">
                     <div class="col-md-3"><img src="~/Images/nophotoavailable.jpg" class="img-responsive job-block-image img-rounded" /></div>

@@ -15,8 +15,64 @@
                 }
             }
             sessionStorage.clear();
+
+        }
+        setDistrict(false);
+        setSuburb(false);
+    }
+
+    var previousReg;
+    function showHideSelect(select) {
+        if (select.name == "region") {
+            if (select.value != "") {
+                setDistrict(true);
+                if (previousReg != select.value) {
+                    setSuburb(false);
+                }
+
+                previousReg = select.value;
+            }
+            else {
+                setDistrict(false);
+                setSuburb(false);
+            }
+        }
+        else if (select.name == "district") {
+            if (select.value != "") {
+                setSuburb(true);
+            }
+            else {
+                setSuburb(false);
+            }
         }
     }
+    function setDistrict(b) {
+        var districtLabel = document.getElementById("districtLbl");
+        var districtSelect = document.getElementById("district");
+        if (b) {
+            districtLabel.style.display = 'inline';
+            districtSelect.style.display = 'inline';
+        }
+        else {
+            districtLabel.style.display = 'none';
+            districtSelect.style.display = 'none';
+        }
+    }
+
+    function setSuburb(b) {
+        var suburbSelect = document.getElementById("suburb");
+        var suburbLabel = document.getElementById("suburbLbl");
+        if (b) {
+            suburbSelect.style.display = 'inline';
+            suburbLabel.style.display = 'inline';
+        }
+        else {
+            suburbSelect.style.display = 'none';
+            suburbLabel.style.display = 'none';
+        }
+
+    }
+
 </script>
 <div class="container rounded-corners">
     <h2 class="centertext"><font color="#65B5A2">post</font> job</h2>
@@ -40,17 +96,17 @@
 
             <div class="form-group">
                 @Html.LabelFor(model => model.region, new { @class = "control-label" })
-                @Html.DropDownListFor(model => model.region, (SelectList)ViewBag.City, "Select your region", new { @class = "form-control", @id = "region", onchange = "selectRegion(1)" })
+                @Html.DropDownListFor(model => model.region, (SelectList)ViewBag.City, "Select your region", new { @class = "form-control", @id = "region", onchange = "selectRegion(1);showHideSelect(this)" })
             </div>
 
             <div class="form-group">
-                @Html.LabelFor(model => model.district, new { @class = "control-label" })
-                @Html.DropDownListFor(model => model.district, Enumerable.Empty<SelectListItem>(), "Select your district", new { @class = "form-control", @id = "district", onchange = "selectRegion(2)" })
+                @Html.LabelFor(model => model.district, new { @class = "control-label", @id = "districtLbl" })
+                @Html.DropDownListFor(model => model.district, Enumerable.Empty<SelectListItem>(), "Select your district", new { @class = "form-control", @id = "district", onchange = "selectRegion(2);showHideSelect(this)" })
             </div>
 
             <div class="form-group">
-                @Html.LabelFor(model => model.suburb, new { @class = "control-label" })
-                @Html.DropDownListFor(model => model.suburb, Enumerable.Empty<SelectListItem>(), "Select your suburb", new { @class = "form-control", @id = "suburb" })
+                @Html.LabelFor(model => model.suburb, new { @class = "control-label", @id = "suburbLbl" })
+                @Html.DropDownListFor(model => model.suburb, Enumerable.Empty<SelectListItem>(), "Select your suburb", new { @class = "form-control", @id = "suburb", @onchange = "showHideSelect(this)" })
             </div>
 
             <div class="form-group">
@@ -67,6 +123,15 @@
                     <option>Photography</option>
                     <option>Repair services</option>
                     <option>Writing/Translation</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.duration, new { @class = "control-label", @id = "durationLbl" })
+                <select class="form-control" required id="duration" name="duration">
+                    <option>24 Hrs</option>
+                    <option>48 Hrs</option>
+                    <option>72 Hrs</option>
                 </select>
             </div>
 
@@ -100,7 +165,7 @@
         </div>
     }
 
-  
+
 </div>
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")
