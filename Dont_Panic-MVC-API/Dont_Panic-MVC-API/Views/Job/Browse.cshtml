@@ -1,14 +1,15 @@
 ﻿@model IEnumerable<Dont_Panic_MVC_API.Models.API_Models.Job>
 
 @{
-    ViewBag.Title = "Browse";
+    ViewBag.Title = "Browse Jobs";
 }
-<div class="container">
-    <h2 class="green-text">Available jobs</h2>
+<br />
+<div class="container drop-shadow-lite browse-jobs-block">
+    <h3 class="centertext"><font color="#65B5A2">browse</font> jobs</h3>
     @foreach (var item in Model)
     {
-        <div class="jumbotron drop-shadow-lite">
-            <h2>@Html.ActionLink(item.title, "Details", new { id = item.jobid }, new { @style = "color:#65B5A2;" }) </h2>
+        <div class="job-block drop-shadow-lite">
+            <h3>@Html.ActionLink(item.title, "Details", new { id = item.jobid }, new { @style = "color:#65B5A2;" }) </h3>
             <p style="font-size:14px">@item.description</p>
 
 
@@ -31,6 +32,7 @@
             </div>
 
         </div>
+        <br />
     }
     <p>
         @Html.ActionLink("Create your own job", "Create")

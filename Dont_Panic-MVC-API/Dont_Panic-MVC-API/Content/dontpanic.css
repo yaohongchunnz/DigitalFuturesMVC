@@ -196,8 +196,12 @@
     padding-right: 15px;
     padding-top:15px;
     text-align: center;
+    font-weight:bold;
     vertical-align: middle;
     float:left;
+    color:#fff;
+    font-size:24px;
+    text-shadow: 0px 0px 1.5px 2.5px rgba(0, 0, 0, 0.50);
 }
 
 .outerintroblock{
@@ -294,4 +298,19 @@
     background-color:#77B783;
     background-repeat: no-repeat;
     background-position: center;
+}
+
+.browse-jobs-block{    
+    border: 0.5px solid #65A592;
+    background: #FFFFFF;
+    max-width: 625px;
+    border-radius: 25px;
+}
+
+.job-block{
+    padding:10px;
+    border: 0.5px solid #65A592;
+    background: #FFFFFF;
+    border-radius: 25px;
+
 }
