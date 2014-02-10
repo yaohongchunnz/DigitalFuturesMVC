@@ -68,6 +68,7 @@ namespace Dont_Panic_MVC_API.Controllers
                         await SignInAsync(user, model.RememberMe);
                         return RedirectToLocal(returnUrl);
                     }
+
                 }
                 else
                 {
@@ -103,6 +104,8 @@ namespace Dont_Panic_MVC_API.Controllers
         [AllowAnonymous]
         public ActionResult ProviderSignup(RegisterProviderViewModel model)
         {
+            System.Diagnostics.Debug.WriteLine("Provider Signup POST");
+
             return RedirectToAction("ProviderSignupDetails", model);
         }
 
@@ -110,20 +113,30 @@ namespace Dont_Panic_MVC_API.Controllers
         [AllowAnonymous]
         public ActionResult ProviderSignupDetails(RegisterProviderViewModel model)
         {
+            System.Diagnostics.Debug.WriteLine("Provider Signup details GET");
             return View(model);
         }
 
-        // POST: /Account/ProviderSignupDetails
+        // POST: /Account/ProviderSignupDetailsPost
         [HttpPost]
         [AllowAnonymous]
         [ActionName("ProviderSignupDetails")]
         public async Task<ActionResult> ProviderSignupDetailsPost(RegisterProviderViewModel model)
         {
+            System.Diagnostics.Debug.WriteLine("Provider Signup details POST");
+
+            System.Diagnostics.Debug.WriteLine("Business Name: " + model.businessName + "\n Username: " + model.UserName + "\n description: " + model.description);
             if (ModelState.IsValid)
             {
-                var user = new ApplicationUser() { UserName = model.UserName, signupDate = DateTime.Now };
-                var result = await UserManager.CreateAsync(user, model.Password);
-                if (result.Succeeded)
+                System.Diagnostics.Debug.WriteLine("Provider Signup details POST VAILD");
+
+                IdentityManager Im = new IdentityManager();
+
+                ApplicationUser user = new ApplicationUser() { UserName = model.UserName, signupDate = DateTime.Now };
+
+                bool result = Im.CreateUserWithRole(user, model.Password, "Provider");
+
+                if (result)
                 {
                     APIContext context = new APIContext();
                     Email email = new Email();
@@ -142,20 +155,12 @@ namespace Dont_Panic_MVC_API.Controllers
                     details.contact_number_2 = model.contact_number_2;
                     details.description = model.description;
 
-
-                    if (!Roles.RoleExists("Provider"))
-                        Roles.CreateRole("Provider");
-
-                    Roles.AddUserToRole(model.UserName, "Provider");
-
                     await SignInAsync(user, isPersistent: false);
                     return RedirectToAction("Index", "Home");
                 }
-                else
-                {
-                    AddErrors(result);
-                }
             }
+
+            System.Diagnostics.Debug.WriteLine("Provider Signup details POST NOT-VAILD");
 
             // If we got this far, something failed, redisplay form
             return View(model);
@@ -198,7 +203,6 @@ namespace Dont_Panic_MVC_API.Controllers
                     details.last_name = model.last_name;
                     context.userDetails.Add(details);
                     context.SaveChanges();
-
 
                     await SignInAsync(user, isPersistent: false);
                     return RedirectToAction("Index", "Home");
