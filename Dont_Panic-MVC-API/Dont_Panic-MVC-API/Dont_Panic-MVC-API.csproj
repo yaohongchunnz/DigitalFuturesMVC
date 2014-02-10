@@ -222,6 +222,7 @@
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\API Models\API-Models.cs" />
     <Compile Include="Models\DropDownViewModels.cs" />
+    <Compile Include="Models\Photo.cs" />
     <Compile Include="Models\UserModels.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\JobAPIContext.cs" />
