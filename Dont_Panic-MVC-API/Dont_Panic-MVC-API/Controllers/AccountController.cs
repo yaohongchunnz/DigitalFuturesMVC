@@ -154,6 +154,10 @@ namespace Dont_Panic_MVC_API.Controllers
                     details.contact_number_1 = model.contact_number_1;
                     details.contact_number_2 = model.contact_number_2;
                     details.description = model.description;
+                    details.services = model.services;
+                    details.website_address = model.website_address;
+                    details.userId = user.Id;
+
                     context.ServiceProvidersDetails.Add(details);
 
                     context.SaveChanges();
