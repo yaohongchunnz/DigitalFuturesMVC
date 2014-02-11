@@ -92,8 +92,8 @@ namespace Dont_Panic_MVC_API.Controllers
                 RegionDropDown regions = new RegionDropDown();
                 
                 jobmodel.region = regions.RegionList.ElementAt(viewJob.region-1).Text;
-//                jobmodel.district = 
-//                jobmodel.suburb = 
+                jobmodel.district =  "qwerty";
+                jobmodel.suburb = "qwerty";
                 jobmodel.description = viewJob.description;
                 jobmodel.jobtype = viewJob.jobtype;
                 jobmodel.title = viewJob.title;
@@ -128,7 +128,7 @@ namespace Dont_Panic_MVC_API.Controllers
         }
 
         [HttpPost]
-        public ActionResult ImageUpload()
+        public string ImageUpload()
         {
             string path = @"D:\Temp\";
 
@@ -156,19 +156,18 @@ namespace Dont_Panic_MVC_API.Controllers
                     permissions.PublicAccess = BlobContainerPublicAccessType.Container;
                     container.SetPermissions(permissions);
                 }
-                string uniqueBlobName = string.Format("productimages/image_{0}{1}",
+                string uniqueBlobName = string.Format("jobimages/image_{0}{1}",
                 Guid.NewGuid().ToString(), Path.GetExtension(image.FileName));
-                //CloudBlockBlob blob = blobStorage.GetBlockBlobReference(uniqueBlobName);
-                
-                
+                CloudBlockBlob blob = container.GetBlockBlobReference(uniqueBlobName);
 
-              //  blob.Properties.ContentType = image.ContentType;
-              //  blob.UploadFromStream(image.InputStream);
+                blob.Properties.ContentType = image.ContentType;
+                blob.UploadFromStream(image.InputStream);
+
+                return blob.Uri.ToString();               
 
 
              }
-                return View(); 
-               
+            return "Error";
         }
 
 
