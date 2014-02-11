@@ -5,6 +5,7 @@
 }
 <br />
 <script language="javascript" type="text/javascript">
+
     window.onload = function () {
         if (sessionStorage.jobtitle != null) {
             document.getElementById("title").value = sessionStorage.jobtitle;
@@ -14,11 +15,77 @@
                     jobselect.options[i].selected = true;
                 }
             }
+
+            if (sessionStorage.jobdescription != null) {
+                document.getElementById("description").value = sessionStorage.jobdescription;
+
+                var regionselect = document.getElementById("region");
+                for (var i = 0; i < regionselect.length; i++) {
+                    if (regionselect.options[i].value == sessionStorage.jobregion) {
+                        regionselect.options[i].selected = true;
+                    }
+                }
+
+
+
+                var districtselect = document.getElementById("district");
+                districtselect.innerHTML = sessionStorage.jobdistrict;
+
+                districtselect.options[sessionStorage.jobdistrictselection].selected = true;
+
+
+                var suburbselect = document.getElementById("suburb");
+                suburbselect.innerHTML = sessionStorage.jobsuburb;
+                suburbselect.options[sessionStorage.jobsuburbselection].selected = true;
+
+                var durationselect = document.getElementById("duration");
+                for (var i = 0; i < durationselect.length; i++) {
+                    if (durationselect.options[i].value == sessionStorage.jobduration) {
+                        durationselect.options[i].selected = true;
+                    }
+                }
+
+
+
+            }
             sessionStorage.clear();
 
         }
-        setDistrict(false);
-        setSuburb(false);
+        if (document.getElementById("region").value == "") {
+            setDistrict(false);
+            setSuburb(false);
+        }
+        else {
+            setDistrict(true);
+            if (document.getElementById("district").value == "") {
+                setSuburb(false);
+            }
+            else {
+                setSuburb(true);
+            }
+        }
+    }
+
+    function saveInformation(saveOrNot) {
+        if (!saveOrNot) {
+            var titlebox = document.getElementById("title");
+            var category = document.getElementById("jobtype");
+            var description = document.getElementById("description");
+            if (titlebox.value.length > 0 && description.value.length > 0) {
+                sessionStorage.jobtitle = titlebox.value;
+                sessionStorage.jobtype = category.value;
+                sessionStorage.jobdescription = description.value;
+                sessionStorage.jobregion = document.getElementById("region").value;
+                sessionStorage.jobdistrict = document.getElementById("district").innerHTML;
+                sessionStorage.jobsuburb = document.getElementById("suburb").innerHTML;
+                sessionStorage.jobdistrictselection = document.getElementById("district").value;
+                sessionStorage.jobsuburbselection = document.getElementById("suburb").value;
+                sessionStorage.jobduration = document.getElementById("duration").value;
+            }
+        }
+        else {
+            sessionStorage.clear();
+        }
     }
 
     var previousReg;
@@ -47,32 +114,31 @@
         }
     }
     function setDistrict(b) {
-        var districtLabel = document.getElementById("districtLbl");
-        var districtSelect = document.getElementById("district");
+        var districtLabel = $("#districtLbl");
+        var districtSelect = $("#district");
         if (b) {
-            districtLabel.style.display = 'inline';
-            districtSelect.style.display = 'inline';
+            districtLabel.fadeIn("slow");
+            districtSelect.fadeIn("slow");
         }
         else {
-            districtLabel.style.display = 'none';
-            districtSelect.style.display = 'none';
+            districtLabel.fadeOut("slow");
+            districtSelect.fadeOut("slow");
         }
     }
 
     function setSuburb(b) {
-        var suburbSelect = document.getElementById("suburb");
-        var suburbLabel = document.getElementById("suburbLbl");
+        var suburbSelect = $("#suburb");
+        var suburbLabel = $("#suburbLbl");
         if (b) {
-            suburbSelect.style.display = 'inline';
-            suburbLabel.style.display = 'inline';
+            suburbSelect.fadeIn("slow");
+            suburbLabel.fadeIn("slow");
         }
         else {
-            suburbSelect.style.display = 'none';
-            suburbLabel.style.display = 'none';
+            suburbSelect.fadeOut("slow");
+            suburbLabel.fadeOut("slow");
         }
 
     }
-
 </script>
 <div class="container rounded-corners">
     <h2 class="centertext"><font color="#65B5A2">post</font> job</h2>
@@ -100,13 +166,13 @@
             </div>
 
             <div class="form-group">
-                @Html.LabelFor(model => model.district, new { @class = "control-label", @id = "districtLbl" })
-                @Html.DropDownListFor(model => model.district, Enumerable.Empty<SelectListItem>(), "Select your district", new { @class = "form-control", @id = "district", onchange = "selectRegion(2);showHideSelect(this)" })
+                @Html.LabelFor(model => model.district, new { @class = "control-label", @id = "districtLbl", @display = "none" })
+                @Html.DropDownListFor(model => model.district, Enumerable.Empty<SelectListItem>(), "Select your district", new { @class = "form-control", @id = "district", onchange = "selectRegion(2);showHideSelect(this)", @display = "none" })
             </div>
 
             <div class="form-group">
-                @Html.LabelFor(model => model.suburb, new { @class = "control-label", @id = "suburbLbl" })
-                @Html.DropDownListFor(model => model.suburb, Enumerable.Empty<SelectListItem>(), "Select your suburb", new { @class = "form-control", @id = "suburb", @onchange = "showHideSelect(this)" })
+                @Html.LabelFor(model => model.suburb, new { @class = "control-label", @id = "suburbLbl", @display="none" })
+                @Html.DropDownListFor(model => model.suburb, Enumerable.Empty<SelectListItem>(), "Select your suburb", new { @class = "form-control", @id = "suburb", @onchange = "showHideSelect(this)",@display="none" })
             </div>
 
             <div class="form-group">
@@ -135,16 +201,8 @@
                 </select>
             </div>
 
-            @using (Html.BeginForm("ImageUpload", "Admin",
-                FormMethod.Post, new { enctype = "multipart/form-data" }))
-            {
-                <div>Please select an image to upload</div>
-                <input name="image" type="file">
-                <input type="submit" value="Upload Image" />
-            }
-
             <div class="form-group">
-                <input type="submit" value="Create" class="btn-dontpanic" />
+                <input type="submit" value="Create" onclick="saveInformation(@User.Identity.IsAuthenticated)" class="btn-dontpanic" />
                 <br />
                 <br />
                 @if (User.Identity.IsAuthenticated)
