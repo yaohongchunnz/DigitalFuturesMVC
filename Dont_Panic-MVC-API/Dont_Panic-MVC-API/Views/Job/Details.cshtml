@@ -3,6 +3,11 @@
 @{
     ViewBag.Title = "Job Details";
 }
+
+@{
+    Dont_Panic_MVC_API.API_Models.IdentityManager im = new Dont_Panic_MVC_API.API_Models.IdentityManager();
+
+}
 <br />
 <div class="container drop-shadow browse-jobs-block">
     <h3 class="centertext"><font color="#65B5A2">job</font> details</h3>
@@ -20,26 +25,29 @@
 
                 <div class="row">
                     <div class="job-block-detail-left col-md-6">
-                        @if (User.Identity.Name.Equals(Model.username))
-                        {
                             <p class="text-primary">
-                                Category: @Model.jobtype<br />Located in: @Model.city<br />
-                                @Html.ActionLink("Edit", "Edit", new { id = Model.jobid }) |
-                                @Html.ActionLink("Delete", "Delete", new { id = Model.jobid })
-                            </p>
-
-                        }
-                        else
-                        {
-                            <p class="text-primary">
-                                Category: @Model.jobtype<br />Located in: @Model.city<br />
+                                Category: @Model.jobtype<br />Located in: @Model.region<br />
                                 Posted by: @Model.username
                             </p>
-                        }
+
                     </div>
                     <div class="job-block-detail-right col-md-6">
+                        @if (User.Identity.IsAuthenticated)
+                        {
+                            if (im.UserContainsRole(User.Identity.GetUserId(), "Provider"))
+                            {
+                                <input type="button" onclick="location.href='/Job/Details/@Model.jobid'" value="Buy Job" class="btn-dontpanic" />
 
-                        <input type="button" onclick="location.href='/Job/Details/@Model.jobid'" value="View Job" class="btn-dontpanic" />
+                            }
+                            else
+                            {
+                                <p class="text-primary">
+                                    @Html.ActionLink("Edit", "Edit", new { id = Model.jobid }) |
+                                    @Html.ActionLink("Delete", "Delete", new { id = Model.jobid })
+                                </p>
+
+                            }
+                        }
                     </div>
                 </div>
             </div>
@@ -65,4 +73,3 @@
         }
     </p>
 </div>
-

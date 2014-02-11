@@ -34,6 +34,12 @@ namespace Dont_Panic_MVC_API.Controllers
             return View(jobAPI.GetAllJobs().ToList());
         }
 
+        [Authorize]
+        public ActionResult Previous()
+        {
+            return View(jobAPI.GetUserJobs(User.Identity.GetUserId()).ToList());
+        }
+
         // GET: /Job/
         [Authorize]
         public ActionResult Index()
