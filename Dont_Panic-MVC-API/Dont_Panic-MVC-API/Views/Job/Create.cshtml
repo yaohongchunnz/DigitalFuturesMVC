@@ -135,13 +135,7 @@
                 </select>
             </div>
 
-            @using (Html.BeginForm("ImageUpload", "Admin",
-                FormMethod.Post, new { enctype = "multipart/form-data" }))
-            {
-                <div>Please select an image to upload</div>
-                <input name="image" type="file">
-                <input type="submit" value="Upload Image" />
-            }
+
 
             <div class="form-group">
                 <input type="submit" value="Create" class="btn-dontpanic" />
@@ -163,6 +157,14 @@
                 }
             </div>
         </div>
+    }
+
+    @using (Html.BeginForm("ImageUpload", "Job",
+                FormMethod.Post, new { enctype = "multipart/form-data" }))
+    {
+        <div>Please select an image to upload</div>
+        <input name="image" type="file">
+        <input type="submit" value="Upload Image" />
     }
 
 
