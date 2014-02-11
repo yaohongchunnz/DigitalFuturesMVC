@@ -71,11 +71,11 @@ namespace Dont_Panic_MVC_API.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Create(ViewJob viewJob)
         {
-          //  if (!User.Identity.IsAuthenticated)
-          //  {
-          //      return RedirectToAction("Login", "Account",
-          //                 new { returnUrl = "/Job/AuthCreate", FormMethod.Post });
-          //  }
+            if (!User.Identity.IsAuthenticated)
+            {
+                return RedirectToAction("Login", "Account",
+                           new { returnUrl = "/Job/Create", FormMethod.Get});
+            }
             
             Job jobmodel = new Job();
 
@@ -94,7 +94,23 @@ namespace Dont_Panic_MVC_API.Controllers
                 jobmodel.username = viewJob.username;
 
                 jobmodel.submitDate = DateTime.Now;
-               // jobmodel.expireDate = DateTime.Today.AddDays(2);
+                
+                switch (viewJob.duration)
+                {
+                    case "24 Hrs":
+                        jobmodel.expireDate = jobmodel.submitDate.AddDays(1);
+                        break;
+                    case "48 Hrs":
+                        jobmodel.expireDate = jobmodel.submitDate.AddDays(2);
+                        break;
+                    case "72 Hrs":
+                        jobmodel.expireDate = jobmodel.submitDate.AddDays(3);
+                        break;
+                    default:
+                        jobmodel.expireDate = jobmodel.submitDate.AddDays(1);
+                        break;
+                }
+
                 jobmodel.UserId = User.Identity.GetUserId();
                 jobmodel.username = User.Identity.GetUserName();
                 jobAPI.PostJob(jobmodel);

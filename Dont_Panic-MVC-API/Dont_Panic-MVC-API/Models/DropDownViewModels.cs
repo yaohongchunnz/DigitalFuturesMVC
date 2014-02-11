@@ -24,7 +24,7 @@ namespace Dont_Panic_MVC_API.Models
         [Required]        
         public int suburb { get; set; }
         [Required]
-        public int duration { get; set; }
+        public string duration { get; set; }
     }
 
     public class RegionDropDown
