@@ -13,9 +13,9 @@ using Dont_Panic_MVC_API.Controllers.API_Controllers;
 using System.Web.Mvc;
 using Microsoft.AspNet.Identity;
 
-using Microsoft.WindowsAzure.Storage;
-using Microsoft.WindowsAzure.Storage.Auth;
-using Microsoft.WindowsAzure.Storage.Blob;
+using Microsoft.WindowsAzure;
+using Microsoft.WindowsAzure.StorageClient;
+
 using System.Configuration;
 using System.IO;
 
@@ -97,19 +97,18 @@ namespace Dont_Panic_MVC_API.Controllers
                 jobmodel.description = viewJob.description;
                 jobmodel.jobtype = viewJob.jobtype;
                 jobmodel.title = viewJob.title;
-                jobmodel.username = viewJob.username;
 
                 jobmodel.submitDate = DateTime.Now;
                 
                 switch (viewJob.duration)
                 {
-                    case "24 Hrs":
+                    case "Now (24 Hrs)":
                         jobmodel.expireDate = jobmodel.submitDate.AddDays(1);
                         break;
-                    case "48 Hrs":
+                    case "Soon (48 Hrs)":
                         jobmodel.expireDate = jobmodel.submitDate.AddDays(2);
                         break;
-                    case "72 Hrs":
+                    case "Whenever (72 Hrs +)":
                         jobmodel.expireDate = jobmodel.submitDate.AddDays(3);
                         break;
                     default:
@@ -119,6 +118,7 @@ namespace Dont_Panic_MVC_API.Controllers
 
                 jobmodel.UserId = User.Identity.GetUserId();
                 jobmodel.username = User.Identity.GetUserName();
+                jobmodel.photo = ImageUpload();
                 jobAPI.PostJob(jobmodel);
                 return RedirectToAction("Index");
             }
@@ -127,7 +127,6 @@ namespace Dont_Panic_MVC_API.Controllers
             return View(viewJob);
         }
 
-        [HttpPost]
         public string ImageUpload()
         {
             string path = @"D:\Temp\";
@@ -139,7 +138,6 @@ namespace Dont_Panic_MVC_API.Controllers
             }
             else
             {
-
                 ViewBag.UploadMessage = String.Format("Got image {0} of type {1} and size {2}",
                     image.FileName, image.ContentType, image.ContentLength);
                 // TODO: actually save the image to Azure blob storage
@@ -147,18 +145,18 @@ namespace Dont_Panic_MVC_API.Controllers
                 CloudStorageAccount storageAccount = CloudStorageAccount.Parse(
                     ConfigurationManager.ConnectionStrings["StorageConnectionString"].ConnectionString);
 
-                CloudBlobClient blobStorage = storageAccount.CreateCloudBlobClient();
-                CloudBlobContainer container = blobStorage.GetContainerReference("jobimages");
-                if (container.CreateIfNotExists())
+                var blobStorage = storageAccount.CreateCloudBlobClient();
+                CloudBlobContainer container = blobStorage.GetContainerReference("job-images");
+                if (container.CreateIfNotExist())
                 {
                     // configure container for public access
                     var permissions = container.GetPermissions();
                     permissions.PublicAccess = BlobContainerPublicAccessType.Container;
                     container.SetPermissions(permissions);
                 }
-                string uniqueBlobName = string.Format("jobimages/image_{0}{1}",
+                string uniqueBlobName = string.Format("job-images/image_{0}{1}",
                 Guid.NewGuid().ToString(), Path.GetExtension(image.FileName));
-                CloudBlockBlob blob = container.GetBlockBlobReference(uniqueBlobName);
+                CloudBlockBlob blob = blobStorage.GetBlockBlobReference(uniqueBlobName);
 
                 blob.Properties.ContentType = image.ContentType;
                 blob.UploadFromStream(image.InputStream);

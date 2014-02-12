@@ -26,6 +26,7 @@ namespace Dont_Panic_MVC_API.Models.API_Models
         public string UserId { get; set; }
         [Required]
         public string username { get; set; }
+        public string photo { get; set; }
         [Required]
         public DateTime submitDate { get; set; }
         public DateTime expireDate { get; set; }

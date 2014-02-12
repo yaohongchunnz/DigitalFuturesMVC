@@ -77,15 +77,32 @@
 <div class="container rounded-corners">
     <h2 class="centertext"><font color="#65B5A2">post</font> job</h2>
     <hr />
-    @using (Html.BeginForm("Create", "Job", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+    @using (Html.BeginForm("Create", "Job", FormMethod.Post, new { @class = "form-horizontal", role = "form",enctype = "multipart/form-data" }))
     {
         @Html.AntiForgeryToken()
         @Html.ValidationSummary(true)
         <div class="container-form">
 
             <div class="form-group">
+                @Html.LabelFor(model => model.jobtype, new { @class = "control-label" })
+                <select class="form-control" required id="jobtype" name="jobtype">
+                    <option>Plumbing</option>
+                    <option>Electrical</option>
+                    <option>Business</option>
+                    <option>Crafts</option>
+                    <option>Design and web</option>
+                    <option>Legal</option>
+                    <option>Personal</option>
+                    <option>Pets</option>
+                    <option>Photography</option>
+                    <option>Repair services</option>
+                    <option>Writing/Translation</option>
+                </select>
+            </div>
+
+            <div class="form-group">
                 @Html.LabelFor(model => model.title, new { @class = "control-label" })
-                @Html.TextBoxFor(model => model.title, new { @name = "title", @id = "title", @class = "form-control", @placeholder = "Title of job", @type = "text" })
+                @Html.TextBoxFor(model => model.title, new { @name = "title", @id = "title", @class = "form-control", @type = "text" })
 
             </div>
 
@@ -93,6 +110,9 @@
                 @Html.LabelFor(model => model.description, new { @class = "control-label" })
                 <textarea rows="3" name="description" required id="description" class=" form-control"></textarea>
             </div>
+
+            <div>Please select an image to upload</div>
+            <input name="image" type="file">
 
             <div class="form-group">
                 @Html.LabelFor(model => model.region, new { @class = "control-label" })
@@ -110,32 +130,13 @@
             </div>
 
             <div class="form-group">
-                <label for="jobtype" class="control-label">category</label>
-                <select class="form-control" required id="jobtype" name="jobtype">
-                    <option>Plumbing</option>
-                    <option>Electrical</option>
-                    <option>Business</option>
-                    <option>Crafts</option>
-                    <option>Design and web</option>
-                    <option>Legal</option>
-                    <option>Personal</option>
-                    <option>Pets</option>
-                    <option>Photography</option>
-                    <option>Repair services</option>
-                    <option>Writing/Translation</option>
-                </select>
-            </div>
-
-            <div class="form-group">
                 @Html.LabelFor(model => model.duration, new { @class = "control-label", @id = "durationLbl" })
                 <select class="form-control" required id="duration" name="duration">
-                    <option>24 Hrs</option>
-                    <option>48 Hrs</option>
-                    <option>72 Hrs</option>
+                    <option>Now (24 Hrs)</option>
+                    <option>Soon (48 Hrs)</option>
+                    <option>Whenever (72 Hrs +)</option>
                 </select>
             </div>
-
-
 
             <div class="form-group">
                 <input type="submit" value="Create" class="btn-dontpanic" />
@@ -158,15 +159,6 @@
             </div>
         </div>
     }
-
-    @using (Html.BeginForm("ImageUpload", "Job",
-                FormMethod.Post, new { enctype = "multipart/form-data" }))
-    {
-        <div>Please select an image to upload</div>
-        <input name="image" type="file">
-        <input type="submit" value="Upload Image" />
-    }
-
 
 </div>
 @section Scripts {

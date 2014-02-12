@@ -31,7 +31,14 @@
 
 
                 <div class="row">
-                    <div class="col-md-3"><img src="~/Images/nophotoavailable.jpg" class="img-responsive job-block-image img-rounded" /></div>
+                    @if (item.photo != null)
+                    {
+                        <div class="col-md-3"><img src="@Url.Content(item.photo)" alt="IMAGES" class="img-responsive job-block-image img-rounded" height="150" width="150" /></div>
+                    }
+                    else
+                    {
+                        <div class="col-md-3"><img src="~/Images/nophotoavailable.jpg" class="img-responsive job-block-image img-rounded" /></div>
+                    }
                     <div class="col-md-9">
                         <p class="job-block-title">@Html.ActionLink(item.title, "Details", new { id = item.jobid }, new { @style = "color:#497769;" }) </p>
 

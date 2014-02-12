@@ -10,20 +10,25 @@ namespace Dont_Panic_MVC_API.Models
     public class ViewJob
     {
         [Required]
+        [Display(Name = "What type of job do you have?")]
+        public string jobtype { get; set; }
+        [Required]
+        [Display(Name = "What exactly is your job?")]
         public string title { get; set; }
         [Required]
+        [Display(Name = "Tell us about it")]
         public string description { get; set; }
         [Required]
-        public string jobtype { get; set; }
-        [Required]        
-        public string username { get; set; }
-        [Required]        
+        [Display(Name = "Where are you?")]
         public int region { get; set; }
-        [Required]        
+        [Required]
+        [Display(Name = "Where abouts?")]
         public int district { get; set; }
-        [Required]        
+        [Required]
+        [Display(Name = "Specifically?")]
         public int suburb { get; set; }
         [Required]
+        [Display(Name = "When do you want your job done?")]
         public string duration { get; set; }
     }
 
