@@ -204,49 +204,17 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201401220022369_InitialCreate.cs" />
-    <Compile Include="Migrations\201401220022369_InitialCreate.Designer.cs">
-      <DependentUpon>201401220022369_InitialCreate.cs</DependentUpon>
+    <Compile Include="Migrations\201402162225026_inital.cs" />
+    <Compile Include="Migrations\201402162225026_inital.Designer.cs">
+      <DependentUpon>201402162225026_inital.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201401220038444_test.cs" />
-    <Compile Include="Migrations\201401220038444_test.Designer.cs">
-      <DependentUpon>201401220038444_test.cs</DependentUpon>
+    <Compile Include="Migrations\201402162229473_inital2.cs" />
+    <Compile Include="Migrations\201402162229473_inital2.Designer.cs">
+      <DependentUpon>201402162229473_inital2.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201401222242240_deleted User.cs" />
-    <Compile Include="Migrations\201401222242240_deleted User.Designer.cs">
-      <DependentUpon>201401222242240_deleted User.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201401240227384_addDatestoJob.cs" />
-    <Compile Include="Migrations\201401240227384_addDatestoJob.Designer.cs">
-      <DependentUpon>201401240227384_addDatestoJob.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201401272154138_serviceproviders.cs" />
-    <Compile Include="Migrations\201401272154138_serviceproviders.Designer.cs">
-      <DependentUpon>201401272154138_serviceproviders.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201401280021120_update-database.cs" />
-    <Compile Include="Migrations\201401280021120_update-database.Designer.cs">
-      <DependentUpon>201401280021120_update-database.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201402030150086_qwerty.cs" />
-    <Compile Include="Migrations\201402030150086_qwerty.Designer.cs">
-      <DependentUpon>201402030150086_qwerty.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201402070055581_dscsc.cs" />
-    <Compile Include="Migrations\201402070055581_dscsc.Designer.cs">
-      <DependentUpon>201402070055581_dscsc.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201402070248472_dscscd.cs" />
-    <Compile Include="Migrations\201402070248472_dscscd.Designer.cs">
-      <DependentUpon>201402070248472_dscscd.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201402102344116_jobfixed.cs" />
-    <Compile Include="Migrations\201402102344116_jobfixed.Designer.cs">
-      <DependentUpon>201402102344116_jobfixed.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201402120127582_photo-single.cs" />
-    <Compile Include="Migrations\201402120127582_photo-single.Designer.cs">
-      <DependentUpon>201402120127582_photo-single.cs</DependentUpon>
+    <Compile Include="Migrations\201402162231417_qwerty.cs" />
+    <Compile Include="Migrations\201402162231417_qwerty.Designer.cs">
+      <DependentUpon>201402162231417_qwerty.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
@@ -349,38 +317,14 @@
     <None Include="Project_Readme.html" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201401220022369_InitialCreate.resx">
-      <DependentUpon>201401220022369_InitialCreate.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201402162225026_inital.resx">
+      <DependentUpon>201402162225026_inital.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201401220038444_test.resx">
-      <DependentUpon>201401220038444_test.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201402162229473_inital2.resx">
+      <DependentUpon>201402162229473_inital2.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201401222242240_deleted User.resx">
-      <DependentUpon>201401222242240_deleted User.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201401240227384_addDatestoJob.resx">
-      <DependentUpon>201401240227384_addDatestoJob.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201401272154138_serviceproviders.resx">
-      <DependentUpon>201401272154138_serviceproviders.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201401280021120_update-database.resx">
-      <DependentUpon>201401280021120_update-database.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201402030150086_qwerty.resx">
-      <DependentUpon>201402030150086_qwerty.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201402070055581_dscsc.resx">
-      <DependentUpon>201402070055581_dscsc.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201402070248472_dscscd.resx">
-      <DependentUpon>201402070248472_dscscd.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201402102344116_jobfixed.resx">
-      <DependentUpon>201402102344116_jobfixed.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201402120127582_photo-single.resx">
-      <DependentUpon>201402120127582_photo-single.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201402162231417_qwerty.resx">
+      <DependentUpon>201402162231417_qwerty.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

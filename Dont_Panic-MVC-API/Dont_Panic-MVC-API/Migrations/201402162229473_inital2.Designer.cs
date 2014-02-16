@@ -7,13 +7,13 @@ namespace Dont_Panic_MVC_API.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.0.2-21211")]
-    public sealed partial class InitialCreate : IMigrationMetadata
+    public sealed partial class inital2 : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(InitialCreate));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(inital2));
         
         string IMigrationMetadata.Id
         {
-            get { return "201401220022369_InitialCreate"; }
+            get { return "201402162229473_inital2"; }
         }
         
         string IMigrationMetadata.Source

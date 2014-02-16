@@ -7,13 +7,13 @@ namespace Dont_Panic_MVC_API.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.0.2-21211")]
-    public sealed partial class dscscd : IMigrationMetadata
+    public sealed partial class inital : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(dscscd));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(inital));
         
         string IMigrationMetadata.Id
         {
-            get { return "201402070248472_dscscd"; }
+            get { return "201402162225026_inital"; }
         }
         
         string IMigrationMetadata.Source

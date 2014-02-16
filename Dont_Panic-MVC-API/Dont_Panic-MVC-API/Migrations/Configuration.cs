@@ -10,7 +10,6 @@ namespace Dont_Panic_MVC_API.Migrations
         public Configuration()
         {
             AutomaticMigrationsEnabled = false;
-            ContextKey = "Dont_Panic_MVC_API.Models.JobAPIContext";
         }
 
         protected override void Seed(Dont_Panic_MVC_API.Models.APIContext context)

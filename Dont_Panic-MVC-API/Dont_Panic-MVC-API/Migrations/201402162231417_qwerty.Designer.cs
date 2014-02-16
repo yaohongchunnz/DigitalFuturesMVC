@@ -7,13 +7,13 @@ namespace Dont_Panic_MVC_API.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.0.2-21211")]
-    public sealed partial class test : IMigrationMetadata
+    public sealed partial class qwerty : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(test));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(qwerty));
         
         string IMigrationMetadata.Id
         {
-            get { return "201401220038444_test"; }
+            get { return "201402162231417_qwerty"; }
         }
         
         string IMigrationMetadata.Source
