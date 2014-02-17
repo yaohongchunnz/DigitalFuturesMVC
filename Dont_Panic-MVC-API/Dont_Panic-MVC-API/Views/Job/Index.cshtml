@@ -10,16 +10,30 @@
     <br />
     @if (Model.Count() == 0)
     {
-        <p>
-            You currently have no jobs. @Html.ActionLink("Post a job now.", "Create", new { @style = "color:#65B5A2;" })
-        </p>
+        <div class="row">
+            <div class="col-md-6">
+                <p>
+                    You currently have no jobs active. @Html.ActionLink("Post a job now.", "Create", new { @style = "color:#65B5A2;" })
+                </p>
+            </div>
+            <div class="col-md-6">
+                <input type="button" onclick="location.href='/Job/Previous'" value="previous jobs" class="btn-dontpanic" />
+            </div>
+        </div>
 
     }
     else
     {
-        <p>
-            <input type="button" onclick="location.href='/Job/Create'" value="post a job" class="btn-dontpanic" />
-        </p>
+        <div class="row">
+            <div class="col-md-6">
+                <p>
+                    <input type="button" onclick="location.href='/Job/Create'" value="post a job" class="btn-dontpanic" />
+                </p>
+            </div>
+            <div class="col-md-6">
+                <input type="button" onclick="location.href='/Job/Previous'" value="previous jobs" class="btn-dontpanic" />
+            </div>
+        </div>
     }
     <br />
     @foreach (var item in Model)
@@ -31,9 +45,9 @@
 
 
                 <div class="row">
-                    @if (item.photo != null)
+                    @if (item.photo != "")
                     {
-                        <div class="col-md-3"><img src="{{ item.imageURL }}@Url.Content(item.photo)" alt="IMAGES" class="img-responsive job-block-image img-rounded" height="150" width="150" /></div>
+                        <div class="col-md-3"><img src="@Url.Content(item.photo)" onclick="goImgWin(@Url.Content(item.photo),240,302,100,50)" alt="~/Images/nophotoavailable.jpg" class="img-responsive job-block-image img-rounded" height="150" width="150" /></div>
                     }
                     else
                     {
