@@ -16,7 +16,8 @@
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <MvcBuildViews>false</MvcBuildViews>
     <UseIISExpress>true</UseIISExpress>
-    <IISExpressSSLPort />
+    <IISExpressSSLPort>
+    </IISExpressSSLPort>
     <IISExpressAnonymousAuthentication />
     <IISExpressWindowsAuthentication />
     <IISExpressUseClassicPipelineMode />
@@ -204,17 +205,9 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201402162225026_inital.cs" />
-    <Compile Include="Migrations\201402162225026_inital.Designer.cs">
-      <DependentUpon>201402162225026_inital.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201402162229473_inital2.cs" />
-    <Compile Include="Migrations\201402162229473_inital2.Designer.cs">
-      <DependentUpon>201402162229473_inital2.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201402162231417_qwerty.cs" />
-    <Compile Include="Migrations\201402162231417_qwerty.Designer.cs">
-      <DependentUpon>201402162231417_qwerty.cs</DependentUpon>
+    <Compile Include="Migrations\201402172220165_servicejob.cs" />
+    <Compile Include="Migrations\201402172220165_servicejob.Designer.cs">
+      <DependentUpon>201402172220165_servicejob.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
@@ -317,14 +310,8 @@
     <None Include="Project_Readme.html" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201402162225026_inital.resx">
-      <DependentUpon>201402162225026_inital.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201402162229473_inital2.resx">
-      <DependentUpon>201402162229473_inital2.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201402162231417_qwerty.resx">
-      <DependentUpon>201402162231417_qwerty.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201402172220165_servicejob.resx">
+      <DependentUpon>201402172220165_servicejob.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
