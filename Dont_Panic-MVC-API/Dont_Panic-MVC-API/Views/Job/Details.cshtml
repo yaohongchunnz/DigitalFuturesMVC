@@ -17,7 +17,7 @@
 
 
         <div class="row">
-            @if (Model.photo != null)
+            @if (Model.photo != "")
             {
                 <div class="col-md-3"><img src="@Url.Content(Model.photo)" alt="IMAGES" class="img-responsive job-block-image img-rounded" height="150" width="150" /></div>
             }

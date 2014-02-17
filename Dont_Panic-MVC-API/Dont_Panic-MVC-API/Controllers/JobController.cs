@@ -132,12 +132,14 @@ namespace Dont_Panic_MVC_API.Controllers
             string path = @"D:\Temp\";
 
             var image = Request.Files["image"];
-            if (image == null)
+            if (image == null || image.ContentLength <= 0)
             {
-                ViewBag.UploadMessage = "Failed to upload image";
+                
+                return "";
             }
             else
             {
+
                 ViewBag.UploadMessage = String.Format("Got image {0} of type {1} and size {2}",
                     image.FileName, image.ContentType, image.ContentLength);
                 // TODO: actually save the image to Azure blob storage
@@ -165,7 +167,7 @@ namespace Dont_Panic_MVC_API.Controllers
 
 
              }
-            return "Error";
+            return "";
         }
 
 

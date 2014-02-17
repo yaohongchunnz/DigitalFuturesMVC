@@ -32,5 +32,13 @@ namespace Dont_Panic_MVC_API.Models.API_Models
         public DateTime expireDate { get; set; }
     }
 
+    public class JobService
+    {
+        [Key]
+        public int id { get; set; }
+        public int jobid { get; set; }
+        public int serviceProviderId { get; set; }
+    }
+
    
 }
