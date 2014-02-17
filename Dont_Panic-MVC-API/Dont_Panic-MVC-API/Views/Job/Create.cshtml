@@ -81,6 +81,7 @@
                 sessionStorage.jobdistrictselection = document.getElementById("district").value;
                 sessionStorage.jobsuburbselection = document.getElementById("suburb").value;
                 sessionStorage.jobduration = document.getElementById("duration").value;
+                alert("saved");
             }
         }
         else {
@@ -177,8 +178,10 @@
                 <textarea rows="3" name="description" required id="description" class=" form-control"></textarea>
             </div>
 
-            <div>Please select an image to upload</div>
-            <input name="image" type="file">
+            <div class="form-group">
+               <label class="control-label">What does it look like?</label>
+                <input name="image" type="file">
+            </div>
 
             <div class="form-group">
                 @Html.LabelFor(model => model.region, new { @class = "control-label" })
