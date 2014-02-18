@@ -43,6 +43,11 @@ namespace Dont_Panic_MVC_API.Controllers
         [Authorize]
         public ActionResult Index()
         {
+            if (User.IsInRole("Provider"))
+            {
+                JobServiceAPI api = new JobServiceAPI();
+                return View(api.getProvidersJobs(User.Identity.GetUserId()).ToList());
+            }
             return View(jobAPI.GetUserJobs(User.Identity.GetUserId()).ToList());
         }
 
@@ -75,7 +80,6 @@ namespace Dont_Panic_MVC_API.Controllers
                 servicejob.jobid = jobid;
                 servicejob.serviceProviderId = User.Identity.GetUserId();
                 db.jobService.Add(servicejob);
-
             }
             return RedirectToAction("Index");
         }
