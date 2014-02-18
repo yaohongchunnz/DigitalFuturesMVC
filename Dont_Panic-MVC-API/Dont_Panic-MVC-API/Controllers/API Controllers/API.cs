@@ -96,4 +96,19 @@ namespace Dont_Panic_MVC_API.Controllers.API_Controllers
             return db.Jobs.Count(e => e.jobid == id) > 0;
         }
     }
+
+
+    public class JobServiceAPI
+    {
+        private APIContext db = new APIContext();
+
+        public IQueryable<JobService> getProvidersJobs(string providerId){
+            return db.jobService.Where(j => j.serviceProviderId == providerId);
+        }
+
+        public IQueryable<JobService> getJobsProviders(int jobid)
+        {
+            return db.jobService.Where(j => j.jobid == jobid);
+        }
+    }
 }
