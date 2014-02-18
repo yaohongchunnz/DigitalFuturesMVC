@@ -12,7 +12,6 @@ using Newtonsoft.Json;
 using Dont_Panic_MVC_API.Controllers.API_Controllers;
 using System.Web.Mvc;
 using Microsoft.AspNet.Identity;
-
 using Microsoft.WindowsAzure;
 using Microsoft.WindowsAzure.StorageClient;
 
@@ -61,6 +60,24 @@ namespace Dont_Panic_MVC_API.Controllers
                 return HttpNotFound();
             }
             return View(job);
+        }
+
+        // POST: /Job/AcquireLead
+        public ActionResult AcquireLead(int jobid)
+        {
+            Job job = jobAPI.GetJob(jobid);
+            if (job.leadsAccquired < 3)
+            {
+                job.leadsAccquired = job.leadsAccquired + 1;
+                APIContext db = new APIContext();
+
+                JobService servicejob = new JobService();
+                servicejob.jobid = jobid;
+                servicejob.serviceProviderId = User.Identity.GetUserId();
+                db.jobService.Add(servicejob);
+
+            }
+            return RedirectToAction("Index");
         }
 
         // GET: /Job/Create
