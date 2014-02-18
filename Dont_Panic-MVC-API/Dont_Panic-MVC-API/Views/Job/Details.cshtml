@@ -32,18 +32,21 @@
 
                 <div class="row">
                     <div class="job-block-detail-left col-md-6">
-                            <p class="text-primary">
-                                Category: @Model.jobtype<br />Located in: @Model.region<br />
-                                Posted by: @Model.username
-                            </p>
+                        <p class="text-primary">
+                            Category: @Model.jobtype<br />Located in: @Model.region<br />
+                            Posted by: @Model.username
+                        </p>
 
                     </div>
                     <div class="job-block-detail-right col-md-6">
                         @if (User.Identity.IsAuthenticated)
                         {
-                            if (im.UserContainsRole(User.Identity.GetUserId(), "Provider"))
+                            if (User.IsInRole("Provider"))
                             {
-                                <input type="button" onclick="location.href='/Job/Details/@Model.jobid'" value="Buy Job" class="btn-dontpanic" />
+                                using (Html.BeginForm("AcquireLead", "Job"))
+                                {
+                                    <input type="button" onclick="location.href='/Job/Details/@Model.jobid'" value="Buy Job" class="btn-dontpanic" />
+                                }
 
                             }
                             else
