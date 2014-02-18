@@ -45,8 +45,8 @@
                             {
                                 using (Html.BeginForm("AcquireLead", "Job",FormMethod.Post))
                                 {
-                                    @Html.Hidden("jobId", @Model.jobid);
-                                    <input type="button" onclick="location.href='/Job/Details/@Model.jobid'" value="Buy Job" class="btn-dontpanic" />
+                                    @Html.Hidden("jobid", @Model.jobid);
+                                    <input type="submit" value="Buy Job" class="btn-dontpanic" />
                                 }
                             }
                             else
