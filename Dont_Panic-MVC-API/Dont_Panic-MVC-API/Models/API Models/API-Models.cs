@@ -30,6 +30,7 @@ namespace Dont_Panic_MVC_API.Models.API_Models
         [Required]
         public DateTime submitDate { get; set; }
         public DateTime expireDate { get; set; }
+        public int leadsAccquired { get; set; }
     }
 
     public class JobService
@@ -37,7 +38,7 @@ namespace Dont_Panic_MVC_API.Models.API_Models
         [Key]
         public int id { get; set; }
         public int jobid { get; set; }
-        public int serviceProviderId { get; set; }
+        public string serviceProviderId { get; set; }
     }
 
    

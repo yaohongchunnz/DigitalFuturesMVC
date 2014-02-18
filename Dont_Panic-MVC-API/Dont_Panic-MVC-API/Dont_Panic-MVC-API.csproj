@@ -209,6 +209,10 @@
     <Compile Include="Migrations\201402172220165_servicejob.Designer.cs">
       <DependentUpon>201402172220165_servicejob.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201402172352141_leads.cs" />
+    <Compile Include="Migrations\201402172352141_leads.Designer.cs">
+      <DependentUpon>201402172352141_leads.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\API Models\API-Models.cs" />
@@ -312,6 +316,9 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\201402172220165_servicejob.resx">
       <DependentUpon>201402172220165_servicejob.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201402172352141_leads.resx">
+      <DependentUpon>201402172352141_leads.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
