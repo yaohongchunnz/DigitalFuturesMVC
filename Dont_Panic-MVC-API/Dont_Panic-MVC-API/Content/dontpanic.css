@@ -162,6 +162,10 @@
     float: right;
 }
 
+.postajob-center{
+    text-align:left;
+}
+
 .postajob-title {
     background-color: #497769;
     margin: 0 auto;
@@ -250,7 +254,11 @@
     }
 
     .postajob-body {
-        float: none;
+        float:none;
+    }
+
+    postajob-center{
+        margin:0 auto;
     }
 }
 
