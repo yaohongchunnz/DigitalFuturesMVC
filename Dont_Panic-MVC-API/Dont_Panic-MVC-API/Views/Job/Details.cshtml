@@ -1,9 +1,8 @@
 ﻿@model Dont_Panic_MVC_API.Models.API_Models.Job
-@using Microsoft.AspNet.Identity;
 @{
     ViewBag.Title = "Job Details";
 }
-
+@using Microsoft.AspNet.Identity;
 @{
     Dont_Panic_MVC_API.API_Models.IdentityManager im = new Dont_Panic_MVC_API.API_Models.IdentityManager();
 
@@ -41,7 +40,7 @@
                     <div class="job-block-detail-right col-md-6">
                         @if (User.Identity.IsAuthenticated)
                         {
-                            if (User.IsInRole("Provider"))
+                            if (im.UserContainsRole(User.Identity.GetUserId(),"Provider"))
                             {
                                 using (Html.BeginForm("AcquireLead", "Job",FormMethod.Post))
                                 {
