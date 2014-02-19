@@ -1,98 +1,87 @@
 ﻿@model IEnumerable<Dont_Panic_MVC_API.Models.API_Models.Job>
-@using Dont_Panic_MVC_API.API_Models;
-@using Microsoft.AspNet.Identity;
 
 @{
     ViewBag.Title = "Your jobs";
-    IdentityManager im = new IdentityManager();
 }
 
 <br />
 <div class="container drop-shadow browse-jobs-block">
     <h3 class="centertext"><font color="#65B5A2">your</font> jobs</h3>
     <br />
-    <div class="job-block drop-shadow-lite">
+    @if (Model.Count() == 0)
+    {
+        <p>
+            You currently have no jobs active. @Html.ActionLink("Post a job now.", "Create", new { @style = "color:#65B5A2;" })
+        </p>
 
+    }
+    @foreach (var item in Model)
+    {
 
-        <div class="row">
-            @if (im.UserContainsRole(User.Identity.GetUserId(), "User"))
-            {
+        if (item.expireDate > DateTime.Now)
+        {
+            <div class="job-block drop-shadow-lite">
+                <div class="row">
 
-                if (Model.Count() == 0)
-                {
-                    <p>
-                        You currently have no jobs active. @Html.ActionLink("Post a job now.", "Create", new { @style = "color:#65B5A2;" })
-                    </p>
-
-                }
-                <br />
-                foreach (var item in Model)
-                {
-
-                    if (item.expireDate > DateTime.Now)
+                    <br />
+                    @if (item.photo != "")
                     {
-                        if (item.photo != "")
-                        {
-                            <div class="col-md-3"><img src="@Url.Content(item.photo)" alt="~/Images/nophotoavailable.jpg" class="img-responsive job-block-image img-rounded" height="150" width="150" /></div>
-                        }
-                        else
-                        {
-                            <div class="col-md-3"><img src="~/Images/nophotoavailable.jpg" class="img-responsive job-block-image img-rounded" /></div>
-                        }
-                        <div class="col-md-9">
-                            <p class="job-block-title">@Html.ActionLink(item.title, "Details", new { id = item.jobid }, new { @style = "color:#497769;" }) </p>
+                    <div class="col-md-3"><img src="@Url.Content(item.photo)" alt="~/Images/nophotoavailable.jpg" class="img-responsive job-block-image img-rounded" height="150" width="150" /></div>
+                    }
+                    else
+                    {
+                    <div class="col-md-3"><img src="~/Images/nophotoavailable.jpg" class="img-responsive job-block-image img-rounded" /></div>
+                    }
+                    <div class="col-md-9">
+                        <p class="job-block-title">@Html.ActionLink(item.title, "Details", new { id = item.jobid }, new { @style = "color:#497769;" }) </p>
 
-                            <p style="font-size:14px">@item.description</p>
+                        <p style="font-size:14px">@item.description</p>
 
-                            <div class="row">
-                                <div class="job-block-detail-left col-md-6">
-                                    <p class="text-primary" style="font-size:12px">Category: @item.jobtype<br />Located in: @item.region</p>
-                                </div>
-                                <div class="job-block-detail-right col-md-6">
+                        <div class="row">
+                            <div class="job-block-detail-left col-md-6">
+                                <p class="text-primary" style="font-size:12px">Category: @item.jobtype<br />Located in: @item.region</p>
+                            </div>
+                            <div class="job-block-detail-right col-md-6">
 
-                                    <input type="button" onclick="location.href='/Job/Details/@item.jobid'" value="View Job" class="btn-dontpanic" />
-                                    @{
-                        TimeSpan timeSincePost = DateTime.Now - item.submitDate;
-                        string agoText;
-                                    }
-                                    @if (timeSincePost.Minutes > 1 && timeSincePost.Hours < 1)
-                                    {
-                                        agoText = timeSincePost.Minutes.ToString() + " minutes ago";
-                                    }
-                                    else if (timeSincePost.Minutes == 1)
-                                    {
-                                        agoText = timeSincePost.Minutes.ToString() + " minutes ago";
-                                    }
-                                    else if (timeSincePost.Minutes < 1)
-                                    {
-                                        agoText = "less than a minute ago";
-                                    }
-                                    else if (timeSincePost.Hours > 1)
-                                    {
-                                        agoText = timeSincePost.Hours.ToString() + "hrs ago";
-                                    }
-                                    else if (timeSincePost.Hours == 1)
-                                    {
-                                        agoText = "an hr ago";
-                                    }
-                                    else
-                                    {
-                                        agoText = "less than an hr ago";
-                                    }
-                                    <p class="text-primary" style="font-size:12px">Posted: @agoText</p>
-                                </div>
+                                <input type="button" onclick="location.href='/Job/Details/@item.jobid'" value="View Job" class="btn-dontpanic" />
+                                @{
+            TimeSpan timeSincePost = DateTime.Now - item.submitDate;
+            string agoText;
+                                }
+                                @if (timeSincePost.Minutes > 1 && timeSincePost.Hours < 1)
+                                {
+                                    agoText = timeSincePost.Minutes.ToString() + " minutes ago";
+                                }
+                                else if (timeSincePost.Minutes == 1)
+                                {
+                                    agoText = timeSincePost.Minutes.ToString() + " minutes ago";
+                                }
+                                else if (timeSincePost.Minutes < 1)
+                                {
+                                    agoText = "less than a minute ago";
+                                }
+                                else if (timeSincePost.Hours > 1)
+                                {
+                                    agoText = timeSincePost.Hours.ToString() + "hrs ago";
+                                }
+                                else if (timeSincePost.Hours == 1)
+                                {
+                                    agoText = "an hr ago";
+                                }
+                                else
+                                {
+                                    agoText = "less than an hr ago";
+                                }
+                                <p class="text-primary" style="font-size:12px">Posted: @agoText</p>
                             </div>
                         </div>
-                    }
-                }
+                    </div>
+                </div>
 
-            }
-            else if (im.UserContainsRole(User.Identity.GetUserId(), "Provider"))
-            {
+            </div>
+            <br />
+        }
 
-            }
-        </div>
+    }
 
-    </div>
-    <br />
 </div>

@@ -91,7 +91,7 @@ namespace Dont_Panic_MVC_API.Controllers
                 servicejob.serviceProviderId = User.Identity.GetUserId();
                 db.jobService.Add(servicejob);
             }
-            return RedirectToAction("Index");
+            return RedirectToAction("/");
         }
 
         // GET: /Job/Create

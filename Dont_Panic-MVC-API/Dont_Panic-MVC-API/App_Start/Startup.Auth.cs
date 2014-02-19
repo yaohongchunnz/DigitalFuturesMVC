@@ -29,8 +29,8 @@ namespace Dont_Panic_MVC_API
             //   consumerSecret: "");
 
             app.UseFacebookAuthentication(
-               appId: "1381481832093337",
-               appSecret: "259e7fba8dccd37724e829ed74560933");
+               appId: "296331607187465",
+               appSecret: "02b75e6a734d259a51af18e7aa887ae7");
 
             //app.UseGoogleAuthentication();
         }

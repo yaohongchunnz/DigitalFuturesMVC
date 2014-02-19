@@ -55,91 +55,80 @@ else
     <br />
     @foreach (var item in Model)
     {
-        <div class="job-block drop-shadow-lite">
+
+        if (!(DateTime.Now > item.expireDate))
+        {
+            <div class="job-block drop-shadow-lite">
 
 
-            <div class="row">
+                <div class="row">
 
-                @if (item.photo != "")
-                {
+                    @if (item.photo != "")
+                    {
                     <div class="col-md-3"><img src="@Url.Content(item.photo)" alt="IMAGES" class="img-responsive job-block-image img-rounded" height="150" width="150" /></div>
-                }
-                else
-                {
-                    <div class="col-md-3"><img src="~/Images/nophotoavailable.jpg" class="img-responsive job-block-image img-rounded" /></div>
-                }
-
-                <div class="col-md-9">
-                    <p class="job-block-title">@Html.ActionLink(item.title, "Details", new { id = item.jobid }, new { @style = "color:#497769;" }) </p>
-                    @{
-                var descript = item.description;
-                if (descript.Length > 50)
-                {
-                    descript = descript.Substring(0, 50) + "...";
-                }
                     }
-                    <p style="font-size:14px">@descript</p>
+                    else
+                    {
+                    <div class="col-md-3"><img src="~/Images/nophotoavailable.jpg" class="img-responsive job-block-image img-rounded" /></div>
+                    }
 
-                    <div class="row">
-                        <div class="job-block-detail-left col-md-6">
-                            <p class="text-primary" style="font-size:12px">Category: @item.jobtype<br />Located in: @item.region</p>
-                        </div>
-                        <div class="job-block-detail-right col-md-6">
+                    <div class="col-md-9">
+                        <p class="job-block-title">@Html.ActionLink(item.title, "Details", new { id = item.jobid }, new { @style = "color:#497769;" }) </p>
+                        @{
+            var descript = item.description;
+            if (descript.Length > 50)
+            {
+                descript = descript.Substring(0, 50) + "...";
+            }
+                        }
+                        <p style="font-size:14px">@descript</p>
 
-                            <input type="button" onclick="location.href='/Job/Details/@item.jobid'" value="View Job" class="btn-dontpanic" />
-                            @{
-                TimeSpan timeSincePost = DateTime.Now - item.submitDate;
-                string agoText;
-                            }
-                            @if (timeSincePost.Minutes > 1 && timeSincePost.Hours < 1)
-                            {
-                                agoText = timeSincePost.Minutes.ToString() + " minutes ago";
-                            }
-                            else if (timeSincePost.Minutes == 1)
-                            {
-                                agoText = timeSincePost.Minutes.ToString() + " minutes ago";
-                            }
-                            else if (timeSincePost.Minutes < 1)
-                            {
-                                agoText = "less than a minute ago";
-                            }
-                            else if (timeSincePost.Hours > 1)
-                            {
-                                agoText = timeSincePost.Hours.ToString() + "hrs ago";
-                            }
-                            else if (timeSincePost.Hours == 1)
-                            {
-                                agoText = "an hr ago";
-                            }
-                            else
-                            {
-                                agoText = "less than an hr ago";
-                            }
-                            <p class="text-primary" style="font-size:12px">Posted: @agoText</p>
+                        <div class="row">
+                            <div class="job-block-detail-left col-md-6">
+                                <p class="text-primary" style="font-size:12px">Category: @item.jobtype<br />Located in: @item.region<br />Leads remaining: @{int remain = 3 - @item.leadsAccquired;}@remain</p>
+                            </div>
+                            <div class="job-block-detail-right col-md-6">
 
+                                <input type="button" onclick="location.href='/Job/Details/@item.jobid'" value="View Job" class="btn-dontpanic" />
+                                @{
+                                TimeSpan timeSincePost = DateTime.Now - item.submitDate;
+                                string agoText;
+                                }
+                                @if (timeSincePost.Minutes > 1 && timeSincePost.Hours < 1)
+                                {
+                                    agoText = timeSincePost.Minutes.ToString() + " minutes ago";
+                                }
+                                else if (timeSincePost.Minutes == 1)
+                                {
+                                    agoText = timeSincePost.Minutes.ToString() + " minutes ago";
+                                }
+                                else if (timeSincePost.Minutes < 1)
+                                {
+                                    agoText = "less than a minute ago";
+                                }
+                                else if (timeSincePost.Hours > 1)
+                                {
+                                    agoText = timeSincePost.Hours.ToString() + "hrs ago";
+                                }
+                                else if (timeSincePost.Hours == 1)
+                                {
+                                    agoText = "an hr ago";
+                                }
+                                else
+                                {
+                                    agoText = "less than an hr ago";
+                                }
+                                <p class="text-primary" style="font-size:12px">Posted: @agoText</p>
+
+                            </div>
                         </div>
                     </div>
+
                 </div>
-                <!---
-                <div class="col-md-4">
-                    <p class="text-primary" style="font-size:12px">Category: @item.jobtype</p>
-                </div>
-                <div class="col-md-4">
-                    <p class="text-primary" style="font-size:12px">Located in: @item.region</p>
-                </div>
-                <div class="col-md-4">
-                    <p class="text-primary" style="font-size:12px">Posted by: @item.username</p>
-                </div>
-                <div class="col-md-4">
-                    <p class="text-info" style="font-size:12px">Created on: @item.submitDate</p>
-                </div>
-                <div class="col-md-4">
-                    <p class="text-info" style="font-size:12px">Expires on: @item.expireDate</p>
-                </div>
-                    -->
+
             </div>
 
-        </div>
+        }
         <br />
     }
 </div>
