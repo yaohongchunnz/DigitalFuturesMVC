@@ -31,12 +31,12 @@
     <br />
     @foreach (var item in Model)
     {
-        @if (item.expireDate < DateTime.Now)
+        if (item.expireDate < DateTime.Now)
         {
             <div class="job-block drop-shadow-lite">
 
                 <div class="row">
-                    if (item.photo != "")
+                    @if (item.photo != "")
                     {
                     <div class="col-md-3"><img src="@Url.Content(item.photo)" alt="IMAGES" class="img-responsive job-block-image img-rounded" height="150" width="150" /></div>
                     }
