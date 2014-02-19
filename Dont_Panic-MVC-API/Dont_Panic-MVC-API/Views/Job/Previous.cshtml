@@ -1,7 +1,10 @@
 ﻿@model IEnumerable<Dont_Panic_MVC_API.Models.API_Models.Job>
+@using Dont_Panic_MVC_API.API_Models;
+@using Microsoft.AspNet.Identity;
 
 @{
     ViewBag.Title = "Previous Jobs";
+    IdentityManager im = new IdentityManager();
 }
 
 
@@ -12,11 +15,11 @@
     <div class="job-block drop-shadow-lite">
 
         <div class="row">
-            @if (User.IsInRole("User"))
-            {
+@if (im.UserContainsRole(User.Identity.GetUserId(), "User"))
+{
 
-                if (Model.Count() == 0)
-                {
+    if (Model.Count() == 0)
+    {
                     <p>
                         You have no previous jobs. @Html.ActionLink("Post a new job now.", "Create", new { @style = "color:#65B5A2;" })
                     </p>

@@ -17,6 +17,7 @@ using Microsoft.WindowsAzure.StorageClient;
 
 using System.Configuration;
 using System.IO;
+using Dont_Panic_MVC_API.API_Models;
 
 namespace Dont_Panic_MVC_API.Controllers
 
@@ -43,10 +44,19 @@ namespace Dont_Panic_MVC_API.Controllers
         [Authorize]
         public ActionResult Index()
         {
-            if (User.IsInRole("Provider"))
+            IdentityManager im = new IdentityManager();
+
+            if (im.UserContainsRole(User.Identity.GetUserId(),"Provider"))
             {
                 JobServiceAPI api = new JobServiceAPI();
-                return View(api.getProvidersJobs(User.Identity.GetUserId()).ToList());
+                IQueryable<JobService> jobServices = api.getProvidersJobs(User.Identity.GetUserId());
+                    
+                List<Job> jobs = new List<Job>();
+                APIContext context = new APIContext();
+                foreach(var jobService in jobServices){
+                    jobs.Add(context.Jobs.First(i => i.jobid == jobService.jobid));
+                }
+                return View(jobs);            
             }
             return View(jobAPI.GetUserJobs(User.Identity.GetUserId()).ToList());
         }
