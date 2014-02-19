@@ -8,29 +8,29 @@
 <div class="container drop-shadow browse-jobs-block">
     <h3 class="centertext"><font color="#65B5A2">your</font> jobs</h3>
     <br />
-    <div class="job-block drop-shadow-lite">
-        <div class="row">
+    @if (Model.Count() == 0)
+    {
+        <p>
+            You currently have no jobs active. @Html.ActionLink("Post a job now.", "Create", new { @style = "color:#65B5A2;" })
+        </p>
 
-            @if (Model.Count() == 0)
-            {
-                <p>
-                    You currently have no jobs active. @Html.ActionLink("Post a job now.", "Create", new { @style = "color:#65B5A2;" })
-                </p>
+    }
+    @foreach (var item in Model)
+    {
 
-            }
-            <br />
-            @foreach (var item in Model)
-            {
+        if (item.expireDate > DateTime.Now)
+        {
+            <div class="job-block drop-shadow-lite">
+                <div class="row">
 
-                if (item.expireDate > DateTime.Now)
-                {
-                    if (item.photo != "")
+                    <br />
+                    @if (item.photo != "")
                     {
-                        <div class="col-md-3"><img src="@Url.Content(item.photo)" alt="~/Images/nophotoavailable.jpg" class="img-responsive job-block-image img-rounded" height="150" width="150" /></div>
+                    <div class="col-md-3"><img src="@Url.Content(item.photo)" alt="~/Images/nophotoavailable.jpg" class="img-responsive job-block-image img-rounded" height="150" width="150" /></div>
                     }
                     else
                     {
-                        <div class="col-md-3"><img src="~/Images/nophotoavailable.jpg" class="img-responsive job-block-image img-rounded" /></div>
+                    <div class="col-md-3"><img src="~/Images/nophotoavailable.jpg" class="img-responsive job-block-image img-rounded" /></div>
                     }
                     <div class="col-md-9">
                         <p class="job-block-title">@Html.ActionLink(item.title, "Details", new { id = item.jobid }, new { @style = "color:#497769;" }) </p>
@@ -45,8 +45,8 @@
 
                                 <input type="button" onclick="location.href='/Job/Details/@item.jobid'" value="View Job" class="btn-dontpanic" />
                                 @{
-                    TimeSpan timeSincePost = DateTime.Now - item.submitDate;
-                    string agoText;
+            TimeSpan timeSincePost = DateTime.Now - item.submitDate;
+            string agoText;
                                 }
                                 @if (timeSincePost.Minutes > 1 && timeSincePost.Hours < 1)
                                 {
@@ -76,12 +76,12 @@
                             </div>
                         </div>
                     </div>
-                }
-            }
+                </div>
 
-            }
-        </div>
+            </div>
+            <br />
+        }
 
-    </div>
-    <br />
+    }
+
 </div>
