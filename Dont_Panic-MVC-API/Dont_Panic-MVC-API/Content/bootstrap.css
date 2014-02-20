@@ -2446,7 +2446,6 @@ textarea.input-lg {
     white-space: nowrap;
     vertical-align: middle;
     cursor: pointer;
-    background-image: none;
     border: 1px solid transparent;
     border-radius: 4px;
     -webkit-user-select: none;

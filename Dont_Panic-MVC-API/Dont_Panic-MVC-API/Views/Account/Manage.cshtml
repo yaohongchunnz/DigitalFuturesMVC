@@ -3,12 +3,13 @@
 @{
     ViewBag.Title = "Manage Account";
 }
+<br />
+<div class="container rounded-corners">
+    <h2 class="centertext"><font color="#65B5A2">manage</font> account</h2>
+    <hr />
+    <div class="container-form">
 
-<h2>@ViewBag.Title.</h2>
-
-<p class="text-success">@ViewBag.StatusMessage</p>
-<div class="row">
-    <div class="col-md-12">
+        <p class="text-success">@ViewBag.StatusMessage</p>
         @if (ViewBag.HasLocalPassword)
         {
             @Html.Partial("_ChangePasswordPartial")
@@ -23,6 +24,7 @@
             @Html.Partial("_ExternalLoginsListPartial", new { Action = "LinkLogin", ReturnUrl = ViewBag.ReturnUrl })
         </section>
     </div>
+
 </div>
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")

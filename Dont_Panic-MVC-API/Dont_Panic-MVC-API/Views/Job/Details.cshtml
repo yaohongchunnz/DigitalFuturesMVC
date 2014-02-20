@@ -40,12 +40,19 @@
                     <div class="job-block-detail-right col-md-6">
                         @if (User.Identity.IsAuthenticated)
                         {
-                            if (im.UserContainsRole(User.Identity.GetUserId(),"Provider"))
+                            if (im.UserContainsRole(User.Identity.GetUserId(), "Provider"))
                             {
-                                using (Html.BeginForm("AcquireLead", "Job",FormMethod.Post))
+                                if (@Model.leadsAccquired == 3)
                                 {
-                                    @Html.Hidden("jobid", @Model.jobid);
-                                    <input type="submit" value="Buy Job" class="btn-dontpanic" />
+                                    <p class="text-warning">No more leads remaining</p>
+                                }
+                                else
+                                {
+                                    using (Html.BeginForm("AcquireLead", "Job", FormMethod.Post))
+                                    {
+                                        @Html.Hidden("jobid", @Model.jobid);
+                            <input type="submit" value="Buy Job" class="btn-dontpanic" />
+                                    }
                                 }
                             }
                             else

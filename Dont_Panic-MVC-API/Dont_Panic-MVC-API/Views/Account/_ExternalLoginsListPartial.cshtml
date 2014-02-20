@@ -18,12 +18,11 @@
         using (Html.BeginForm(action, "Account", new { ReturnUrl = returnUrl }))
         {
             @Html.AntiForgeryToken()
-            <div class="social-wrap">
+            <div class="">
                 @foreach (AuthenticationDescription p in loginProviders)
-                {
-                    <button type="submit" class="facebook" id="@p.AuthenticationType" name="provider" value="@p.AuthenticationType" title="Log in using your @p.Caption account">Sign in <em>w/</em> @p.AuthenticationType</button>
-
-                }
+{
+    <button class="btn btn-facebook"  type="submit" id="@p.AuthenticationType" name="provider" value="@p.AuthenticationType" title="Log in using your @p.Caption account"><i class="fa fa-facebook"></i> | Connect with Facebook</button>
+}
             </div>
         }
     }

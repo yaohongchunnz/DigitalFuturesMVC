@@ -3,65 +3,59 @@
 @{
     ViewBag.Title = "Edit Job";
 }
+<br />
+<div class="container rounded-corners">
+    <h2 class="centertext"><font color="#65B5A2">edit</font> job</h2>
+    <hr />
+    <div class="container-form">
 
-<div class="container">
-    <h2>Edit your job</h2>
+        @using (Html.BeginForm())
+        {
+            @Html.AntiForgeryToken()
 
+            <div class="form-horizontal">
+                <h4>Service providers that you have in contact with will be notified when you edit this job.</h4>
+                <hr />
+                @Html.ValidationSummary(true)
+                @Html.HiddenFor(model => model.jobid)
 
-    @using (Html.BeginForm())
-    {
-        @Html.AntiForgeryToken()
-
-        <div class="form-horizontal">
-            <h4>Service providers that you have in contact with will be notified when you edit this job.</h4>
-            <hr />
-            @Html.ValidationSummary(true)
-            @Html.HiddenFor(model => model.jobid)
-
-            <div class="form-group">
-                @Html.LabelFor(model => model.title, new { @class = "control-label col-md-2" })
-                <div class="col-md-10">
+                <div class="form-group">
+                    @Html.LabelFor(model => model.title, new { @class = "control-label" })
                     @Html.EditorFor(model => model.title)
                     @Html.ValidationMessageFor(model => model.title)
                 </div>
-            </div>
 
-            <div class="form-group">
-                @Html.LabelFor(model => model.description, new { @class = "control-label col-md-2" })
-                <div class="col-md-10">
+                <div class="form-group">
+                    @Html.LabelFor(model => model.description, new { @class = "control-label" })
                     @Html.EditorFor(model => model.description)
                     @Html.ValidationMessageFor(model => model.description)
                 </div>
-            </div>
 
-            <div class="form-group">
-                @Html.LabelFor(model => model.region, new { @class = "control-label col-md-2" })
-                <div class="col-md-10">
+                <div class="form-group">
+                    @Html.LabelFor(model => model.region, new { @class = "control-label" })
                     @Html.EditorFor(model => model.region)
                     @Html.ValidationMessageFor(model => model.region)
                 </div>
-            </div>
 
-            <div class="form-group">
-                @Html.LabelFor(model => model.jobtype, new { @class = "control-label col-md-2" })
-                <div class="col-md-10">
+                <div class="form-group">
+                    @Html.LabelFor(model => model.jobtype, new { @class = "control-label" })
                     @Html.EditorFor(model => model.jobtype)
                     @Html.ValidationMessageFor(model => model.jobtype)
                 </div>
-            </div>
 
-            <div class="form-group">
-                <div class="col-md-offset-2 col-md-10">
+                <div class="form-group">
                     <input type="submit" value="Save" class="btn btn-default" />
                 </div>
             </div>
+        }
+        <div>
+            @Html.ActionLink("Back to your jobs", "Index")
         </div>
-    }
-<div>
-    @Html.ActionLink("Back to your jobs", "Index")
-</div>
-</div>
 
+
+    </div>
+
+</div>
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")
 }
