@@ -216,9 +216,9 @@
     <Compile Include="Migrations\201402180056425_lead.Designer.cs">
       <DependentUpon>201402180056425_lead.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201402182147169_qwerty.cs" />
-    <Compile Include="Migrations\201402182147169_qwerty.Designer.cs">
-      <DependentUpon>201402182147169_qwerty.cs</DependentUpon>
+    <Compile Include="Migrations\201402200215361_token.cs" />
+    <Compile Include="Migrations\201402200215361_token.Designer.cs">
+      <DependentUpon>201402200215361_token.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
@@ -338,8 +338,8 @@
     <EmbeddedResource Include="Migrations\201402180056425_lead.resx">
       <DependentUpon>201402180056425_lead.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201402182147169_qwerty.resx">
-      <DependentUpon>201402182147169_qwerty.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201402200215361_token.resx">
+      <DependentUpon>201402200215361_token.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
