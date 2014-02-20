@@ -58,7 +58,7 @@ namespace Dont_Panic_MVC_API.Controllers
                 }
                 return View(jobs);            
             }
-            return View(jobAPI.GetUserJobs(User.Identity.GetUserId()).ToList());
+            return View(jobAPI.GetCurrentUserJobs(User.Identity.GetUserId()).ToList());
         }
 
         // GET: /Job/Details/5
@@ -80,17 +80,34 @@ namespace Dont_Panic_MVC_API.Controllers
         // POST: /Job/AcquireLead
         public ActionResult AcquireLead(int jobid)
         {
+            APIContext db = new APIContext();
+            IQueryable<JobService> jobServices = db.jobService.Where(a => a.jobid == jobid);
+            
+
+            if (jobServices != null) { 
+                foreach (JobService jobService in jobServices)
+                {
+                    if (jobService.serviceProviderId == User.Identity.GetUserId())
+                    {
+                        return RedirectToAction("/");
+                    }
+                }
+            }
+
             Job job = jobAPI.GetJob(jobid);
             if (job.leadsAccquired < 3)
             {
+
                 job.leadsAccquired = job.leadsAccquired + 1;
-                APIContext db = new APIContext();
+                jobAPI.PutJob(jobid, job);
 
                 JobService servicejob = new JobService();
                 servicejob.jobid = jobid;
                 servicejob.serviceProviderId = User.Identity.GetUserId();
                 db.jobService.Add(servicejob);
+                db.SaveChanges();
             }
+            
             return RedirectToAction("/");
         }
 
