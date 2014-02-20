@@ -1,6 +1,7 @@
 ﻿using Dont_Panic_MVC_API.API_Models;
 using Dont_Panic_MVC_API.Models;
 using Dont_Panic_MVC_API.Models.API_Models;
+using System;
 using System.Data.Entity;
 using System.Data.Entity.Infrastructure;
 using System.Linq;
@@ -41,6 +42,12 @@ namespace Dont_Panic_MVC_API.Controllers.API_Controllers
         public IQueryable<Job> GetUserJobs(string UserId)
         {
             return db.Jobs.Where(j => j.UserId == UserId);
+        }
+
+        public IQueryable<Job> GetCurrentUserJobs(string UserId)
+        {
+            IQueryable<Job> jobs = db.Jobs.Where(j => j.UserId == UserId);
+            return jobs.Where(j => j.expireDate < DateTime.Now);
         }
 
         // Get job from database with certain id
