@@ -392,6 +392,8 @@ namespace Dont_Panic_MVC_API.Controllers
                     return View("ExternalLoginFailure");
                 }
                 var user = new ApplicationUser() { UserName = model.UserName };
+                user.signupDate = DateTime.Now;
+
                 
                 var result = await UserManager.CreateAsync(user);
 
