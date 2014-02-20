@@ -32,8 +32,12 @@
                     </div>
                 </div>
                 <div class="form-group">
-                    <input type="submit" value="Log in" class="btn-dontpanic" />
-                    <br />
+                    <div class="login-buttons">
+                        <div class="login-dontpanic">
+                            <input type="submit" value="Log in" class="btn-dontpanic" />
+                        </div>
+                        @Html.Partial("_ExternalLoginsListPartial")
+                    </div>
                     <br />
                     <p>
                         @Html.ActionLink("Sign up", "Index") if you don't have an account.
@@ -42,9 +46,6 @@
 
 
             }
-        <br />
-        @Html.Partial("_ExternalLoginsListPartial")
-        <br />
         </section>
 
     </div>

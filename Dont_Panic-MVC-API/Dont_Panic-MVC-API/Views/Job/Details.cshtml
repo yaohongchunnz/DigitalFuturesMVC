@@ -10,63 +10,87 @@
 <br />
 <div class="container drop-shadow browse-jobs-block">
     <h3 class="centertext"><font color="#65B5A2">job</font> details</h3>
-    <br />
+    <h2 class="green-text">@Model.title</h2>
     <br />
     <div class="job-block drop-shadow-lite">
 
 
-        <div class="row">
-            @if (Model.photo != "")
-            {
-                <div class="col-md-3"><img src="@Url.Content(Model.photo)" class="img-responsive job-block-image img-rounded" height="150" width="150" /></div>
-            }
-            else
-            {
-                <div class="col-md-3"><img src="~/Images/nophotoavailable.jpg" class="img-responsive job-block-image img-rounded" /></div>
-            }
-            <div class="col-md-9">
-                <p class="job-block-title">@Model.title</p>
+        <div id="job-images-carousel" class="carousel slide" data-ride="carousel">
+            <!-- Indicators -->
+            <ol class="carousel-indicators">
 
-                <p style="font-size:14px">@Model.description</p>
+                <li data-target="#job-images-carousel" data-slide-to="0" class="active"></li>
+                <li data-target="#job-images-carousel" data-slide-to="1"></li>
+                <li data-target="#job-images-carousel" data-slide-to="2"></li>
+            </ol>
 
-                <div class="row">
-                    <div class="job-block-detail-left col-md-6">
-                        <p class="text-primary">
-                            Category: @Model.jobtype<br />Located in: @Model.region<br />
-                            Posted by: @Model.username
-                        </p>
+            <!-- Wrapper for slides -->
+            <div class="carousel-inner">
+                @if (Model.photo != "")
+                {
 
+                    <div class="item active">
+                        <img src="@Url.Content(Model.photo)">
+                        <div class="carousel-caption">
+                            <h3>Image 1</h3>
+                        </div>
                     </div>
-                    <div class="job-block-detail-right col-md-6">
-                        @if (User.Identity.IsAuthenticated)
-                        {
-                            if (im.UserContainsRole(User.Identity.GetUserId(), "Provider"))
-                            {
-                                if (@Model.leadsAccquired == 3)
-                                {
-                                    <p class="text-warning">No more leads remaining</p>
-                                }
-                                else
-                                {
-                                    using (Html.BeginForm("AcquireLead", "Job", FormMethod.Post))
-                                    {
-                                        @Html.Hidden("jobid", @Model.jobid);
-                            <input type="submit" value="Buy Job" class="btn-dontpanic" />
-                                    }
-                                }
-                            }
-                            else
-                            {
-                                <p class="text-primary">
-                                    @Html.ActionLink("Edit", "Edit", new { id = Model.jobid }) |
-                                    @Html.ActionLink("Delete", "Delete", new { id = Model.jobid })
-                                </p>
+                }
+                else
+                {
 
-                            }
-                        }
+                    <div class="item active">
+                        <img src="~/Images/nophotoavailable.jpg">
+                        <div class="carousel-caption">
+                            <h3>Image 1</h3>
+                        </div>
                     </div>
-                </div>
+                }
             </div>
+
+            <!-- Controls -->
+            <a class="left carousel-control" href="#carousel-example-generic" data-slide="prev">
+                <span class="glyphicon glyphicon-chevron-left"></span>
+            </a>
+            <a class="right carousel-control" href="#carousel-example-generic" data-slide="next">
+                <span class="glyphicon glyphicon-chevron-right"></span>
+            </a>
+        </div>
+
+        <p class="job-details-description-title">Description</p>
+        <p class="job-details-description-text">@Model.description</p>
+        <p class="job-details-description-information">@Model.region - @Model.jobtype</p>
+        <div class="layer3">
+            @if (User.Identity.IsAuthenticated)
+            {
+                if (im.UserContainsRole(User.Identity.GetUserId(), "Provider"))
+                {
+                    <h4>Contact Details:</h4>
+                    if (@Model.leadsAccquired == 3)
+                    {
+                        <p>No more leads remaining</p>
+                    }
+                    else
+                    {
+                        <p>This job is locked. To unlock contact details, you must acquire a lead.</p>
+                        using (Html.BeginForm("AcquireLead", "Job", FormMethod.Post))
+                        {
+                            @Html.Hidden("jobid", @Model.jobid);
+                <input type="submit" value="Acquire" class="btn-dontpanic" />
+                        }
+                    }
+                }
+                else
+                {
+                    
+                    <h4>Manage job:</h4>
+                    <p>
+                        @Html.ActionLink("Edit", "Edit", new { id = Model.jobid }) |
+                        @Html.ActionLink("Delete", "Delete", new { id = Model.jobid })
+                    </p>
+
+                }
+            }
         </div>
 
     </div>
