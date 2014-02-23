@@ -36,21 +36,16 @@
                         <div class="login-dontpanic">
                             <input type="submit" value="Log in" class="btn-dontpanic" />
                         </div>
-                        @Html.Partial("_ExternalLoginsListPartial")
                     </div>
-                    <br />
-                    <p>
-                        @Html.ActionLink("Sign up", "Index") if you don't have an account.
-                    </p>
                 </div>
 
 
             }
+        @Html.Partial("_ExternalLoginsListPartial")
         </section>
-
     </div>
-
 </div>
+
 
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")
