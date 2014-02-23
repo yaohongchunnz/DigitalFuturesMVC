@@ -30,9 +30,15 @@
                 {
 
                     <div class="item active">
-                        <img src="@Url.Content(Model.photo)">
+                        <img src="@Url.Content(Model.photo)" class="img-responsive ">
                         <div class="carousel-caption">
                             <h3>Image 1</h3>
+                        </div>
+                    </div>
+
+                    <div class="item">
+                        <img src="~/Images/nophotoavailable.jpg">
+                        <div class="carousel-caption">
                         </div>
                     </div>
                 }
@@ -42,7 +48,6 @@
                     <div class="item active">
                         <img src="~/Images/nophotoavailable.jpg">
                         <div class="carousel-caption">
-                            <h3>Image 1</h3>
                         </div>
                     </div>
                 }
@@ -82,7 +87,7 @@
                 }
                 else
                 {
-                    
+
                     <h4>Manage job:</h4>
                     <p>
                         @Html.ActionLink("Edit", "Edit", new { id = Model.jobid }) |
@@ -92,6 +97,7 @@
                 }
             }
         </div>
+        <br />
 
     </div>
     <br />

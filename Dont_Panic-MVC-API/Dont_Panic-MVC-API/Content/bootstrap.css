@@ -2135,7 +2135,8 @@ output {
     }
 
     .form-control:-moz-placeholder {
-        color: rgba(73, 73, 73, 0.58);;
+        color: rgba(73, 73, 73, 0.58);
+        ;
     }
 
     .form-control::-moz-placeholder {
@@ -2144,11 +2145,13 @@ output {
     }
 
     .form-control:-ms-input-placeholder {
-        color: rgba(73, 73, 73, 0.58);;
+        color: rgba(73, 73, 73, 0.58);
+        ;
     }
 
     .form-control::-webkit-input-placeholder {
-        color: rgba(73, 73, 73, 0.58);;
+        color: rgba(73, 73, 73, 0.58);
+        ;
     }
 
     .form-control[disabled],
@@ -5043,7 +5046,7 @@ textarea.input-group-sm > .input-group-btn > .btn {
     .navbar-inverse .navbar-nav > .active > a:hover,
     .navbar-inverse .navbar-nav > .active > a:focus {
         color: #000;
-        font-weight:bold;
+        font-weight: bold;
         background-color: transparent;
         border-bottom: 3px solid #65A592;
     }
@@ -6578,7 +6581,7 @@ button.close {
     position: relative;
     width: 100%;
     overflow: hidden;
-    height:200px;
+    height: 300px;
 }
 
     .carousel-inner > .item {
@@ -6591,8 +6594,10 @@ button.close {
         .carousel-inner > .item > img,
         .carousel-inner > .item > a > img {
             display: block;
-            min-width: 100%;
             line-height: 1;
+            margin: 0 auto;
+            width:auto;
+            max-height:300px;
         }
 
     .carousel-inner > .active,
@@ -7414,5 +7419,3 @@ td.visible-print {
         display: none !important;
     }
 }
-
-
