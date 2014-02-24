@@ -90,6 +90,15 @@ namespace Dont_Panic_MVC_API.Controllers
             return View(model);
         }
         
+
+        // GET: /Account/PurchaseTokens
+        [Authorize]
+        [HttpGet]
+        public ActionResult PurchaseTokens()
+        {
+            return View();
+        }
+        
         /*  Called when a user clicks to sign up for a service provider account 
          *  GET: /Account/ProviderSignup 
          */
