@@ -2,6 +2,7 @@
 using Dont_Panic_MVC_API.Models;
 using Dont_Panic_MVC_API.Models.API_Models;
 using System;
+using System.Collections.Generic;
 using System.Data.Entity;
 using System.Data.Entity.Infrastructure;
 using System.Linq;
@@ -30,11 +31,11 @@ namespace Dont_Panic_MVC_API.Controllers.API_Controllers
     {
         private APIContext db = new APIContext();
 
-        public IQueryable<Photos> getPhotos(int jobid)
+        public List<Photos> getPhotos(int jobid)
         {
             try
             {
-                return db.photos.Where(p => p.jobid == jobid);
+                return db.photos.Where(p => p.jobid == jobid).ToList();
             }
             catch (InvalidOperationException e) { return null; }
         }
