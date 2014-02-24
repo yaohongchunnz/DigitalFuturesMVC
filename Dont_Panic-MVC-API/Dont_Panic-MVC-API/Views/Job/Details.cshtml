@@ -31,17 +31,21 @@
             {
             <!-- Indicators -->
                 <ol class="carousel-indicators">
-                    @for (int i = 0; i < photos.Count; i++)
+                    @if (photos.Count > 1)
                     {
-                        if (i == 0)
-                        {
-                            <li data-target="#job-images-carousel" data-slide-to=@i.ToString() class="active"></li>
-                        }
-                        else
-                        {
-                            <li data-target="#job-images-carousel" data-slide-to=@i.ToString()></li>
-                        }
 
+                        for (int i = 0; i < photos.Count; i++)
+                        {
+                            if (i == 0)
+                            {
+                                <li data-target="#job-images-carousel" data-slide-to=@i.ToString() class="active"></li>
+                            }
+                            else
+                            {
+                                <li data-target="#job-images-carousel" data-slide-to=@i.ToString()></li>
+                            }
+
+                        }
                     }
                 </ol>
 
@@ -71,6 +75,17 @@
                 </div>
 
 
+            <!-- Controls -->
+                if (photos.Count > 1)
+                {
+
+                    <a class="left carousel-control" href="#job-images-carousel" data-slide="prev">
+                        <span class="glyphicon glyphicon-chevron-left"></span>
+                    </a>
+                    <a class="right carousel-control" href="#job-images-carousel" data-slide="next">
+                        <span class="glyphicon glyphicon-chevron-right"></span>
+                    </a>
+                }
             }
             else
             {
@@ -82,13 +97,6 @@
                     </div>
                 </div>
             }
-            <!-- Controls -->
-            <a class="left carousel-control" href="#job-images-carousel" data-slide="prev">
-                <span class="glyphicon glyphicon-chevron-left"></span>
-            </a>
-            <a class="right carousel-control" href="#job-images-carousel" data-slide="next">
-                <span class="glyphicon glyphicon-chevron-right"></span>
-            </a>
         </div>
 
         <p class="job-details-description-title">Description</p>
