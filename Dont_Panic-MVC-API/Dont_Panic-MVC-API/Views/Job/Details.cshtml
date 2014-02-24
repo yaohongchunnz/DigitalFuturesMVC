@@ -1,4 +1,8 @@
 ﻿@model Dont_Panic_MVC_API.Models.API_Models.Job
+@using Dont_Panic_MVC_API.Controllers.API_Controllers;
+@using Dont_Panic_MVC_API.Models.API_Models;
+
+
 @{
     ViewBag.Title = "Job Details";
 }
@@ -12,52 +16,76 @@
     <h3 class="centertext"><font color="#65B5A2">job</font> details</h3>
     <h2 class="green-text">@Model.title</h2>
     <br />
+
+    @{
+        PhotoAPI api = new PhotoAPI();
+        List<Photos> photos = api.getPhotos(Model.jobid).ToList();
+    }
+
+
     <div class="job-block drop-shadow-lite">
 
 
         <div id="job-images-carousel" class="carousel slide" data-ride="carousel">
+            @if (photos.Count > 0)
+            {
             <!-- Indicators -->
-            <ol class="carousel-indicators">
+                <ol class="carousel-indicators">
+                    @for (int i = 0; i < photos.Count; i++)
+                    {
+                        if (i == 0){
+                            <li data-target="#job-images-carousel" data-slide-to=@i.ToString() class="active"></li>
+                        }
+                        else
+                        {
+                            <li data-target="#job-images-carousel" data-slide-to=@i.ToString()></li>
+                        }
 
-                <li data-target="#job-images-carousel" data-slide-to="0" class="active"></li>
-                <li data-target="#job-images-carousel" data-slide-to="1"></li>
-                <li data-target="#job-images-carousel" data-slide-to="2"></li>
-            </ol>
+                    }
+                </ol>
 
             <!-- Wrapper for slides -->
-            <div class="carousel-inner">
-                @if (Model.photo != "")
-                {
+                <div class="carousel-inner">
+                    @for (int i = 0; i < photos.Count; i++)
+                    {
+                        if (i == 0)
+                        {
+                            <div class="item active">
+                                <img src="@Url.Content(photos[i].photo)" class="img-responsive ">
+                                <div class="carousel-caption">
+                                </div>
+                            </div>
 
+                        }
+                        else
+                        {
+                            <div class="item">
+                                <img src="@Url.Content(photos[i].photo)" class="img-responsive ">
+                                <div class="carousel-caption">
+                                </div>
+                            </div>
+                        }
+                    }
+
+                </div>
+
+
+            }
+            else
+            {
+                <div class="carousel-inner">
                     <div class="item active">
-                        <img src="@Url.Content(Model.photo)" class="img-responsive ">
-                        <div class="carousel-caption">
-                            <h3>Image 1</h3>
-                        </div>
-                    </div>
-
-                    <div class="item">
                         <img src="~/Images/nophotoavailable.jpg">
                         <div class="carousel-caption">
                         </div>
                     </div>
-                }
-                else
-                {
-
-                    <div class="item active">
-                        <img src="~/Images/nophotoavailable.jpg">
-                        <div class="carousel-caption">
-                        </div>
-                    </div>
-                }
-            </div>
-
+                </div>
+            }
             <!-- Controls -->
-            <a class="left carousel-control" href="#carousel-example-generic" data-slide="prev">
+            <a class="left carousel-control" href="#job-images-carousel" data-slide="prev">
                 <span class="glyphicon glyphicon-chevron-left"></span>
             </a>
-            <a class="right carousel-control" href="#carousel-example-generic" data-slide="next">
+            <a class="right carousel-control" href="#job-images-carousel" data-slide="next">
                 <span class="glyphicon glyphicon-chevron-right"></span>
             </a>
         </div>

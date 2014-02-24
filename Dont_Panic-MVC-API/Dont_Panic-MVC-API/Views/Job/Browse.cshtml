@@ -1,11 +1,13 @@
 ﻿@model IEnumerable<Dont_Panic_MVC_API.Models.API_Models.Job>
+@using Dont_Panic_MVC_API.Controllers.API_Controllers;
+@using Dont_Panic_MVC_API.Models.API_Models;
 
 @if (User.Identity.IsAuthenticated)
 {
-  //  if (!User.IsInRole("Provider"))
-  //  {
-  //      Response.Redirect("~/Job/Index");
-  //  }
+    //  if (!User.IsInRole("Provider"))
+    //  {
+    //      Response.Redirect("~/Job/Index");
+    //  }
 }
 else
 {
@@ -56,6 +58,10 @@ else
     @foreach (var item in Model)
     {
 
+        @{
+        PhotoAPI api = new PhotoAPI();
+        Photos firstPhoto = api.getFirstPhoto(item.jobid);
+        }
         if (!(DateTime.Now > item.expireDate))
         {
             <div class="job-block drop-shadow-lite">
@@ -63,23 +69,23 @@ else
 
                 <div class="row">
 
-                    @if (item.photo != "")
+                    @if (firstPhoto.photo != "")
                     {
-                    <div class="col-md-3"><img src="@Url.Content(item.photo)" alt="IMAGES" class="img-responsive job-block-image img-rounded" height="150" width="150" /></div>
+                        <div class="col-md-3"><img src="@Url.Content(firstPhoto.photo)" alt="IMAGES" class="img-responsive job-block-image img-rounded" height="150" width="150" /></div>
                     }
                     else
                     {
-                    <div class="col-md-3"><img src="~/Images/nophotoavailable.jpg" class="img-responsive job-block-image img-rounded" /></div>
+                        <div class="col-md-3"><img src="~/Images/nophotoavailable.jpg" class="img-responsive job-block-image img-rounded" /></div>
                     }
 
                     <div class="col-md-9">
                         <p class="job-block-title">@Html.ActionLink(item.title, "Details", new { id = item.jobid }, new { @style = "color:#497769;" }) </p>
                         @{
-            var descript = item.description;
-            if (descript.Length > 50)
-            {
-                descript = descript.Substring(0, 50) + "...";
-            }
+                    var descript = item.description;
+                    if (descript.Length > 50)
+                    {
+                        descript = descript.Substring(0, 50) + "...";
+                    }
                         }
                         <p style="font-size:14px">@descript</p>
 

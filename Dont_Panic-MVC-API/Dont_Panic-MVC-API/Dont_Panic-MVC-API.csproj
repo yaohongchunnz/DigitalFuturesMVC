@@ -260,6 +260,7 @@
     <Content Include="Images\favi.png" />
     <Content Include="Images\Favicon1.png" />
     <Content Include="Images\Favicon2.png" />
+    <Content Include="Images\Favicon3.png" />
     <Content Include="Images\Mitchplaceholder.jpg" />
     <Content Include="Images\nophotoavailable.jpg" />
     <Content Include="Images\noteGreen.png" />
