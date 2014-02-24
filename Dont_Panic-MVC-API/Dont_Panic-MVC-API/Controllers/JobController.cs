@@ -61,6 +61,18 @@ namespace Dont_Panic_MVC_API.Controllers
             return View(jobAPI.GetCurrentUserJobs(User.Identity.GetUserId()).ToList());
         }
 
+        public ActionResult RepostJob(int jobid)
+        {
+            JobAPI api = new JobAPI();
+
+            Job job = api.GetJob(jobid);
+            if (job != null)
+            {
+                job.expireDate = DateTime.Now.AddDays(2);
+            }
+            return RedirectToAction("/");
+        }
+
         // GET: /Job/Details/5
         public ActionResult Details(int id)
         {
