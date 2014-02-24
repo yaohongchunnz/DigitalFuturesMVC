@@ -71,6 +71,10 @@
 
                                 @Html.ActionLink("browse jobs", "Browse", "Job")
                             </li>
+                            <li @if (@ViewContext.RouteData.GetRequiredString("action").ToLower() == "purchasetokens" && @ViewContext.RouteData.GetRequiredString("controller").ToLower() == "account") { @Html.AttributeEncode("class=active")                      ; }>
+
+                                @Html.ActionLink("purchase tokens", "PurchaseTokens", "Account")
+                            </li>
                         }
 
                     }
