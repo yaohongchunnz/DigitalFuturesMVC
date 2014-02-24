@@ -36,7 +36,7 @@ namespace Dont_Panic_MVC_API.Controllers.API_Controllers
             {
                 return db.photos.Where(p => p.jobid == jobid);
             }
-            catch (InvalidOperationException e) { return null; };
+            catch (InvalidOperationException e) { return null; }
         }
 
         public Photos getFirstPhoto(int jobid)
@@ -45,7 +45,7 @@ namespace Dont_Panic_MVC_API.Controllers.API_Controllers
             {
                 return db.photos.First(p => p.jobid == jobid);
             }
-            catch (InvalidOperationException e) { return null; };
+            catch (InvalidOperationException e) { return null; }
         }
     }
 
