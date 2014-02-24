@@ -246,6 +246,8 @@
     <Content Include="Content\docs.css" />
     <Content Include="Content\dontpanic.css" />
     <Content Include="Content\font-awesome.css" />
+    <Content Include="Content\jasny-bootstrap.css" />
+    <Content Include="Content\jasny-bootstrap.min.css" />
     <Content Include="Content\sidebar.css" />
     <Content Include="Content\simple-sidebar.css" />
     <Content Include="Content\social-buttons.css" />
@@ -273,6 +275,9 @@
     <Content Include="Images\phoneGrey.png" />
     <Content Include="Images\revGreen.png" />
     <Content Include="Images\RevGrey.png" />
+    <Content Include="Images\TokenBronze.png" />
+    <Content Include="Images\TokenGold.png" />
+    <Content Include="Images\TokenSilver2.png" />
     <Content Include="Images\Zachholdplace.jpg" />
     <Content Include="Images\Zachplaceholder.jpg" />
     <Content Include="Scripts\Areas.js" />
@@ -282,8 +287,11 @@
     <Content Include="fonts\fontawesome-webfont.eot" />
     <Content Include="fonts\fontawesome-webfont.ttf" />
     <Content Include="fonts\fontawesome-webfont.woff" />
+    <Content Include="Content\jasny-bootstrap.css.map" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\docs.js" />
+    <Content Include="Scripts\jasny-bootstrap.js" />
+    <Content Include="Scripts\jasny-bootstrap.min.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
     <None Include="Scripts\jquery.validate-vsdoc.js" />
@@ -331,6 +339,7 @@
     <Content Include="Views\Account\Index.cshtml" />
     <Content Include="Views\Account\ProviderSignup.cshtml" />
     <Content Include="Views\Job\Previous.cshtml" />
+    <Content Include="Views\Account\PurchaseTokens.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

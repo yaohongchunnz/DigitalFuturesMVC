@@ -49,7 +49,6 @@
                 }
 
 
-
             }
             sessionStorage.clear();
 
@@ -84,7 +83,7 @@
                 sessionStorage.jobdistrictselection = document.getElementById("district").value;
                 sessionStorage.jobsuburbselection = document.getElementById("suburb").value;
                 sessionStorage.jobduration = document.getElementById("duration").value;
-                alert("saved");
+
             }
         }
         else {
@@ -143,6 +142,21 @@
         }
 
     }
+
+    function feedback() {
+        var input = $('#fileupload'),
+            numFiles = input.get(0).files ? input.get(0).files.length : 1,
+            label = input.val().replace(/\\/g, '/').replace(/.*\//, '');
+        input.trigger('fileselect', [numFiles, label]);
+
+        if (numFiles > 1) {
+            $('#inputfeedback').val(numFiles.toString() + " images selected.");
+        }
+        else {
+            $('#inputfeedback').val(label.toString());
+
+        }
+    }
 </script>
 <div class="container rounded-corners">
     <h2 class="centertext"><font color="#65B5A2">post</font> job</h2>
@@ -172,7 +186,7 @@
 
             <div class="form-group">
                 @Html.LabelFor(model => model.title, new { @class = "control-label" })
-                @Html.TextBoxFor(model => model.title, new { @name = "title", @id = "title", @class = "form-control", @type = "text", @placeholder="e.g. Blocked Drain"})
+                @Html.TextBoxFor(model => model.title, new { @name = "title", @id = "title", @class = "form-control", @type = "text", @placeholder = "e.g. Blocked Drain" })
 
             </div>
 
@@ -181,10 +195,22 @@
                 <textarea rows="3" name="description" required id="description" class=" form-control"></textarea>
             </div>
 
-            <div class="form-group">
-               <label class="control-label">What does it look like?</label>
-                <input name="images" type="file" accept="image/*" multiple="multiple" >
-            </div>
+            @if (User.Identity.IsAuthenticated)
+            {
+                <div class="form-group">
+                    <label class="control-label">What does it look like?</label>
+                    <div class="input-group">
+                        <span class="input-group-btn">
+                            <span class="btn btn-default btn-file">
+                                Browse…
+                                <input id="fileupload" type="file" name="images" accept="image/x-png, image/gif, image/jpeg, image/jpg,image/png" onchange="feedback()" multiple>
+                            </span>
+                        </span>
+                        <input id="inputfeedback" class="form-control" type="text" readonly="">
+                    </div>
+                </div>
+            }
+
 
             <div class="form-group">
                 @Html.LabelFor(model => model.region, new { @class = "control-label" })
@@ -211,7 +237,7 @@
             </div>
 
             <div class="form-group">
-                <input type="submit" onclick="saveInformation(@User.Identity.IsAuthenticated)"value="Create" class="btn-dontpanic" />
+                <input type="submit" onclick="saveInformation(@User.Identity.IsAuthenticated)" value="Create" class="btn-dontpanic" />
                 <br />
                 <br />
                 @if (User.Identity.IsAuthenticated)
