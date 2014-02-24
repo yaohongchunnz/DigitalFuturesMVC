@@ -46,6 +46,7 @@ namespace Dont_Panic_MVC_API.Controllers.API_Controllers
                 return db.photos.First(p => p.jobid == jobid);
             }
             catch (Exception e) { return null; }
+        }
     }
 
     // API for querying Jobs in the database.
