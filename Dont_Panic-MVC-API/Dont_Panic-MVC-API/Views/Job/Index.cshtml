@@ -41,7 +41,11 @@
                     <div class="col-md-3"><img src="~/Images/nophotoavailable.jpg" class="img-responsive job-block-image img-rounded" /></div>
 
                 }
-                <div class="col-md-3"><img src="@Url.Content(firstPhoto.photo)" alt="~/Images/nophotoavailable.jpg" class="img-responsive job-block-image img-rounded" height="150" width="150" /></div>
+                else
+                {
+                    <div class="col-md-3"><img src="@Url.Content(firstPhoto.photo)" alt="~/Images/nophotoavailable.jpg" class="img-responsive job-block-image img-rounded" height="150" width="150" /></div>
+
+                }
 
 
 
