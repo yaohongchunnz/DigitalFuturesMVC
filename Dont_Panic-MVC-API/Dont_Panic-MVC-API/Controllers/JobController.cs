@@ -61,6 +61,7 @@ namespace Dont_Panic_MVC_API.Controllers
             return View(jobAPI.GetCurrentUserJobs(User.Identity.GetUserId()).ToList());
         }
 
+        // POST: /Job/RepostJob
         [HttpPost]
         public ActionResult RepostJob(int jobid)
         {
