@@ -26,6 +26,16 @@ namespace Dont_Panic_MVC_API.Controllers.API_Controllers
         }
     }
 
+    public class PhotoAPI
+    {
+        private APIContext db = new APIContext();
+
+        public IQueryable<Photos> getPhotos(int jobid)
+        {
+            return db.photos.Where(p => p.jobid == jobid);
+        }
+    }
+
     // API for querying Jobs in the database.
     public class JobAPI
     {
@@ -47,7 +57,7 @@ namespace Dont_Panic_MVC_API.Controllers.API_Controllers
         public IQueryable<Job> GetCurrentUserJobs(string UserId)
         {
             IQueryable<Job> jobs = db.Jobs.Where(j => j.UserId == UserId);
-            return jobs.Where(j => j.expireDate < DateTime.Now);
+            return jobs.Where(j => j.expireDate > DateTime.Now);
         }
 
         // Get job from database with certain id

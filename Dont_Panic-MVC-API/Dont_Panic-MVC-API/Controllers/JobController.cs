@@ -161,13 +161,25 @@ namespace Dont_Panic_MVC_API.Controllers
                         break;
                     default:
                         jobmodel.expireDate = jobmodel.submitDate.AddDays(1);
-                        break;
+                        break; 
                 }
 
                 jobmodel.UserId = User.Identity.GetUserId();
                 jobmodel.username = User.Identity.GetUserName();
-                jobmodel.photo = ImageUpload();
                 jobAPI.PostJob(jobmodel);
+
+                APIContext db = new APIContext();
+
+                
+
+                List<string> images = ImageUpload();
+                foreach(string image in images){
+                    Photos photo = new Photos();
+                    photo.jobid = jobmodel.jobid;
+                    photo.photo = image;
+                    db.photos.Add(photo);
+                }
+                db.SaveChanges();
                 return RedirectToAction("Index");
             }
             ViewBag.City = (new RegionDropDown()).RegionList;
@@ -175,21 +187,22 @@ namespace Dont_Panic_MVC_API.Controllers
             return View(viewJob);
         }
 
-        public string ImageUpload()
+        public List<string> ImageUpload()
         {
-            string path = @"D:\Temp\";
 
-            var image = Request.Files["image"];
-            if (image == null || image.ContentLength <= 0)
+            HttpPostedFileBase file = Request.Files["images"];
+
+            List<string> photos = new List<string>();
+
+            for (int i = 0; i < Request.Files.Count; i++)
             {
-                
-                return "";
-            }
-            else
-            {
+                HttpPostedFileBase image = Request.Files[i];
+
+                if (file.ContentLength == 0)
+                    continue;
 
                 ViewBag.UploadMessage = String.Format("Got image {0} of type {1} and size {2}",
-                    image.FileName, image.ContentType, image.ContentLength);
+                   image.FileName, image.ContentType, image.ContentLength);
                 // TODO: actually save the image to Azure blob storage
 
                 CloudStorageAccount storageAccount = CloudStorageAccount.Parse(
@@ -211,11 +224,9 @@ namespace Dont_Panic_MVC_API.Controllers
                 blob.Properties.ContentType = image.ContentType;
                 blob.UploadFromStream(image.InputStream);
 
-                return blob.Uri.ToString();               
-
-
-             }
-            return "";
+                photos.Add(blob.Uri.ToString());
+            }
+            return photos;
         }
 
 
