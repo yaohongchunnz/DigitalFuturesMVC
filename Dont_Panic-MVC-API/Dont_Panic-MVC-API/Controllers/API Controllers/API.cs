@@ -141,5 +141,10 @@ namespace Dont_Panic_MVC_API.Controllers.API_Controllers
         {
             return db.jobService.Where(j => j.jobid == jobid);
         }
+
+        public void deleteJobService(int jobid, string providerid)        {
+            IQueryable<JobService> a = db.jobService.Where(j => j.jobid == jobid && j.serviceProviderId == providerid);
+            db.jobService.Remove(a.First());
+        }
     }
 }
