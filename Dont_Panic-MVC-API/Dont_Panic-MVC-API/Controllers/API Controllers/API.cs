@@ -32,13 +32,20 @@ namespace Dont_Panic_MVC_API.Controllers.API_Controllers
 
         public IQueryable<Photos> getPhotos(int jobid)
         {
-            return db.photos.Where(p => p.jobid == jobid);
+            try
+            {
+                return db.photos.Where(p => p.jobid == jobid);
+            }
+            catch (Exception e) { return null; }
         }
 
         public Photos getFirstPhoto(int jobid)
         {
-            return db.photos.First(p => p.jobid == jobid);
-        }
+            try
+            {
+                return db.photos.First(p => p.jobid == jobid);
+            }
+            catch (Exception e) { return null; }
     }
 
     // API for querying Jobs in the database.
