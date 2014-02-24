@@ -33,20 +33,20 @@ namespace Dont_Panic_MVC_API.Controllers.API_Controllers
 
         public List<Photos> getPhotos(int jobid)
         {
-            try
+            if (db.photos.Count(p => p.jobid == jobid) > 0)
             {
                 return db.photos.Where(p => p.jobid == jobid).ToList();
             }
-            catch (InvalidOperationException e) { return null; }
+            return null;
         }
 
         public Photos getFirstPhoto(int jobid)
         {
-            try
-            {
-                return db.photos.First(p => p.jobid == jobid);
-            }
-            catch (InvalidOperationException e) { return null; }
+           if (db.photos.Count(p => p.jobid == jobid) > 0){
+               return db.photos.First(p => p.jobid == jobid);
+           }
+           return null;
+       
         }
     }
 
