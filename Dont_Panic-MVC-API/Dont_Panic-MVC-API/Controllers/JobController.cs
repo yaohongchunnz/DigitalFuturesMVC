@@ -71,6 +71,7 @@ namespace Dont_Panic_MVC_API.Controllers
             if (job != null)
             {
                 job.expireDate = DateTime.Now.AddDays(2);
+                api.PutJob(jobid, job);
             }
             return RedirectToAction("/");
         }
@@ -313,9 +314,6 @@ namespace Dont_Panic_MVC_API.Controllers
          [HttpGet]
         public ActionResult Delete(int id)
         {
-
-            System.Diagnostics.Debug.WriteLine("In Delete "); 
-
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
@@ -349,6 +347,10 @@ namespace Dont_Panic_MVC_API.Controllers
                 RedirectToAction("Error");
             }
             jobAPI.DeleteJob(jobmodel);
+
+            JobServiceAPI api = new JobServiceAPI();
+            api.deleteJobService(id, User.Identity.GetUserId());
+
             return RedirectToAction("Index");
         }
 
