@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNet.Identity;
 using Microsoft.Owin;
 using Microsoft.Owin.Security.Cookies;
+using Microsoft.Owin.Security.Facebook;
 using Owin;
 
 namespace Dont_Panic_MVC_API
@@ -28,11 +29,21 @@ namespace Dont_Panic_MVC_API
             //   consumerKey: "",
             //   consumerSecret: "");
 
-            app.UseFacebookAuthentication(
+            var facebookOptions = new Microsoft.Owin.Security.Facebook.FacebookAuthenticationOptions()
+            {
+                AppId = "296331607187465",
+                AppSecret = "02b75e6a734d259a51af18e7aa887ae7"
+            };
+            facebookOptions.Scope.Add("email");
+            app.UseFacebookAuthentication(facebookOptions);
+
+
+
+           /* app.UseFacebookAuthentication(
                appId: "296331607187465",
                appSecret: "02b75e6a734d259a51af18e7aa887ae7");
 
-            //app.UseGoogleAuthentication();
+            //app.UseGoogleAuthentication(); */
         }
     }
 }

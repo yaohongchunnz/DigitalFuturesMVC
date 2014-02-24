@@ -26,5 +26,6 @@ namespace Dont_Panic_MVC_API.Models
         public DbSet<Email> emailAndUser { get; set; }
         public DbSet<UserDetails> userDetails { get; set; }
         public DbSet<JobService> jobService { get; set; }
+        public DbSet<Photos> photos { get; set; }
     }
 }

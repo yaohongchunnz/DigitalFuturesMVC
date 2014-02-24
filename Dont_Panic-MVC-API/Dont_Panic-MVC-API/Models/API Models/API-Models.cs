@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Web;
 
@@ -26,7 +27,6 @@ namespace Dont_Panic_MVC_API.Models.API_Models
         public string UserId { get; set; }
         [Required]
         public string username { get; set; }
-        public string photo { get; set; }
         [Required]
         public DateTime submitDate { get; set; }
         public DateTime expireDate { get; set; }
@@ -40,6 +40,15 @@ namespace Dont_Panic_MVC_API.Models.API_Models
         public int jobid { get; set; }
         public string serviceProviderId { get; set; }
     }
+
+    public class Photos
+    {
+        [Key, Column(Order = 0)]
+        public int jobid { get; set; }
+        [Key, Column(Order = 1)]
+        public string photo { get; set; }
+    }
+    
 
    
 }

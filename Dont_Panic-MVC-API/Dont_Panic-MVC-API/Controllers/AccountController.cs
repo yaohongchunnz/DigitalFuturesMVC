@@ -13,6 +13,7 @@ using Dont_Panic_MVC_API.API_Models;
 using System.Web.Security;
 using Dont_Panic_MVC_API.Controllers.API_Controllers;
 using Dont_Panic_MVC_API.Models.API_Models;
+using Facebook;
 
 namespace Dont_Panic_MVC_API.Controllers
 {
@@ -394,14 +395,36 @@ namespace Dont_Panic_MVC_API.Controllers
                 var user = new ApplicationUser() { UserName = model.UserName };
                 user.signupDate = DateTime.Now;
 
-                
+                var client = new FacebookClient();
+                dynamic me = client.Get(info.DefaultUserName);
+
                 var result = await UserManager.CreateAsync(user);
 
                 if (result.Succeeded)
                 {
+                    IdentityManager im = new IdentityManager();
+                    im.AddUserToRole(user.Id, "User");
                     result = await UserManager.AddLoginAsync(user.Id, info.Login);
+
+                    ClaimsIdentity ext = await AuthenticationManager.GetExternalIdentityAsync(DefaultAuthenticationTypes.ExternalCookie);
+                    var emaila = ext.Claims.First(x => x.Type.Contains("emailaddress")).Value;
+
+
                     if (result.Succeeded)
                     {
+                        APIContext context = new APIContext();
+                        Email email = new Email();
+                        email.email = emaila;
+                        email.userName = model.UserName;
+                        context.emailAndUser.Add(email);
+
+                        UserDetails details = new UserDetails();
+                        details.userId = user.Id;
+                        details.first_name = me.first_name;
+                        details.last_name = me.last_name;
+                        context.userDetails.Add(details);
+                        context.SaveChanges();
+
                         await SignInAsync(user, isPersistent: false);
                         return RedirectToLocal(returnUrl);
                     }
