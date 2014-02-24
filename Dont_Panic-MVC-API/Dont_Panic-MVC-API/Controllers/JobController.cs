@@ -95,13 +95,14 @@ namespace Dont_Panic_MVC_API.Controllers
         // POST: /Job/AcquireLead
         public ActionResult AcquireLead(int jobid)
         {
-            APIContext db = new APIContext();
+            APIContext db = new APIContext(); 
             IQueryable<JobService> jobServices = db.jobService.Where(a => a.jobid == jobid);
             
-
+            // If at least one lead has been acquired
             if (jobServices != null) { 
+                // Searching if leads have been acquired by this service provider.
                 foreach (JobService jobService in jobServices)
-                {
+                {   // If the service provider already owns a lead for this job then redirect away.
                     if (jobService.serviceProviderId == User.Identity.GetUserId())
                     {
                         return RedirectToAction("/");
