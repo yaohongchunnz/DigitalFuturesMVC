@@ -45,7 +45,7 @@
             Photos firstPhoto = api.getFirstPhoto(item.jobid);
                 }
                 <div class="row">
-                    @if (firstPhoto.photo != "")
+                    @if (firstPhoto != null)
                     {
                         <div class="col-md-3"><img src="@Url.Content(firstPhoto.photo)" alt="IMAGES" class="img-responsive job-block-image img-rounded" height="150" width="150" /></div>
                     }
