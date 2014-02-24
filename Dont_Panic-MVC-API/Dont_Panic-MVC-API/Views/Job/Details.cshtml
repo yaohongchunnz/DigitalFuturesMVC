@@ -19,13 +19,7 @@
 
     @{
         PhotoAPI api = new PhotoAPI();
-        List<Photos> photos = null;
-        IQueryable<Photos> photoApi = api.getPhotos(Model.jobid);
-        if (photoApi != null)
-        {
-            photos = api.getPhotos(Model.jobid).ToList();
-
-        }
+        List<Photos> photos = api.getPhotos(Model.jobid);
     }
 
 
@@ -33,7 +27,7 @@
 
 
         <div id="job-images-carousel" class="carousel slide" data-ride="carousel">
-            @if (photos != null)
+            @if (photos.Count > 0)
             {
             <!-- Indicators -->
                 <ol class="carousel-indicators">
