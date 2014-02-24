@@ -32,6 +32,29 @@ namespace Dont_Panic_MVC_API.Models
         public string duration { get; set; }
     }
 
+    public class Region
+    {
+        [Key]
+        public int regionid { get; set; }
+        public string region { get; set; }
+    }
+
+    public class District
+    {
+        [Key]
+        public int districtid { get; set; }
+        public int regionid { get; set; }
+        public string district { get; set; }
+    }
+
+    public class Suburb
+    {
+        [Key]
+        public int suburbid { get; set; }
+        public int districtid { get; set; }
+        public string district { get; set; }
+    }
+
     public class RegionDropDown
     {
         public RegionDropDown(){
