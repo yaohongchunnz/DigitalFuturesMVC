@@ -1,38 +1,56 @@
-﻿
-@{
+﻿@{
     ViewBag.Title = "PurchaseTokens";
 }
 
 <br />
-<div class="container rounded-corners">
+<div class="container layer-purchasetoken">
     <h2 class="centertext"><font color="#65B5A2">purchase</font> tokens</h2>
     <hr />
-    <div class="container-form">
+    <div class="layer-content">
         <p class="centertext">Here you can buy bundles of lead tokens! Lead tokens are used to buy leads from the purchase job page. You can also buy jobs individually but it saves you at least 15% to buy tokens in advanced. To purchase lead tokens please select a bundle below.</p>
         <br />
         <div class="row">
             <div class="col-md-4">
-                <div class="layer-token drop-shadow">
-                    <img src="~/images/TokenBronze.png" class="img-responsive" />
-                    <h3>$5</h3>
+                <div class="layer-token drop-shadow ">
+                    <img src="~/images/tokenbrnz.png" class="img-responsive" />
+                    <h2>$5</h2>
                     <p>3 tokens</p>
-                    <button class="btn-dontpanic" value="Purchase"></button>
+                    @using (Html.BeginForm("PurchaseTokens", "Account", FormMethod.Post))
+                    {
+                        @Html.AntiForgeryToken()
+                        @Html.Hidden("selection", 1);
+                        <button type="submit" class="btn-dontpanic" value="Purchase">Purchase</button>
+                    }
+                    <br />
                 </div>
             </div>
             <div class="col-md-4">
-                <div class="layer-token drop-shadow">
-                    <img src="~/images/TokenSilver2.png" class="img-responsive" />
-                    <h3>$10</h3>
+                <div class="layer-token drop-shadow ">
+                    <img src="~/images/tokensilvr.png" class="img-token img-responsive" />
+                    <h2>$10</h2>
                     <p>7 tokens</p>
-                    <button class="btn-dontpanic" value="Purchase"></button>
+                    @using (Html.BeginForm("PurchaseTokens", "Account", FormMethod.Post))
+                    {
+                        @Html.AntiForgeryToken()
+                        @Html.Hidden("selection", 2);
+                        <button type="submit" class="btn-dontpanic" value="Purchase">Purchase</button>
+                    }
+                    <br />
                 </div>
             </div>
             <div class="col-md-4">
                 <div class="layer-token drop-shadow">
-                    <img src="~/images/TokenGold.png" class="img-responsive" />
-                    <h3>$5</h3>
+                    <img src="~/images/tokengld.png" class="img-token img-responsive" />
+                    <h2>$15</h2>
                     <p>12 tokens</p>
-                    <button class="btn-dontpanic" value="Purchase"></button>
+                    @using (Html.BeginForm("PurchaseTokens", "Account", FormMethod.Post))
+                    {
+                        @Html.AntiForgeryToken()
+
+                        @Html.Hidden("selection", 3);
+                        <button type="submit" class="btn-dontpanic" value="Purchase">Purchase</button>
+                    }
+                    <br />
                 </div>
             </div>
 
@@ -40,4 +58,3 @@
     </div>
     <hr />
 </div>
-
