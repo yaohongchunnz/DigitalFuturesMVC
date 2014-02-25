@@ -374,7 +374,14 @@ namespace Dont_Panic_MVC_API.Controllers
                 // If the user does not have an account, then prompt the user to create an account
                 ViewBag.ReturnUrl = returnUrl;
                 ViewBag.LoginProvider = loginInfo.Login.LoginProvider;
-                return View("ExternalLoginConfirmation", new ExternalLoginConfirmationViewModel { UserName = loginInfo.DefaultUserName });
+
+                var client = new FacebookClient();
+                dynamic me = client.Get(loginInfo.DefaultUserName);
+
+                ClaimsIdentity ext = await AuthenticationManager.GetExternalIdentityAsync(DefaultAuthenticationTypes.ExternalCookie);
+                var email = ext.Claims.First(x => x.Type.Contains("emailaddress")).Value;
+
+                return View("ExternalLoginConfirmation", new ExternalLoginConfirmationViewModel { UserName = loginInfo.DefaultUserName, email = email, name= me.first_name });
             }
         }
 
@@ -430,6 +437,7 @@ namespace Dont_Panic_MVC_API.Controllers
 
                 var client = new FacebookClient();
                 dynamic me = client.Get(info.DefaultUserName);
+                
 
                 var result = await UserManager.CreateAsync(user);
 
@@ -439,15 +447,11 @@ namespace Dont_Panic_MVC_API.Controllers
                     im.AddUserToRole(user.Id, "User");
                     result = await UserManager.AddLoginAsync(user.Id, info.Login);
 
-                    ClaimsIdentity ext = await AuthenticationManager.GetExternalIdentityAsync(DefaultAuthenticationTypes.ExternalCookie);
-                    var emaila = ext.Claims.First(x => x.Type.Contains("emailaddress")).Value;
-
-
                     if (result.Succeeded)
                     {
                         APIContext context = new APIContext();
                         Email email = new Email();
-                        email.email = emaila;
+                        email.email = model.email;
                         email.userName = model.UserName;
                         context.emailAndUser.Add(email);
 
@@ -455,6 +459,7 @@ namespace Dont_Panic_MVC_API.Controllers
                         details.userId = user.Id;
                         details.first_name = me.first_name;
                         details.last_name = me.last_name;
+                        details.phone_number = model.phoneNumber;
                         context.userDetails.Add(details);
                         context.SaveChanges();
 
