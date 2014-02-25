@@ -80,6 +80,8 @@ namespace Dont_Panic_MVC_API.Controllers.API_Controllers
             return null;
         }
 
+  
+
         public Photos getFirstPhoto(int jobid)
         {
            if (db.photos.Count(p => p.jobid == jobid) > 0){

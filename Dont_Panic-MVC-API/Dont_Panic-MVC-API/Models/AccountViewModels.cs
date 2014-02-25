@@ -6,13 +6,18 @@ namespace Dont_Panic_MVC_API.Models
     {
         [Required]
         [Display(Name = "User name")]
+        [System.Web.Mvc.Remote("doesUserNameExist", "Account", HttpMethod = "POST", ErrorMessage = "User name already exists. Please enter a different user name.")]
         public string UserName { get; set; }
 
         [Required]
+        [RegularExpression(@"^([a-zA-Z0-9_\-\.]+)@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.)|(([a-zA-Z0-9\-]+\.)+))([a-zA-Z]{2,4}|[0-9]{1,3})(\]?)$", ErrorMessage = "Please enter a valid e-mail adress")]
+        [System.Web.Mvc.Remote("doesEmailExist", "Account", HttpMethod = "POST", ErrorMessage = "Email already exists.")]
+        [Display(Name = "Email")]
         public string email { get; set; }
 
         [Required]
         [Display(Name = "Phone Number")]
+        [RegularExpression(@"^\s*\+?\s*([0-9][\s-]*){7,}$", ErrorMessage = "Please enter a valid Phone Number")]
         public string phoneNumber { get; set; }
 
         public string name { get; set; }
@@ -66,17 +71,19 @@ namespace Dont_Panic_MVC_API.Models
 
         [Required]
         [Display(Name = "User name")]
+        [System.Web.Mvc.Remote("doesUserNameExist", "Account", HttpMethod = "POST", ErrorMessage = "User name already exists. Please enter a different user name.")]
         public string UserName { get; set; }
 
-        [RegularExpression(@"^([a-zA-Z0-9_\-\.]+)@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.)|(([a-zA-Z0-9\-]+\.)+))([a-zA-Z]{2,4}|[0-9]{1,3})(\]?)$", ErrorMessage = "Please enter a valid e-mail adress")]
         [Required]
+        [RegularExpression(@"^([a-zA-Z0-9_\-\.]+)@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.)|(([a-zA-Z0-9\-]+\.)+))([a-zA-Z]{2,4}|[0-9]{1,3})(\]?)$", ErrorMessage = "Please enter a valid e-mail adress")]
+        [System.Web.Mvc.Remote("doesEmailExist", "Account", HttpMethod = "POST", ErrorMessage = "Email already exists.")]
         [Display(Name = "Email")]
         public string email { get; set; }
 
         [Required]
+        [Display(Name = "Phone Number")]
+        [RegularExpression(@"^\s*\+?\s*([0-9][\s-]*){7,}$", ErrorMessage = "Please enter a valid Phone Number")]
         public string phoneNumber { get; set; }
-
-
 
         [Required]
         [StringLength(100, ErrorMessage = "The {0} must be at least {2} characters long.", MinimumLength = 6)]
@@ -98,10 +105,12 @@ namespace Dont_Panic_MVC_API.Models
 
         [Required]
         [Display(Name = "User name")]
+        [System.Web.Mvc.Remote("doesUserNameExist", "Account", HttpMethod = "POST", ErrorMessage = "User name already exists. Please enter a different user name.")]
         public string UserName { get; set; }
 
-        [RegularExpression(@"^([a-zA-Z0-9_\-\.]+)@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.)|(([a-zA-Z0-9\-]+\.)+))([a-zA-Z]{2,4}|[0-9]{1,3})(\]?)$", ErrorMessage = "Please enter a valid e-mail adress")]
         [Required]
+        [RegularExpression(@"^([a-zA-Z0-9_\-\.]+)@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.)|(([a-zA-Z0-9\-]+\.)+))([a-zA-Z]{2,4}|[0-9]{1,3})(\]?)$", ErrorMessage = "Please enter a valid e-mail adress")]
+        [System.Web.Mvc.Remote("doesEmailExist", "Account", HttpMethod = "POST", ErrorMessage = "Email already exists.")]
         [Display(Name = "Email")]
         public string email { get; set; }
 
@@ -137,6 +146,8 @@ namespace Dont_Panic_MVC_API.Models
         public string contact_name { get; set; }
 
         [Required]
+        [Display(Name = "Phone Number")]
+        [RegularExpression(@"^\s*\+?\s*([0-9][\s-]*){7,}$", ErrorMessage = "Please enter a valid Phone Number")]
         public string contact_number_1 { get; set; }
         public string contact_number_2 { get; set; }
         public string website_address { get; set; }

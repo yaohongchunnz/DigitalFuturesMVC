@@ -46,6 +46,7 @@ namespace Dont_Panic_MVC_API.API_Models
             var um = new UserManager<ApplicationUser>(
                 new UserStore<ApplicationUser>(new ApplicationDbContext()));
             var idResult = um.Create(user, password);
+            
             return idResult.Succeeded;
         }
 

@@ -306,6 +306,18 @@ namespace Dont_Panic_MVC_API.Controllers
                 return RedirectToAction("Error");
             }
             jobmodel.UserId = User.Identity.GetUserId();
+
+            APIContext db = new APIContext();
+            List<string> images = ImageUpload();
+            foreach (string image in images)
+            {
+                Photos photo = new Photos();
+                photo.jobid = jobmodel.jobid;
+                photo.photo = image;
+                db.photos.Add(photo);
+            }
+            db.SaveChanges(); 
+
             if (ModelState.IsValid)
             {
                 jobAPI.PutJob(id, jobmodel);

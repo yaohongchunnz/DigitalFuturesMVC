@@ -30,6 +30,8 @@ namespace Dont_Panic_MVC_API.Models
         public string last_name { get; set; }
 
         [Required]
+        [Display(Name = "Phone Number")]
+        [RegularExpression(@"^\s*\+?\s*([0-9][\s-]*){9,}$", ErrorMessage = "Please enter a valid Phone Number")]
         public string phone_number { get; set; }
     }
 

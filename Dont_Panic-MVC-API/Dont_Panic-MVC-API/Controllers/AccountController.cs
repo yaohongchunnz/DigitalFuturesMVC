@@ -474,6 +474,33 @@ namespace Dont_Panic_MVC_API.Controllers
             return View(model);
         }
 
+        [HttpPost]
+        [AllowAnonymous]
+        public JsonResult doesUserNameExist(string UserName)
+        {
+            var um = new UserManager<ApplicationUser>(
+                new UserStore<ApplicationUser>(new ApplicationDbContext()));
+
+            var user = um.FindByName(UserName);
+         //   var user = Membership.GetUser(UserName);
+
+            return Json(user == null);
+        }
+
+        [HttpPost]
+        [AllowAnonymous]
+        public JsonResult doesEmailExist(string email)
+        {
+            APIContext context = new APIContext();
+            if (context.emailAndUser.Count(e => e.email == email) == 0)
+            {
+                return Json(true);
+            }
+            return Json(false);
+        }
+
+        
+
         //
         // POST: /Account/LogOff
         [HttpPost]
