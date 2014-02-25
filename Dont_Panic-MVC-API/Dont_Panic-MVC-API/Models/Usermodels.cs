@@ -28,6 +28,9 @@ namespace Dont_Panic_MVC_API.Models
         [Required]
         [Display(Name = "Last Name")]
         public string last_name { get; set; }
+
+        [Required]
+        public string phone_number { get; set; }
     }
 
     public class ServiceProviderDetails

@@ -61,6 +61,7 @@ namespace Dont_Panic_MVC_API.Controllers.API_Controllers
             UserDetails details = db.userDetails.First(d => d.userId == userid);
             userD.firstName = details.first_name;
             userD.lastName = details.last_name;
+            userD.phoneNumber = details.phone_number;
             return userD;
         }
 

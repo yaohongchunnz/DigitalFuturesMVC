@@ -241,6 +241,7 @@ namespace Dont_Panic_MVC_API.Controllers
                     details.userId = user.Id;
                     details.first_name = model.first_name;
                     details.last_name = model.last_name;
+                    details.phone_number = model.phoneNumber;
                     context.userDetails.Add(details);
                     context.SaveChanges();
 
