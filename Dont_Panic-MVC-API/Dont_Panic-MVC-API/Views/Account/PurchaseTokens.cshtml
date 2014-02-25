@@ -12,9 +12,9 @@
         <div class="row">
             <div class="col-md-4">
                 <div class="layer-token drop-shadow ">
-                    <img src="~/images/tokenbrnz.png" class="img-responsive" />
-                    <h2>$5</h2>
-                    <p>3 tokens</p>
+                    <img src="~/images/5.png" class="img-responsive" />
+                    <h2>$10</h2>
+                    <p> </p>
                     @using (Html.BeginForm("PurchaseTokens", "Account", FormMethod.Post))
                     {
                         @Html.Hidden("selection", 1);
@@ -25,9 +25,9 @@
             </div>
             <div class="col-md-4">
                 <div class="layer-token drop-shadow ">
-                    <img src="~/images/tokensilvr.png" class="img-token img-responsive" />
-                    <h2>$10</h2>
-                    <p>7 tokens</p>
+                    <img src="~/images/10.png" class="img-token img-responsive" />
+                    <h2>$17</h2>
+                    <p>Save 15%!</p>
                     @using (Html.BeginForm("PurchaseTokens", "Account", FormMethod.Post))
                     {
                         @Html.AntiForgeryToken()
@@ -39,9 +39,9 @@
             </div>
             <div class="col-md-4">
                 <div class="layer-token drop-shadow">
-                    <img src="~/images/tokengld.png" class="img-token img-responsive" />
-                    <h2>$15</h2>
-                    <p>12 tokens</p>
+                    <img src="~/images/15.png" class="img-token img-responsive" />
+                    <h2>$24</h2>
+                    <p>Save 20%!</p>
                     @using (Html.BeginForm("PurchaseTokens", "Account", FormMethod.Post))
                     {
                         @Html.AntiForgeryToken()

@@ -26,10 +26,10 @@
     <div class="job-block drop-shadow-lite">
 
 
-        <div id="job-images-carousel" class="carousel slide" data-ride="carousel">
-            @if (photos != null)
-            {
-            <!-- Indicators -->
+        @if (photos != null)
+        {
+            <div id="job-images-carousel" class="carousel slide" data-ride="carousel">
+                <!-- Indicators -->
                 <ol class="carousel-indicators">
                     @if (photos.Count > 1)
                     {
@@ -49,7 +49,7 @@
                     }
                 </ol>
 
-            <!-- Wrapper for slides -->
+                <!-- Wrapper for slides -->
                 <div class="carousel-inner">
                     @for (int i = 0; i < photos.Count; i++)
                     {
@@ -75,9 +75,9 @@
                 </div>
 
 
-            <!-- Controls -->
-                    if (photos.Count > 1)
-                    {
+                <!-- Controls -->
+                @if (photos.Count > 1)
+                {
 
                     <a class="left carousel-control" href="#job-images-carousel" data-slide="prev">
                         <span class="glyphicon glyphicon-chevron-left"></span>
@@ -85,19 +85,9 @@
                     <a class="right carousel-control" href="#job-images-carousel" data-slide="next">
                         <span class="glyphicon glyphicon-chevron-right"></span>
                     </a>
-                    }
-            }
-            else
-            {
-                <div class="carousel-inner">
-                    <div class="item active">
-                        <img src="~/Images/nophotoavailable.jpg">
-                        <div class="carousel-caption">
-                        </div>
-                    </div>
-                </div>
-            }
-        </div>
+                }
+            </div>
+        }
 
         <p class="job-details-description-title">Description</p>
         <p class="job-details-description-text">@Model.description</p>
@@ -139,11 +129,11 @@
                             ServiceAPI apiSer = new ServiceAPI();
                             int tokens = apiSer.getTokens(User.Identity.GetUserId());
 
-
-                            <input type="submit" value="Acquire" class="btn-dontpanic" onclick="acquire(@Model.jobid, @tokens)" />
-
+                            <div class="centertext">
+                                <input type="submit" value="Acquire" class="btn-dontpanic" onclick="acquire(@tokens)" />
+                            </div>
                             <script>
-                                function acquire(jobid, tokens) {
+                                function acquire(tokens) {
 
                                     if (tokens == null || tokens == 0) {
                                         $('#notEnoughTokens').modal('show');
@@ -161,9 +151,17 @@
                                             <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
                                             <h4 class="modal-title">You do not have enough tokens to acquire this lead!</h4>
                                         </div>
-                                        <div class="modal-footer">
-                                            <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
-                                            <button type="button" class="btn btn-primary">Purchase tokens</button>
+                                        <div class="modal-body">
+                                            <div class="row">
+                                                <div class="col-md-2">
+                                                    <button type="button" class="btn-success btn">Purchase tokens</button>
+                                                </div>
+                                                <div class="col-md-2">
+                                                    <button type="button" class="btn-warning btn" data-dismiss="modal">Cancel</button>
+                                                </div>
+                                            </div>
+                                            <br />
+                                            <br />
                                         </div>
                                     </div><!-- /.modal-content -->
                                 </div><!-- /.modal-dialog -->
@@ -176,13 +174,22 @@
                                             <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
                                             <h4 class="modal-title">Are you sure you want to acquire this lead?</h4>
                                         </div>
-                                        <div class="modal-footer">
-                                            <button type="button" class="btn btn-default" data-dismiss="modal">No</button>
-                                            @using (Html.BeginForm("AcquireLead", "Job", FormMethod.Post))
-                                            {
-                                                @Html.Hidden("jobid", @Model.jobid);
-                                                <input type="submit" value="Yes" class="btn btn-primary" />
-                                            }
+                                        <div class="modal-body">
+                                            <div class="col-md-2">
+                                                @using (Html.BeginForm("AcquireLead", "Job", FormMethod.Post))
+                                                {
+                                                    @Html.Hidden("jobid", @Model.jobid);
+                                                    <input type="submit" value="Yes" class="btn-success btn" />
+                                                }
+                                            </div>
+                                            <div class="col-md-2">
+                                                <button type="button" class="btn-warning btn" data-dismiss="modal">No</button>
+
+                                            </div>
+                                            <br />
+                                            <br />
+
+
                                         </div>
                                     </div><!-- /.modal-content -->
                                 </div><!-- /.modal-dialog -->

@@ -2,6 +2,11 @@
 @using Dont_Panic_MVC_API.Controllers.API_Controllers;
 @using Dont_Panic_MVC_API.Models.API_Models;
 
+<script type="text/javascript" language="javascript">
+    function showpic(id) {
+        $('#' + id).modal('show');
+    }
+</script>
 @if (User.Identity.IsAuthenticated)
 {
     //  if (!User.IsInRole("Provider"))
@@ -70,11 +75,29 @@ else
                     }
                     @if (firstPhoto != null)
                     {
-                        <div class="col-md-3"><img src="@Url.Content(firstPhoto.photo)" alt="IMAGES" class="img-responsive job-block-image img-rounded" height="150" width="150" /></div>
+                        <div class="col-md-3">
+                            <a href="#" onclick="showpic(@item.jobid)"><img src="@Url.Content(firstPhoto.photo)" alt="IMAGES" class="img-responsive thumbnail" width="200" height="200" /></a>
+                        </div>
+
+                        <div class="modal fade" id="@item.jobid">
+                            <div class="modal-dialog modal-sm">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                                        <h4 class="modal-title">Enlarged view.</h4>
+                                    </div>
+                                    <div class="modal-body center-content">
+                                        <img src="@Url.Content(firstPhoto.photo)" id="enlargedImage" class="img-responsive" />
+                                    </div>
+                                </div><!-- /.modal-content -->
+                            </div><!-- /.modal-dialog -->
+                        </div><!-- /.modal -->
                     }
                     else
                     {
                         <div class="col-md-3"><img src="~/Images/nophotoavailable.jpg" class="img-responsive job-block-image img-rounded" /></div>
+
+
                     }
 
                     <div class="col-md-9">
@@ -99,7 +122,15 @@ else
                                 TimeSpan timeSincePost = DateTime.Now - item.submitDate;
                                 string agoText;
                                 }
-                                @if (timeSincePost.Minutes > 1 && timeSincePost.Hours < 1)
+                                @if (timeSincePost.Days > 1)
+                                {
+                                    agoText = timeSincePost.Days.ToString() + " days ago";
+                                }
+                                else if (timeSincePost.Days == 1)
+                                {
+                                    agoText = timeSincePost.Days.ToString() + " day ago";
+                                }
+                                else if (timeSincePost.Minutes > 1 && timeSincePost.Hours < 1)
                                 {
                                     agoText = timeSincePost.Minutes.ToString() + " minutes ago";
                                 }
@@ -113,15 +144,15 @@ else
                                 }
                                 else if (timeSincePost.Hours > 1)
                                 {
-                                    agoText = timeSincePost.Hours.ToString() + "hrs ago";
+                                    agoText = timeSincePost.Hours.ToString() + "hours ago";
                                 }
                                 else if (timeSincePost.Hours == 1)
                                 {
-                                    agoText = "an hr ago";
+                                    agoText = "an hour ago";
                                 }
                                 else
                                 {
-                                    agoText = "less than an hr ago";
+                                    agoText = "less than an hour ago";
                                 }
                                 <p class="text-primary" style="font-size:12px">Posted: @agoText</p>
 
@@ -132,7 +163,7 @@ else
                 </div>
 
             </div>
-        <br />
+            <br />
 
         }
     }

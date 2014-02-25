@@ -42,11 +42,10 @@
     font-weight: bold;
     color: #ffffff;
     font-size: 16px;
-    padding: 1px 37px 1px 37px;
+    padding: 3px 15px 3px 15px;
     border: solid rgba(94, 133, 121, 0.60) 1.5px;
     text-decoration: none;
     height:auto;
-    display: inline-block;
     margin-bottom: 0;
     line-height: 1.428571429;
     text-align: center;
@@ -54,6 +53,7 @@
     vertical-align: middle;
     cursor: pointer;
     user-select: none;
+    width:auto;
 }
 
     .btn-dontpanic:hover {
@@ -484,4 +484,8 @@
 }
 
 .img-token{
+}
+
+.center-content{
+    margin:0 auto;
 }
