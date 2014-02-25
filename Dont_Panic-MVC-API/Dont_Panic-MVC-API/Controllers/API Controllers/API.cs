@@ -33,7 +33,6 @@ namespace Dont_Panic_MVC_API.Controllers.API_Controllers
         {
             ServiceProviderDetails sp = db.ServiceProvidersDetails.First(p => p.userId == userid);
             sp.tokens -= amount;
-            db.ServiceProvidersDetails.Add(sp);
             db.SaveChanges();
         }
 
@@ -41,7 +40,6 @@ namespace Dont_Panic_MVC_API.Controllers.API_Controllers
         {
             ServiceProviderDetails sp = db.ServiceProvidersDetails.First(p => p.userId == userid);
             sp.tokens += amount;
-            db.ServiceProvidersDetails.Add(sp);
             db.SaveChanges();
         }
 
