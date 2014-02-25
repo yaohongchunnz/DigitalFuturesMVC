@@ -7,6 +7,15 @@ namespace Dont_Panic_MVC_API.Models
         [Required]
         [Display(Name = "User name")]
         public string UserName { get; set; }
+
+        [Required]
+        public string email { get; set; }
+
+        [Required]
+        [Display(Name = "Phone Number")]
+        public string phoneNumber { get; set; }
+
+        public string name { get; set; }
     }
 
     public class ManageUserViewModel
