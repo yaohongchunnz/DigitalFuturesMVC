@@ -66,7 +66,7 @@ namespace Dont_Panic_MVC_API.Controllers
         public ActionResult RepostJob(int jobid)
         {
             JobAPI api = new JobAPI();
-
+            
             Job job = api.GetJob(jobid);
             if (job != null)
             {
@@ -114,11 +114,16 @@ namespace Dont_Panic_MVC_API.Controllers
             if (job.leadsAccquired < 3)
             {
 
+                ServiceAPI sapi = new ServiceAPI();
+                sapi.removeTokens(1, User.Identity.GetUserId());
+
+
                 job.leadsAccquired = job.leadsAccquired + 1;
                 jobAPI.PutJob(jobid, job);
 
                 JobService servicejob = new JobService();
                 servicejob.jobid = jobid;
+               
                 servicejob.serviceProviderId = User.Identity.GetUserId();
                 db.jobService.Add(servicejob);
                 db.SaveChanges();
