@@ -1,12 +1,12 @@
 ﻿@model Dont_Panic_MVC_API.Models.API_Models.Job
 @using Dont_Panic_MVC_API.Controllers.API_Controllers;
 @using Dont_Panic_MVC_API.Models.API_Models;
+@using Microsoft.AspNet.Identity;
 
 
 @{
     ViewBag.Title = "Job Details";
 }
-@using Microsoft.AspNet.Identity;
 @{
     Dont_Panic_MVC_API.API_Models.IdentityManager im = new Dont_Panic_MVC_API.API_Models.IdentityManager();
 
@@ -76,8 +76,8 @@
 
 
             <!-- Controls -->
-                if (photos.Count > 1)
-                {
+                    if (photos.Count > 1)
+                    {
 
                     <a class="left carousel-control" href="#job-images-carousel" data-slide="prev">
                         <span class="glyphicon glyphicon-chevron-left"></span>
@@ -85,7 +85,7 @@
                     <a class="right carousel-control" href="#job-images-carousel" data-slide="next">
                         <span class="glyphicon glyphicon-chevron-right"></span>
                     </a>
-                }
+                    }
             }
             else
             {
@@ -116,13 +116,18 @@
                     else
                     {
                         JobServiceAPI apiJ = new JobServiceAPI();
+                        userAPI apiUser = new userAPI();
+                        UserDetail userdetails = apiUser.getDetails(Model.UserId, Model.username);
                         if (apiJ.ownsJob(Model.jobid, User.Identity.GetUserId()))
                         {
                             <p>You have unlocked this job</p>
-                            <p>Located in: @Model.region/@Model.district/@Model.suburb</p>
-                            <p>Posted by: @Model.username</p>
-                            
-                    
+                            <p>
+                                Located in: @Model.region/@Model.district/@Model.suburb<br />
+                                Posted by: @userdetails.firstName @userdetails.lastName <br />
+                                Email: @userdetails.email<br />
+                                Phone: @userdetails.phoneNumber<br />
+                            </p>
+
                         }
                         else
                         {
@@ -133,6 +138,7 @@
 
                             ServiceAPI apiSer = new ServiceAPI();
                             int tokens = apiSer.getTokens(User.Identity.GetUserId());
+
 
                             <input type="submit" value="Acquire" class="btn-dontpanic" onclick="acquire(@Model.jobid, @tokens)" />
 

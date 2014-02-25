@@ -17,7 +17,6 @@
                     <p>3 tokens</p>
                     @using (Html.BeginForm("PurchaseTokens", "Account", FormMethod.Post))
                     {
-                        @Html.AntiForgeryToken()
                         @Html.Hidden("selection", 1);
                         <button type="submit" onclick="return confirm('Are you sure you want to purchase 3 tokens for $5?')" class="btn-dontpanic" value="Purchase">Purchase</button>
                     }
