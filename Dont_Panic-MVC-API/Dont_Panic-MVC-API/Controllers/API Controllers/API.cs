@@ -29,6 +29,14 @@ namespace Dont_Panic_MVC_API.Controllers.API_Controllers
 
         }
 
+        public void addTokens(int amount, string userid)
+        {
+            ServiceProviderDetails sp = db.ServiceProvidersDetails.First(p => p.userId == userid);
+            sp.tokens += amount;
+            db.ServiceProvidersDetails.Add(sp);
+            db.SaveChanges();
+        }
+
         public int getTokens(string id){
             ServiceProviderDetails sp = db.ServiceProvidersDetails.First(p => p.userId == id);
             return sp.tokens;
