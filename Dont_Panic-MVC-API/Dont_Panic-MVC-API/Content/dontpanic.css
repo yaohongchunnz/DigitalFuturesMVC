@@ -46,6 +46,14 @@
     border: solid rgba(94, 133, 121, 0.60) 1.5px;
     text-decoration: none;
     height:auto;
+    display: inline-block;
+    margin-bottom: 0;
+    line-height: 1.428571429;
+    text-align: center;
+    white-space: nowrap;
+    vertical-align: middle;
+    cursor: pointer;
+    user-select: none;
 }
 
     .btn-dontpanic:hover {
@@ -448,7 +456,32 @@
 
 .layer-token{
     background-color: #fff;
-    border-radius:5px;
+    border-radius:10px;
     margin:0 auto;
     padding:5px;
+    padding-bottom:15px;
+    text-align:center;
+   
+}
+
+.layer-purchasetoken{
+    border: 3px solid #65A592;
+    background-color: #efefef;
+    border-radius: 5px;
+    -moz-box-shadow: 0px 0px 8px 1px #000;
+    -webkit-box-shadow: 0px 0px 8px 1px #000;
+    box-shadow: 0px 0px 8px 1px #000;
+    max-width: 80%;
+}
+
+
+.layer-content {
+    padding-left: 25px;
+    padding-right: 25px;
+    margin: 0 auto;
+    max-width: 90%;
+    text-align:center;
+}
+
+.img-token{
 }
