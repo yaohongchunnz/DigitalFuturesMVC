@@ -262,8 +262,11 @@
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
     <Content Include="Images\1.png" />
+    <Content Include="Images\10.png" />
+    <Content Include="Images\15.png" />
     <Content Include="Images\2.png" />
     <Content Include="Images\3.png" />
+    <Content Include="Images\5.png" />
     <Content Include="Images\background.jpg" />
     <Content Include="Images\BG2.jpg" />
     <Content Include="Images\buttonsTest1.png" />
