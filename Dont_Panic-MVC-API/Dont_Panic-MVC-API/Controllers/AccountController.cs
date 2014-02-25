@@ -98,6 +98,29 @@ namespace Dont_Panic_MVC_API.Controllers
         {
             return View();
         }
+
+        [Authorize]
+        [HttpPost]
+        public ActionResult PurchaseTokens(int selection)
+        {
+
+            ServiceAPI api = new ServiceAPI();
+
+            switch(selection){
+                case 1:     // Bronze 3
+                    api.addTokens(3, User.Identity.GetUserId());
+                    break;
+                case 2:     // Silver 7
+                    api.addTokens(7, User.Identity.GetUserId());
+                    break;
+                case 3:     // Gold 12
+                    api.addTokens(12, User.Identity.GetUserId());
+                    break;
+            }
+
+
+            return RedirectToAction("/");
+        }
         
         /*  Called when a user clicks to sign up for a service provider account 
          *  GET: /Account/ProviderSignup 
