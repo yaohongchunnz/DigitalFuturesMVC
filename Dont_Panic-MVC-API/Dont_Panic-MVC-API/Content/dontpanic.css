@@ -544,3 +544,7 @@
         width: 100%;
         height: auto;
     }
+
+.modal-dialog-center {
+    margin-top: 25%;
+}
