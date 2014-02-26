@@ -99,7 +99,7 @@
                         {
                             @Html.Hidden("jobid", item.jobid);
                         }
-                        <a onclick="javascript: document.getElementById('interestedForm').submit()"><p>@item.leadsAccquired interested pros</p></a>
+                        <a href="#" onclick="javascript: document.getElementById('interestedForm').submit()"><p>@item.leadsAccquired interested pros</p></a>
                         <input type="button" onclick="location.href='/Job/Details/@item.jobid'" value="View Job" class="btn-dontpanic" />
 
                     </div>
