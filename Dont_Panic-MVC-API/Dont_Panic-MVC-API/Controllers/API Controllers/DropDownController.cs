@@ -14,17 +14,29 @@ namespace Dont_Panic_MVC_API.Controllers.API_Controllers
         // GET api/<controller>
         public HttpResponseMessage Get(int dropdown, int selection)
         {
-            if (dropdown == 1 && selection == 11)
+            APIContext context = new APIContext();
+            if (dropdown == 1)
             {
-                WellingtonDistrictDropDown values = new WellingtonDistrictDropDown();
-                return Request.CreateResponse(HttpStatusCode.OK, values.DistrictList, Configuration.Formatters.JsonFormatter);
-            }
-            else if(dropdown == 2 && selection == 8){
-                WellingtonSuburbDropDown values = new WellingtonSuburbDropDown();
-                return Request.CreateResponse(HttpStatusCode.OK, values.SuburbList, Configuration.Formatters.JsonFormatter);
-            }
+                IQueryable<District> districts = context.district.Where(d => d.regionid == selection);
 
+                List<SelectListItem> listItems = new List<SelectListItem>();
+                foreach(District district in districts){
+                    listItems.Add(new SelectListItem() { Value = district.districtid.ToString(), Text = district.district  });
+                }
 
+                return Request.CreateResponse(HttpStatusCode.OK, listItems, Configuration.Formatters.JsonFormatter);
+            }
+            else if(dropdown == 2){
+                IQueryable<Suburb> suburbs = context.suburb.Where(d => d.districtid == selection);
+
+                List<SelectListItem> listItems = new List<SelectListItem>();
+                foreach (Suburb suburb in suburbs)
+                {
+                    listItems.Add(new SelectListItem() { Value = suburb.suburbid.ToString(), Text = suburb.suburb });
+                }
+
+                return Request.CreateResponse(HttpStatusCode.OK, listItems, Configuration.Formatters.JsonFormatter);
+            }
             HttpError myCustomError = new HttpError("Invaild dropdown number or selection") { { "CustomErrorCode", 1 } };
             return Request.CreateErrorResponse(HttpStatusCode.BadRequest, myCustomError);
         }
