@@ -298,21 +298,20 @@ namespace Dont_Panic_MVC_API.Controllers
          [Authorize]
          [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include="jobid,title,description,city,jobtype")] int id, Job jobmodel)
+        public ActionResult Edit(int id, ViewJob jobmodel)
         {
             Job job = jobAPI.GetJob(id);
             if (!User.Identity.GetUserId().Equals(job.UserId))
             {
                 return RedirectToAction("Error");
             }
-            jobmodel.UserId = User.Identity.GetUserId();
 
             APIContext db = new APIContext();
             List<string> images = ImageUpload();
             foreach (string image in images)
             {
                 Photos photo = new Photos();
-                photo.jobid = jobmodel.jobid;
+                photo.jobid = id;
                 photo.photo = image;
                 db.photos.Add(photo);
             }
@@ -320,7 +319,11 @@ namespace Dont_Panic_MVC_API.Controllers
 
             if (ModelState.IsValid)
             {
-                jobAPI.PutJob(id, jobmodel);
+                job.jobtype = jobmodel.jobtype;
+                job.description = jobmodel.description;
+                job.title = jobmodel.description;
+              
+                jobAPI.PutJob(id, job);
                 return RedirectToAction("Index");
             }
             return View(jobmodel);
