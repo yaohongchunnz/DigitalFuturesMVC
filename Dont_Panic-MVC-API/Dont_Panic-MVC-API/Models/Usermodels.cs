@@ -70,5 +70,39 @@ namespace Dont_Panic_MVC_API.Models
         public int tokens { get; set; }
     }
 
+        public class UsersProviderDetails
+    {
+        [Required]
+        [Key]
+        public string userId { get; set; }
+                
+        [Required]
+        public string business_name { get; set; }
+        [Required]
+        public string address { get; set; }
+
+        // about service
+        [Required]
+        public string about { get; set; }
+        [Required]
+        public string services { get; set; }
+        [Required]
+        public string areas_serviced { get; set; }
+        [Required]
+        public string availability { get; set; }
+        [Required]
+        public string description { get; set; }
+
+        // Service provider contact details
+        [Required]
+        public string contact_name { get; set; }
+
+        [Required]
+        public string contact_number_1 { get; set; }
+        public string contact_number_2 { get; set; }
+        public string website_address { get; set; }
+
+        public string email { get; set; }
+        public string username { get; set; }
 
 }
