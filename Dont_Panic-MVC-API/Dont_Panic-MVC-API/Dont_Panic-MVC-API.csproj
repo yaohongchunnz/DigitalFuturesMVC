@@ -362,6 +362,7 @@
     <Content Include="Views\Job\Previous.cshtml" />
     <Content Include="Views\Account\PurchaseTokens.cshtml" />
     <Content Include="Views\Home\Protect.cshtml" />
+    <Content Include="Views\Job\InterestedPros.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
