@@ -127,6 +127,7 @@
 .green-text {
     color: #65A592;
 }
+
 .dark-green-text {
     color: #497769;
 }
@@ -401,11 +402,11 @@
 }
 
 .job-details-title {
-    border-top-left-radius:5px;
-    border-top-right-radius:5px;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
     border: 2px #65A591;
     padding: 5px;
-    margin:0 auto;
+    margin: 0 auto;
     background-image: -webkit-linear-gradient(top, rgba(101, 165, 145, 0.18), rgba(73, 119, 105, 0.41));
     background-image: -moz-linear-gradient(top,rgba(101, 165, 145, 0.18), rgba(73, 119, 105, 0.41));
     background-image: -ms-linear-gradient(top,rgba(101, 165, 145, 0.18), rgba(73, 119, 105, 0.41));
@@ -546,6 +547,7 @@
     }
 
 .modal-dialog-center {
-    margin-top: 25%;
+    transform: translate(0, 50%) !important;
+    -ms-transform: translate(0, 50%) !important; /* IE 9 */
+    -webkit-transform: translate(0, 50%) !important; /* Safari and Chrome */
 }
-
