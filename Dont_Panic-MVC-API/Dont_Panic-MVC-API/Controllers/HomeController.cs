@@ -19,13 +19,11 @@ namespace Dont_Panic_MVC_API.Controllers
         public ActionResult Protect(ProtectLoginModel model)
         {
             if (model.Password == null) return View();
-
                 if (model.Password == "shaft")
                 {
                     Session["Login"] = model.Password;
                     Response.Redirect("~/Home");
                 }
-            
             return View();
         }
 
@@ -37,18 +35,13 @@ namespace Dont_Panic_MVC_API.Controllers
         public ActionResult About()
         {
             ViewBag.Message = "Your application description page.";
-
             return View();
         }
 
         public ActionResult Contact()
         {
-
             ViewBag.Message = "Your contact page.";
-
             return View();
         }
     }
-
-
 }
