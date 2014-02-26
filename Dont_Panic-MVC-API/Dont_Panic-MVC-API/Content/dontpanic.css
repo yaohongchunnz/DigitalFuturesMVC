@@ -45,7 +45,7 @@
     padding: 3px 15px 3px 15px;
     border: solid rgba(94, 133, 121, 0.60) 1.5px;
     text-decoration: none;
-    height:auto;
+    height: auto;
     margin-bottom: 0;
     line-height: 1.428571429;
     text-align: center;
@@ -53,7 +53,7 @@
     vertical-align: middle;
     cursor: pointer;
     user-select: none;
-    width:auto;
+    width: auto;
 }
 
     .btn-dontpanic:hover {
@@ -341,13 +341,10 @@
 }
 
 .job-block {
-    padding-left: 5px;
-    padding-right: 5px;
-    padding-bottom: 5px;
-    padding-top:5px;
     border-radius: 5px;
-    margin-left:5px;
-    margin-right:5px;
+    margin-left: 5px;
+    margin-right: 5px;
+    padding-bottom:5px;
     background-image: -webkit-linear-gradient(top, #f3f3f3, #d0d0d0);
     background-image: -moz-linear-gradient(top,#f3f3f3, #d0d0d0);
     background-image: -ms-linear-gradient(top,#f3f3f3, #d0d0d0);
@@ -375,104 +372,123 @@
 
 
 .job-details-description-title {
-    padding:5px;
-    text-align: center;
+    padding-top: 5px;
+    padding-left: 20px;
+    padding-right: 20px;
     font-weight: bold;
-    color: rgba(0, 0, 0, 0.50);
+    color: #2f2f2f;
     font-size: 18px;
 }
 
-.job-details-description-text{
-    padding:5px;
-    text-align:center;
+.job-details-description-text {
+    padding-left: 20px;
+    padding-right: 20px;
     color: rgba(0, 0, 0, 0.50);
     font-size: 14px;
-    font-weight:bold;
-}
-.job-details-description-information{
-    padding:5px;
-    text-align:center;
-    color: rgb(143, 143, 143);
-    font-size: 14px;
-    font-weight:bold;
+    font-weight: bold;
 }
 
-.layer3{
+.job-details-description-information {
+    padding-left: 20px;
+    padding-right: 20px;
+    text-align: center;
+    color: rgba(101, 165, 145, 0.76);
+    font-size: 14px;
+    font-weight: bold;
+}
+
+.layer3 {
     max-width: 520px;
     background-color: #65A591;
     border: 3px solid #497769;
     border-radius: 10px;
-    margin:0 auto;
-    padding-bottom:15px;
+    margin: 0 auto;
+    padding-bottom: 15px;
 }
 
-.layer3>h4{
-    text-align:center;
-    font-weight:bold;
-    color:#efefef;
-}
+    .layer3 > h4 {
+        text-align: center;
+        font-weight: bold;
+        color: #efefef;
+    }
 
 
-.layer3>p,
-.layer3>p>a{
-    text-align:center;
-    font-weight:bold;
-    color:rgba(239, 239, 239, 0.72);
 
-}
+    .layer3 > p,
+    .layer3 > p > a {
+        text-align: center;
+        font-weight: bold;
+        color: rgba(239, 239, 239, 0.72);
+    }
 
-.layer3>form{
-    text-align:center;
-}
+    .layer3 > form {
+        text-align: center;
+    }
 
-.login-buttons{
-    margin:0 auto;
-}
-.login-dontpanic{
-    text-align:center;
-
-}
-.login-dontpanic>input{
-    width:100%;
+.layer3-user {
+    text-align: center;
+    margin: 0 auto;
 }
 
-.login-facebook{
+    .layer3-user > hr {
+        display: block;
+        height: 1px;
+        border: 0;
+        border-top: 1px solid rgba(138, 138, 138, 0.78);
+        margin: 1em 0;
+        padding: 0;
+    }
+
+.login-buttons {
+    margin: 0 auto;
 }
-.login-facebook>button{
-    width:100%;
+
+.login-dontpanic {
+    text-align: center;
 }
+
+    .login-dontpanic > input {
+        width: 100%;
+    }
+
+.login-facebook {
+}
+
+    .login-facebook > button {
+        width: 100%;
+    }
 
 .btn-file {
     position: relative;
     overflow: hidden;
 }
-.btn-file input[type=file] {
-    position: absolute;
-    top: 0;
-    right: 0;
-    min-width: 100%;
-    min-height: 100%;
-    font-size: 999px;
-    text-align: right;
-    filter: alpha(opacity=0);
-    opacity: 0;
-    outline: none;
-    background: white;
-    cursor: inherit;
-    display: block;
-}
 
-.layer-token{
+    .btn-file input[type=file] {
+        position: absolute;
+        top: 0;
+        right: 0;
+        min-width: 100%;
+        min-height: 100%;
+        font-size: 999px;
+        text-align: right;
+        filter: alpha(opacity=0);
+        opacity: 0;
+        outline: none;
+        background: white;
+        cursor: inherit;
+        display: block;
+    }
+
+.layer-token {
     background-color: #fff;
-    border-radius:10px;
-    margin:0 auto;
-    padding:5px;
-    padding-bottom:15px;
-    text-align:center;
-   
+    border-radius: 10px;
+    margin: 0 auto;
+    padding: 5px;
+    padding-bottom: 15px;
+    text-align: center;
 }
 
-.layer-purchasetoken{
+.layer-purchasetoken {
     border: 3px solid #65A592;
     background-color: #efefef;
     border-radius: 5px;
@@ -488,12 +504,12 @@
     padding-right: 25px;
     margin: 0 auto;
     max-width: 90%;
-    text-align:center;
+    text-align: center;
 }
 
-.img-token{
+.img-token {
 }
 
-.center-content{
-    margin:0 auto;
+.center-content {
+    margin: 0 auto;
 }

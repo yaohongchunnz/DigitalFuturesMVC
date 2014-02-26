@@ -14,7 +14,6 @@
 <br />
 <div class="container drop-shadow browse-jobs-block">
     <h3 class="centertext"><font color="#65B5A2">job</font> details</h3>
-    <h2 class="green-text">@Model.title</h2>
     <br />
 
     @{
@@ -89,128 +88,130 @@
             </div>
         }
 
-        <p class="job-details-description-title">Description</p>
-        <p class="job-details-description-text">@Model.description</p>
-        <p class="job-details-description-information">@Model.region - @Model.jobtype</p>
-        <div class="layer3">
-            @if (User.Identity.IsAuthenticated)
+        <h2 class="green-text">@Model.title</h2>
+        <div class="job-details-description-title">Description</div>
+        <div class="job-details-description-text">@Model.description<br /><br /></div>
+        <div class="job-details-description-information">@Model.region - @Model.jobtype</div>
+        @if (User.Identity.IsAuthenticated)
+        {
+            if (im.UserContainsRole(User.Identity.GetUserId(), "Provider"))
             {
-                if (im.UserContainsRole(User.Identity.GetUserId(), "Provider"))
-                {
+                <div class="layer3">
                     <h4>Contact Details:</h4>
-                    if (@Model.leadsAccquired == 3)
+                    @if (@Model.leadsAccquired == 3)
                     {
-                        <p>No more leads remaining</p>
+                    <p>No more leads remaining</p>
                     }
 
                     else
                     {
-                        JobServiceAPI apiJ = new JobServiceAPI();
-                        userAPI apiUser = new userAPI();
-                        UserDetail userdetails = apiUser.getDetails(Model.UserId, Model.username);
-                        if (apiJ.ownsJob(Model.jobid, User.Identity.GetUserId()))
-                        {
-                            <p>You have unlocked this job</p>
-                            <p>
-                                Located in: @Model.region/@Model.district/@Model.suburb<br />
-                                Posted by: @userdetails.firstName @userdetails.lastName <br />
-                                Email: @userdetails.email<br />
-                                Phone: @userdetails.phoneNumber<br />
-                            </p>
+                    JobServiceAPI apiJ = new JobServiceAPI();
+                    userAPI apiUser = new userAPI();
+                    UserDetail userdetails = apiUser.getDetails(Model.UserId, Model.username);
+                    if (apiJ.ownsJob(Model.jobid, User.Identity.GetUserId()))
+                    {
+                    <p>You have unlocked this job</p>
+                    <p>
+                        Located in: @Model.region/@Model.district/@Model.suburb<br />
+                        Posted by: @userdetails.firstName @userdetails.lastName <br />
+                        Email: @userdetails.email<br />
+                        Phone: @userdetails.phoneNumber<br />
+                    </p>
 
-                        }
-                        else
-                        {
-                            <p>This job is locked. To unlock contact details, you must acquire a lead.</p>
-                            //   using (Html.BeginForm("AcquireLead", "Job", FormMethod.Post))
-                            //  {
-                            //  @Html.Hidden("jobid", @Model.jobid);
-
-                            ServiceAPI apiSer = new ServiceAPI();
-                            int tokens = apiSer.getTokens(User.Identity.GetUserId());
-
-                            <div class="centertext">
-                                <input type="submit" value="Acquire" class="btn-dontpanic" onclick="acquire(@tokens)" />
-                            </div>
-                            <script>
-                                function acquire(tokens) {
-
-                                    if (tokens == null || tokens == 0) {
-                                        $('#notEnoughTokens').modal('show');
-                                    }
-                                    else {
-                                        $('#acquireConfirmation').modal('show');
-                                    }
-                                }
-                            </script>
-
-                            <div class="modal fade" id="notEnoughTokens">
-                                <div class="modal-dialog modal-sm">
-                                    <div class="modal-content">
-                                        <div class="modal-header">
-                                            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                                            <h4 class="modal-title">You do not have enough tokens to acquire this lead!</h4>
-                                        </div>
-                                        <div class="modal-body">
-                                            <div class="row">
-                                                <div class="col-md-2">
-                                                    <button type="button" class="btn-success btn">Purchase tokens</button>
-                                                </div>
-                                                <div class="col-md-2">
-                                                    <button type="button" class="btn-warning btn" data-dismiss="modal">Cancel</button>
-                                                </div>
-                                            </div>
-                                            <br />
-                                            <br />
-                                        </div>
-                                    </div><!-- /.modal-content -->
-                                </div><!-- /.modal-dialog -->
-                            </div><!-- /.modal -->
-
-                            <div class="modal fade" id="acquireConfirmation">
-                                <div class="modal-dialog modal-sm">
-                                    <div class="modal-content">
-                                        <div class="modal-header">
-                                            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                                            <h4 class="modal-title">Are you sure you want to acquire this lead?</h4>
-                                        </div>
-                                        <div class="modal-body">
-                                            <div class="col-md-2">
-                                                @using (Html.BeginForm("AcquireLead", "Job", FormMethod.Post))
-                                                {
-                                                    @Html.Hidden("jobid", @Model.jobid);
-                                                    <input type="submit" value="Yes" class="btn-success btn" />
-                                                }
-                                            </div>
-                                            <div class="col-md-2">
-                                                <button type="button" class="btn-warning btn" data-dismiss="modal">No</button>
-
-                                            </div>
-                                            <br />
-                                            <br />
-
-
-                                        </div>
-                                    </div><!-- /.modal-content -->
-                                </div><!-- /.modal-dialog -->
-                            </div><!-- /.modal -->
-
-
-                        }
                     }
-                }
-                else
-                {
+                    else
+                    {
+                    <p>This job is locked. To unlock contact details, you must acquire a lead.</p>
+                    //   using (Html.BeginForm("AcquireLead", "Job", FormMethod.Post))
+                    //  {
+                    //  @Html.Hidden("jobid", @Model.jobid);
 
-                    <h4>Manage job:</h4>
+                    ServiceAPI apiSer = new ServiceAPI();
+                    int tokens = apiSer.getTokens(User.Identity.GetUserId());
+
+                    <div class="centertext">
+                        <input type="submit" value="Acquire" class="btn-dontpanic" onclick="acquire(@tokens)" />
+                    </div>
+                    <script>
+                        function acquire(tokens) {
+
+                            if (tokens == null || tokens == 0) {
+                                $('#notEnoughTokens').modal('show');
+                            }
+                            else {
+                                $('#acquireConfirmation').modal('show');
+                            }
+                        }
+                    </script>
+
+                    <div class="modal fade" id="notEnoughTokens">
+                        <div class="modal-dialog modal-sm">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                                    <h4 class="modal-title">You do not have enough tokens to acquire this lead!</h4>
+                                </div>
+                                <div class="modal-body">
+                                    <div class="row">
+                                        <div class="col-md-2">
+                                            <button type="button" class="btn-success btn">Purchase tokens</button>
+                                        </div>
+                                        <div class="col-md-2">
+                                            <button type="button" class="btn-warning btn" data-dismiss="modal">Cancel</button>
+                                        </div>
+                                    </div>
+                                    <br />
+                                    <br />
+                                </div>
+                            </div><!-- /.modal-content -->
+                        </div><!-- /.modal-dialog -->
+                    </div><!-- /.modal -->
+
+                    <div class="modal fade" id="acquireConfirmation">
+                        <div class="modal-dialog modal-sm">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                                    <h4 class="modal-title">Are you sure you want to acquire this lead?</h4>
+                                </div>
+                                <div class="modal-body">
+                                    <div class="col-md-2">
+                                        @using (Html.BeginForm("AcquireLead", "Job", FormMethod.Post))
+                                        {
+                                            @Html.Hidden("jobid", @Model.jobid);
+                                            <input type="submit" value="Yes" class="btn-success btn" />
+                                        }
+                                    </div>
+                                    <div class="col-md-2">
+                                        <button type="button" class="btn-warning btn" data-dismiss="modal">No</button>
+
+                                    </div>
+                                    <br />
+                                    <br />
+
+
+                                </div>
+                            </div><!-- /.modal-content -->
+                        </div><!-- /.modal-dialog -->
+                    </div><!-- /.modal -->
+                    }
+                    }
+
+                </div>
+            }
+
+            else
+            {
+                <div class="layer3-user">
+                    <hr />
                     <p>
                         @Html.ActionLink("Edit", "Edit", new { id = Model.jobid }) |
                         @Html.ActionLink("Delete", "Delete", new { id = Model.jobid })
                     </p>
+                </div>
 
-                }
             }
-        </div>
+        }
         <br />
 
     </div>
