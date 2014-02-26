@@ -24,7 +24,9 @@
 
     <div class="job-block drop-shadow-lite">
 
-
+        <div class="job-details-title">
+            <h2 class="dark-green-text">@Model.title</h2>
+        </div>
         @if (photos != null)
         {
             <div id="job-images-carousel" class="carousel slide" data-ride="carousel">
@@ -88,7 +90,6 @@
             </div>
         }
 
-        <h2 class="green-text">@Model.title</h2>
         <div class="job-details-description-title">Description</div>
         <div class="job-details-description-text">@Model.description<br /><br /></div>
         <div class="job-details-description-information">@Model.region - @Model.jobtype</div>
