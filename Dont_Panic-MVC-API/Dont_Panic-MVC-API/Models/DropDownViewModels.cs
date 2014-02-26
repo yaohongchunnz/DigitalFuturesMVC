@@ -62,24 +62,24 @@ namespace Dont_Panic_MVC_API.Models
 
             List<SelectListItem> listItems = new List<SelectListItem>();
 
-            listItems.Add(new SelectListItem() { Value = "1", Text = "Northland" });
-            listItems.Add(new SelectListItem() { Value = "2", Text = "Auckland" });
-            listItems.Add(new SelectListItem() { Value = "3", Text = "Waikato" });
-            listItems.Add(new SelectListItem() { Value = "4", Text = "Bay of Plenty" });
-            listItems.Add(new SelectListItem() { Value = "5", Text = "Gisborne" });
-            listItems.Add(new SelectListItem() { Value = "6", Text = "Hawke's Bay" });
-            listItems.Add(new SelectListItem() { Value = "7", Text = "Taranaki" });
-            listItems.Add(new SelectListItem() { Value = "8", Text = "Wanganui" });
-            listItems.Add(new SelectListItem() { Value = "9", Text = "Manawatu" });
-            listItems.Add(new SelectListItem() { Value = "10", Text = "Wairarapa" });
+           // listItems.Add(new SelectListItem() { Value = "1", Text = "Northland" });
+           // listItems.Add(new SelectListItem() { Value = "2", Text = "Auckland" });
+           // listItems.Add(new SelectListItem() { Value = "3", Text = "Waikato" });
+           // listItems.Add(new SelectListItem() { Value = "4", Text = "Bay of Plenty" });
+           // listItems.Add(new SelectListItem() { Value = "5", Text = "Gisborne" });
+           // listItems.Add(new SelectListItem() { Value = "6", Text = "Hawke's Bay" });
+           // listItems.Add(new SelectListItem() { Value = "7", Text = "Taranaki" });
+           // listItems.Add(new SelectListItem() { Value = "8", Text = "Wanganui" });
+           // listItems.Add(new SelectListItem() { Value = "9", Text = "Manawatu" });
+           // listItems.Add(new SelectListItem() { Value = "10", Text = "Wairarapa" });
             listItems.Add(new SelectListItem() { Value = "11", Text = "Wellington" });
-            listItems.Add(new SelectListItem() { Value = "12", Text = "Nelson Bay's" });
-            listItems.Add(new SelectListItem() { Value = "13", Text = "Marlborough" });
-            listItems.Add(new SelectListItem() { Value = "14", Text = "West Coast" });
-            listItems.Add(new SelectListItem() { Value = "15", Text = "Canterbury" });
-            listItems.Add(new SelectListItem() { Value = "16", Text = "Timaru" });
-            listItems.Add(new SelectListItem() { Value = "17", Text = "Otago" });
-            listItems.Add(new SelectListItem() { Value = "18", Text = "Southland" });
+           // listItems.Add(new SelectListItem() { Value = "12", Text = "Nelson Bay's" });
+           // listItems.Add(new SelectListItem() { Value = "13", Text = "Marlborough" });
+           // listItems.Add(new SelectListItem() { Value = "14", Text = "West Coast" });
+           // listItems.Add(new SelectListItem() { Value = "15", Text = "Canterbury" });
+           // listItems.Add(new SelectListItem() { Value = "16", Text = "Timaru" });
+           // listItems.Add(new SelectListItem() { Value = "17", Text = "Otago" });
+           // listItems.Add(new SelectListItem() { Value = "18", Text = "Southland" });
 
             RegionList = new SelectList(listItems, "Value", "Text");
 
