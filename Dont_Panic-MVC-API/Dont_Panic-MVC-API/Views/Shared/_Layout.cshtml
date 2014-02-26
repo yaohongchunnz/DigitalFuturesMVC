@@ -5,7 +5,10 @@
 
 @{
     Dont_Panic_MVC_API.API_Models.IdentityManager im = new Dont_Panic_MVC_API.API_Models.IdentityManager();
-
+    if (Session["Login"] == null)
+         {
+             Response.Redirect("~/Home/Protect");
+         }
 }
 
 <link rel="icon" type="img/png" href="~/Images/Favicon3.png">

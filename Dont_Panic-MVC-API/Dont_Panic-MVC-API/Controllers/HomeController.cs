@@ -16,14 +16,16 @@ namespace Dont_Panic_MVC_API.Controllers
         }
 
         [HttpPost]
-        public ActionResult Protect(LoginViewModel model)
+        public ActionResult Protect(ProtectLoginModel model)
         {
+            if (model.Password == null) return View();
+
                 if (model.Password == "shaft")
                 {
-                    Session["Login"] = model.UserName;
+                    Session["Login"] = model.Password;
+                    Response.Redirect("~/Home");
                 }
             
-            Session["Login"] = null;
             return View();
         }
 

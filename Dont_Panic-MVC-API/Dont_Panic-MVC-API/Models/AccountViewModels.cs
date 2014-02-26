@@ -57,6 +57,13 @@ namespace Dont_Panic_MVC_API.Models
         public bool RememberMe { get; set; }
     }
 
+    public class ProtectLoginModel
+    {
+        [Required]
+       // [DataType(DataType.Password)]
+        public string Password { get; set; }
+    }
+
     public class RegisterViewModel
     {
         [RegularExpression(@"^[a-zA-Z ,.'-]+$", ErrorMessage = "Please enter a valid First Name")]

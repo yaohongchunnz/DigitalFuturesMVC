@@ -11,10 +11,11 @@
     <title>Protect</title>
 </head>
 <body>
-@model Dont_Panic_MVC_API.Models.LoginViewModel
+@model Dont_Panic_MVC_API.Models.ProtectLoginModel
 
 @{
     ViewBag.Title = "Login";
+
 }
 
 
@@ -26,8 +27,6 @@
         <section id="loginForm">
             @using (Html.BeginForm("Protect", "Home", new { ReturnUrl = ViewBag.ReturnUrl }, FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
             {
-                @Html.AntiForgeryToken()
-                @Html.ValidationSummary(true)
                 <div class="form-group">
                     @Html.LabelFor(m => m.Password, new { @class = "control-label" })
                     @Html.PasswordFor(m => m.Password, new { @class = "form-control" })
