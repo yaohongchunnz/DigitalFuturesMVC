@@ -76,6 +76,24 @@ namespace Dont_Panic_MVC_API.Controllers
             return RedirectToAction("/");
         }
 
+        // GET: /Job/InterestedPros
+        [HttpGet]
+        public ActionResult InterestedPros(int jobid)
+        {
+            JobServiceAPI api = new JobServiceAPI();
+            IQueryable<JobService> jobproviders = api.getJobsProviders(jobid);
+
+            ServiceAPI sapi = new ServiceAPI();
+            APIContext context = new APIContext();
+
+            List<ServiceProviderDetails> providers = new List<ServiceProviderDetails>();
+            foreach (JobService js in jobproviders)
+            {
+                providers.Add(context.ServiceProvidersDetails.First(s => s.userId == js.serviceProviderId));
+            }
+            return View(providers);
+        }
+
         // GET: /Job/Details/5
         public ActionResult Details(int id)
         {

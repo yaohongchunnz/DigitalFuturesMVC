@@ -17,15 +17,12 @@
     ViewBag.Title = "Login";
 
 }
-
-
-<br />
 <div class="container rounded-corners">
     <h2 class="centertext">log in</h2>
     <hr />
     <div class="form-horizontal container-form">
         <section id="loginForm">
-            @using (Html.BeginForm("Protect", "Home", new { ReturnUrl = ViewBag.ReturnUrl }, FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+            @using (Html.BeginForm("Protect", "Home", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
             {
                 <div class="form-group">
                     @Html.LabelFor(m => m.Password, new { @class = "control-label" })
