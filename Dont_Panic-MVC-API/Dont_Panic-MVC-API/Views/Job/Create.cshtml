@@ -185,10 +185,6 @@
 
         }
     }
-
-    function load(){
-
-    }
 </script>
 <div class="container rounded-corners">
     <h2 class="centertext"><font color="#65B5A2">post</font> job</h2>
@@ -269,7 +265,7 @@
             </div>
 
             <div class="form-group">
-                <input type="submit" onclick="saveInformation(@User.Identity.IsAuthenticated);load()" value="Create" class="btn-dontpanic" />
+                <input id="createbutton" type="submit" onclick="saveInformation(@User.Identity.IsAuthenticated);" value="Create" class="btn-dontpanic" />
                 <div id="loadingzone"></div>
                 <br />
                 <br />

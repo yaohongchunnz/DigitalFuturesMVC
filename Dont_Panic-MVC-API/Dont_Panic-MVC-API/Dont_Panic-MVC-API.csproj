@@ -259,10 +259,15 @@
     <Content Include="Content\jasny-bootstrap.min.css" />
     <Content Include="Content\ladda-themeless.min.css" />
     <Content Include="Content\ladda.min.css" />
+    <Content Include="Content\owl.carousel.css" />
+    <Content Include="Content\owl.theme.css" />
+    <Content Include="Content\owl.transitions.css" />
     <Content Include="Content\sidebar.css" />
     <Content Include="Content\simple-sidebar.css" />
     <Content Include="Content\social-buttons.css" />
     <Content Include="Scripts\ladda.min.js" />
+    <Content Include="Scripts\owl.carousel.js" />
+    <Content Include="Scripts\owl.carousel.min.js" />
     <Content Include="Scripts\spin.min.js" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\fontawesome-webfont.svg" />
