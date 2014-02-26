@@ -1,25 +1,55 @@
 ﻿@{
     ViewBag.Title = "PurchaseTokens";
 }
-
+<script>
+    function showPurchase(n) {
+        $('#bundle'+n).modal('show');
+    }
+</script>
 <br />
 <div class="container layer-purchasetoken">
     <h2 class="centertext"><font color="#65B5A2">purchase</font> tokens</h2>
     <hr />
     <div class="layer-content">
-        <p class="centertext">Here you can buy bundles of lead tokens! Lead tokens are used to buy leads from the purchase job page. You can also buy jobs individually but it saves you at least 15% to buy tokens in advanced. To purchase lead tokens please select a bundle below.</p>
+        <p class="centertext">Here you can buy bundles of lead tokens! Lead tokens are used to buy leads from the <a href="~/Job/Browse">browse job</a> page. You can also buy jobs individually but it saves you at least 15% to buy tokens in advanced. To purchase lead tokens please select a bundle below.</p>
         <br />
         <div class="row">
             <div class="col-md-4">
                 <div class="layer-token drop-shadow ">
-                    <img src="~/images/5.png" class="img-responsive" />
+                    <img src="~/images/5.png" class="img-token img-responsive" />
                     <h2>$10</h2>
-                    <p> </p>
-                    @using (Html.BeginForm("PurchaseTokens", "Account", FormMethod.Post))
-                    {
-                        @Html.Hidden("selection", 1);
-                        <button type="submit" onclick="return confirm('Are you sure you want to purchase 3 tokens for $5?')" class="btn-dontpanic" value="Purchase">Purchase</button>
-                    }
+                    <p> $2 per token</p>
+                    <button onclick="showPurchase('1')" class="btn-dontpanic">Purchase</button>
+
+                    <div class="modal fade" id="bundle1">
+                        <div class="modal-dialog modal-dialog-center">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                                    <h4 class="modal-title">Are you sure you want to buy 5 tokens for $10?</h4>
+                                </div>
+                                <div class="modal-body center-content">
+                                    <div class="row">
+                                        <div class="col-md-2 modal-button">
+                                            @using (Html.BeginForm("PurchaseTokens", "Account", FormMethod.Post))
+                                            {
+                                                @Html.AntiForgeryToken()
+                                                @Html.Hidden("selection", 1);
+                                                <button type="submit" class="btn-success btn" value="Purchase">Yes</button>
+                                            }
+
+                                        </div>
+                                        <div class="col-md-2 modal-button">
+                                            <button type="button" class="btn-warning btn" data-dismiss="modal">No</button>
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </div><!-- /.modal-content -->
+                        </div><!-- /.modal-dialog -->
+                    </div><!-- /.modal -->
+
+
                     <br />
                 </div>
             </div>
@@ -28,13 +58,37 @@
                     <img src="~/images/10.png" class="img-token img-responsive" />
                     <h2>$17</h2>
                     <p>Save 15%!</p>
-                    @using (Html.BeginForm("PurchaseTokens", "Account", FormMethod.Post))
-                    {
-                        @Html.AntiForgeryToken()
-                        @Html.Hidden("selection", 2);
-                        <button type="submit" onclick="return confirm('Are you sure you want to purchase 7 tokens for $10?')" class="btn-dontpanic" value="Purchase">Purchase</button>
-                    }
+
+                    <button onclick="showPurchase(2)" class="btn-dontpanic">Purchase</button>
                     <br />
+
+                    <div class="modal fade" id="bundle2">
+                        <div class="modal-dialog modal-dialog-center">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                                    <h4 class="modal-title">Are you sure you want to buy 10 tokens for $17?</h4>
+                                </div>
+                                <div class="modal-body center-content">
+                                    <div class="row">
+                                        <div class="col-md-2 modal-button">
+                                            @using (Html.BeginForm("PurchaseTokens", "Account", FormMethod.Post))
+                                            {
+                                                @Html.AntiForgeryToken()
+                                                @Html.Hidden("selection", 2);
+                                                <button type="submit" class="btn-success btn" value="Purchase">Yes</button>
+                                            }
+
+                                        </div>
+                                        <div class="col-md-2 modal-button">
+                                            <button type="button" class="btn-warning btn" data-dismiss="modal">No</button>
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </div><!-- /.modal-content -->
+                        </div><!-- /.modal-dialog -->
+                    </div><!-- /.modal -->
                 </div>
             </div>
             <div class="col-md-4">
@@ -42,14 +96,37 @@
                     <img src="~/images/15.png" class="img-token img-responsive" />
                     <h2>$24</h2>
                     <p>Save 20%!</p>
-                    @using (Html.BeginForm("PurchaseTokens", "Account", FormMethod.Post))
-                    {
-                        @Html.AntiForgeryToken()
-
-                        @Html.Hidden("selection", 3);
-                        <button type="submit" onclick="return confirm('Are you sure you want to purchase 12 tokens for $15?')" class="btn-dontpanic" value="Purchase">Purchase</button>
-                    }
+                    <button onclick="showPurchase(3)" class="btn-dontpanic">Purchase</button>
                     <br />
+
+
+                    <div class="modal fade" id="bundle3">
+                        <div class="modal-dialog modal-dialog-center">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                                    <h4 class="modal-title">Are you sure you want to buy 15 tokens for $24?</h4>
+                                </div>
+                                <div class="modal-body center-content">
+                                    <div class="row">
+                                        <div class="col-md-2 modal-button">
+                                            @using (Html.BeginForm("PurchaseTokens", "Account", FormMethod.Post))
+                                            {
+                                                @Html.AntiForgeryToken()
+                                                @Html.Hidden("selection", 3);
+                                                <button type="submit" class="btn-success btn" value="Purchase">Yes</button>
+                                            }
+
+                                        </div>
+                                        <div class="col-md-2 modal-button">
+                                            <button type="button" class="btn-warning btn" data-dismiss="modal">No</button>
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </div><!-- /.modal-content -->
+                        </div><!-- /.modal-dialog -->
+                    </div><!-- /.modal -->
                 </div>
             </div>
 

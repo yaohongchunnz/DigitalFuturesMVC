@@ -24,7 +24,9 @@
 
     <div class="job-block drop-shadow-lite">
 
-
+        <div class="job-details-title">
+            <h2 class="dark-green-text">@Model.title</h2>
+        </div>
         @if (photos != null)
         {
             <div id="job-images-carousel" class="carousel slide" data-ride="carousel">
@@ -88,7 +90,6 @@
             </div>
         }
 
-        <h2 class="green-text">@Model.title</h2>
         <div class="job-details-description-title">Description</div>
         <div class="job-details-description-text">@Model.description<br /><br /></div>
         <div class="job-details-description-information">@Model.region - @Model.jobtype</div>
@@ -153,10 +154,10 @@
                                 </div>
                                 <div class="modal-body">
                                     <div class="row">
-                                        <div class="col-md-2">
+                                        <div class="col-md-2 modal-button">
                                             <button type="button" class="btn-success btn">Purchase tokens</button>
                                         </div>
-                                        <div class="col-md-2">
+                                        <div class="col-md-2 modal-button">
                                             <button type="button" class="btn-warning btn" data-dismiss="modal">Cancel</button>
                                         </div>
                                     </div>
@@ -175,14 +176,14 @@
                                     <h4 class="modal-title">Are you sure you want to acquire this lead?</h4>
                                 </div>
                                 <div class="modal-body">
-                                    <div class="col-md-2">
+                                    <div class="col-md-2 modal-button">
                                         @using (Html.BeginForm("AcquireLead", "Job", FormMethod.Post))
                                         {
                                             @Html.Hidden("jobid", @Model.jobid);
                                             <input type="submit" value="Yes" class="btn-success btn" />
                                         }
                                     </div>
-                                    <div class="col-md-2">
+                                    <div class="col-md-2 modal-button">
                                         <button type="button" class="btn-warning btn" data-dismiss="modal">No</button>
 
                                     </div>

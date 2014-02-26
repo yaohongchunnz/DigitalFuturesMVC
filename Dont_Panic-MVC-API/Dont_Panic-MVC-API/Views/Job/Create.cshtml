@@ -70,11 +70,13 @@
 
 
     function saveInformation(saveOrNot) {
+        var titlebox = document.getElementById("title");
+        var category = document.getElementById("jobtype");
+        var suburb = document.getElementById("suburb");
+        var description = document.getElementById("description");
         if (!saveOrNot) {
-            var titlebox = document.getElementById("title");
-            var category = document.getElementById("jobtype");
-            var description = document.getElementById("description");
-            if (titlebox.value.length > 0 && description.value.length > 0) {
+            if (titlebox.value.length > 0 && description.value.length > 0 && suburb.value > 0) {
+
                 sessionStorage.jobtitle = titlebox.value;
                 sessionStorage.jobtype = category.value;
                 sessionStorage.jobdescription = description.value;
@@ -84,11 +86,35 @@
                 sessionStorage.jobdistrictselection = document.getElementById("district").value;
                 sessionStorage.jobsuburbselection = document.getElementById("suburb").value;
                 sessionStorage.jobduration = document.getElementById("duration").value;
-
             }
         }
         else {
             sessionStorage.clear();
+        }
+
+
+        if (titlebox.value.length > 0 && description.value.length > 0 && suburb.value > 0) {
+            $('#createbutton').fadeOut('fast');
+            var opts = {
+                lines: 13, // The number of lines to draw
+                length: 9, // The length of each line
+                width: 3, // The line thickness
+                radius: 8, // The radius of the inner circle
+                corners: 1, // Corner roundness (0..1)
+                rotate: 48, // The rotation offset
+                direction: 1, // 1: clockwise, -1: counterclockwise
+                color: '#65A592', // #rgb or #rrggbb or array of colors
+                speed: 1.6, // Rounds per second
+                trail: 79, // Afterglow percentage
+                shadow: true, // Whether to render a shadow
+                hwaccel: true, // Whether to use hardware acceleration
+                className: 'spinner', // The CSS class to assign to the spinner
+                zIndex: 2e9, // The z-index (defaults to 2000000000)
+                top: 'auto', // Top position relative to parent in px
+                left: 'auto' // Left position relative to parent in px
+            };
+            var target = document.getElementById('loadingzone');
+            var spinner = new Spinner(opts).spin(target);
         }
     }
 
@@ -238,8 +264,8 @@
             </div>
 
             <div class="form-group">
-                <input type="submit" onclick="saveInformation(@User.Identity.IsAuthenticated)" value="Create" class="btn-dontpanic"/>
-
+                <input id="createbutton" type="submit" onclick="saveInformation(@User.Identity.IsAuthenticated);" value="Create" class="btn-dontpanic" />
+                <div id="loadingzone"></div>
                 <br />
                 <br />
                 @if (User.Identity.IsAuthenticated)
