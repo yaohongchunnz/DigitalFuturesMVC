@@ -25,6 +25,9 @@
     <link href="~/Content/font-awesome.css" rel="stylesheet">
     <link href="~/Content/social-buttons.css" rel="stylesheet">
     <link href="~/Content/jasny-bootstrap.css" rel="stylesheet">
+    <link href="~/Content/ladda-themeless.min.css" rel="stylesheet">
+
+    <!-- Add custom js here -->
 </head>
 <body>
     <div class="navbar navbar-inverse navbar-fixed-top drop-shadow green-border">
@@ -45,33 +48,33 @@
                     {
                         if (im.UserContainsRole(User.Identity.GetUserId(), "User"))
                         {
-                            <li @if (@ViewContext.RouteData.GetRequiredString("action").ToLower() == "index" && @ViewContext.RouteData.GetRequiredString("controller").ToLower() == "job") { @Html.AttributeEncode("class=active")                       ; }>
+                            <li @if (@ViewContext.RouteData.GetRequiredString("action").ToLower() == "index" && @ViewContext.RouteData.GetRequiredString("controller").ToLower() == "job") { @Html.AttributeEncode("class=active")                        ; }>
                                 @Html.ActionLink("current jobs", "Index", "Job")
                             </li>
-                            <li @if (@ViewContext.RouteData.GetRequiredString("action").ToLower() == "previous" && @ViewContext.RouteData.GetRequiredString("controller").ToLower() == "job") { @Html.AttributeEncode("class=active")                       ; }>
+                            <li @if (@ViewContext.RouteData.GetRequiredString("action").ToLower() == "previous" && @ViewContext.RouteData.GetRequiredString("controller").ToLower() == "job") { @Html.AttributeEncode("class=active")                        ; }>
 
                                 @Html.ActionLink("previous jobs", "Previous", "Job")
                             </li>
-                            <li @if (@ViewContext.RouteData.GetRequiredString("action").ToLower() == "create" && @ViewContext.RouteData.GetRequiredString("controller").ToLower() == "job") { @Html.AttributeEncode("class=active")                      ; }>
+                            <li @if (@ViewContext.RouteData.GetRequiredString("action").ToLower() == "create" && @ViewContext.RouteData.GetRequiredString("controller").ToLower() == "job") { @Html.AttributeEncode("class=active")                       ; }>
 
                                 @Html.ActionLink("post job", "Create", "Job")
                             </li>
                         }
                         else if (im.UserContainsRole(User.Identity.GetUserId(), "Provider"))
                         {
-                            <li @if (@ViewContext.RouteData.GetRequiredString("action").ToLower() == "index" && @ViewContext.RouteData.GetRequiredString("controller").ToLower() == "job") { @Html.AttributeEncode("class=active")                      ; }>
+                            <li @if (@ViewContext.RouteData.GetRequiredString("action").ToLower() == "index" && @ViewContext.RouteData.GetRequiredString("controller").ToLower() == "job") { @Html.AttributeEncode("class=active")                       ; }>
 
                                 @Html.ActionLink("current jobs", "Index", "Job")
                             </li>
-                            <li @if (@ViewContext.RouteData.GetRequiredString("action").ToLower() == "previous" && @ViewContext.RouteData.GetRequiredString("controller").ToLower() == "job") { @Html.AttributeEncode("class=active")                      ; }>
+                            <li @if (@ViewContext.RouteData.GetRequiredString("action").ToLower() == "previous" && @ViewContext.RouteData.GetRequiredString("controller").ToLower() == "job") { @Html.AttributeEncode("class=active")                       ; }>
 
                                 @Html.ActionLink("previous jobs", "Previous", "Job")
                             </li>
-                            <li @if (@ViewContext.RouteData.GetRequiredString("action").ToLower() == "browse" && @ViewContext.RouteData.GetRequiredString("controller").ToLower() == "job") { @Html.AttributeEncode("class=active")                      ; }>
+                            <li @if (@ViewContext.RouteData.GetRequiredString("action").ToLower() == "browse" && @ViewContext.RouteData.GetRequiredString("controller").ToLower() == "job") { @Html.AttributeEncode("class=active")                       ; }>
 
                                 @Html.ActionLink("browse jobs", "Browse", "Job")
                             </li>
-                            <li @if (@ViewContext.RouteData.GetRequiredString("action").ToLower() == "purchasetokens" && @ViewContext.RouteData.GetRequiredString("controller").ToLower() == "account") { @Html.AttributeEncode("class=active")                      ; }>
+                            <li @if (@ViewContext.RouteData.GetRequiredString("action").ToLower() == "purchasetokens" && @ViewContext.RouteData.GetRequiredString("controller").ToLower() == "account") { @Html.AttributeEncode("class=active")                       ; }>
 
                                 @Html.ActionLink("purchase tokens", "PurchaseTokens", "Account")
                             </li>
@@ -80,7 +83,7 @@
                     }
                     else
                     {
-                        <li @if (@ViewContext.RouteData.GetRequiredString("controller").ToLower() == "job") { @Html.AttributeEncode("class=active")                       ; }>
+                        <li @if (@ViewContext.RouteData.GetRequiredString("controller").ToLower() == "job") { @Html.AttributeEncode("class=active")                        ; }>
 
                             @Html.ActionLink("post job", "Create", "Job")
 
@@ -131,7 +134,8 @@
     @Scripts.Render("~/bundles/bootstrap")
     @RenderSection("scripts", required: false)
     @Scripts.Render("~/Scripts/jasny-bootstrap.min.js")
-
+    @Scripts.Render("~/Scripts/spin.min.js")
+    @Scripts.Render("~/Scripts/ladda.min.js")
 
 
 </body>

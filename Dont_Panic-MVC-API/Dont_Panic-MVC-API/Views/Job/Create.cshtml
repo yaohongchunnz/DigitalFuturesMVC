@@ -68,6 +68,7 @@
         }
     }
 
+
     function saveInformation(saveOrNot) {
         if (!saveOrNot) {
             var titlebox = document.getElementById("title");
@@ -237,7 +238,8 @@
             </div>
 
             <div class="form-group">
-                <input type="submit" onclick="saveInformation(@User.Identity.IsAuthenticated)" value="Create" class="btn-dontpanic" />
+                <input type="submit" onclick="saveInformation(@User.Identity.IsAuthenticated)" value="Create" class="btn-dontpanic"/>
+
                 <br />
                 <br />
                 @if (User.Identity.IsAuthenticated)
