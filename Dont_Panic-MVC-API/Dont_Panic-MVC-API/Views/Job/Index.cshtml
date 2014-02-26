@@ -1,13 +1,6 @@
 ﻿@model IEnumerable<Dont_Panic_MVC_API.Models.API_Models.Job>
 @using Dont_Panic_MVC_API.Controllers.API_Controllers;
 @using Dont_Panic_MVC_API.Models.API_Models;
-
-<script type="text/javascript" language="javascript">
-    function showpic(id) {
-        $('#'+id).modal('show');
-    }
-</script>
-
 @{
     ViewBag.Title = "Your jobs";
 
@@ -45,22 +38,7 @@
             }
             else
             {
-                <div class="col-md-3"><a href="#" onclick="showpic(@item.jobid)"><img src="@Url.Content(firstPhoto.photo)" class="img-rounded drop-shadow-lite img-responsive " height="200" width="200" /></a></div>
-
-
-                <div class="modal fade" id="@item.jobid">
-                    <div class="modal-dialog modal-dialog-center" >
-                        <div class="modal-content">
-                            <div class="modal-header">
-                                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                                <h4 class="modal-title">Enlarged Image.</h4>
-                            </div>
-                            <div class="modal-body center-content">
-                                <img src="@Url.Content(firstPhoto.photo)" id="enlargedImage" class="img-responsive" />
-                            </div>
-                        </div><!-- /.modal-content -->
-                    </div><!-- /.modal-dialog -->
-                </div><!-- /.modal -->
+                <div class="col-md-3"><a href="/Job/Details/@item.jobid"><img src="@Url.Content(firstPhoto.photo)" class="img-rounded drop-shadow-lite img-responsive " height="200" width="200" /></a></div>
 
             }
 
@@ -117,7 +95,11 @@
                         </p>
                     </div>
                     <div class="job-block-detail-right col-md-6">
-                        <p>@item.leadsAccquired interested pros</p>
+                        @using (Html.BeginForm("InterestedPros", "Job", FormMethod.Get, new { id = "interestedForm"}))
+                        {
+                            @Html.Hidden("jobid", item.jobid);
+                        }
+                        <a onclick="javascript: document.getElementById('interestedForm').submit()"><p>@item.leadsAccquired interested pros</p></a>
                         <input type="button" onclick="location.href='/Job/Details/@item.jobid'" value="View Job" class="btn-dontpanic" />
 
                     </div>

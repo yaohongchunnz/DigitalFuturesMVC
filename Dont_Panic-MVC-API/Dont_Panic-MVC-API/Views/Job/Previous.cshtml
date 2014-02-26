@@ -57,22 +57,9 @@
             }
             else
             {
-                <div class="col-md-3"><a href="#" onclick="showpic(@item.jobid)"><img src="@Url.Content(firstPhoto.photo)" class="img-rounded drop-shadow-lite img-responsive " height="200" width="200" /></a></div>
+                <div class="col-md-3"><a href="/Job/Details/@item.jobid"><img src="@Url.Content(firstPhoto.photo)" class="img-rounded drop-shadow-lite img-responsive " height="200" width="200" /></a></div>
 
 
-                <div class="modal fade" id="@item.jobid">
-                    <div class="modal-dialog modal-dialog-center">
-                        <div class="modal-content">
-                            <div class="modal-header">
-                                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                                <h4 class="modal-title">Enlarged Image.</h4>
-                            </div>
-                            <div class="modal-body center-content">
-                                <img src="@Url.Content(firstPhoto.photo)" id="enlargedImage" class="img-responsive" />
-                            </div>
-                        </div><!-- /.modal-content -->
-                    </div><!-- /.modal-dialog -->
-                </div><!-- /.modal -->
 
             }
 
