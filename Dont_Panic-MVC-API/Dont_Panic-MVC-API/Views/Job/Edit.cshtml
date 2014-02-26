@@ -27,7 +27,7 @@
 
                 <div class="form-group">
                     @Html.LabelFor(model => model.description, new { @class = "control-label" })
-                    @Html.TextBoxFor(model => model.description, new { @class = "form-control" })
+                    @Html.TextAreaFor(model => model.description, new { @class = "form-control" })
                     @Html.ValidationMessageFor(model => model.description)
                 </div>
 
@@ -39,8 +39,48 @@
 
                 <div class="form-group">
                     @Html.LabelFor(model => model.jobtype, new { @class = "control-label" })
-                    @Html.TextBoxFor(model => model.jobtype, new { @class = "form-control" })
-                    @Html.ValidationMessageFor(model => model.jobtype)
+                    <select class="form-control" required id="jobtype" name="jobtype">
+                        <option>Plumbing</option>
+                        <option>Electrical</option>
+                        <option>Business</option>
+                        <option>Crafts</option>
+                        <option>Design and web</option>
+                        <option>Legal</option>
+                        <option>Personal</option>
+                        <option>Pets</option>
+                        <option>Photography</option>
+                        <option>Repair services</option>
+                        <option>Writing/Translation</option>
+                    </select>
+                </div>
+
+
+                <div class="form-group">
+                    <label class="control-label">What does it look like?</label>
+                    <div class="input-group">
+                        <span class="input-group-btn">
+                            <span class="btn btn-default btn-file">
+                                Browse…
+                                <input id="fileupload" type="file" name="images" accept="image/x-png, image/gif, image/jpeg, image/jpg,image/png" onchange="feedback()" multiple>
+                            </span>
+                        </span>
+                        <input id="inputfeedback" class="form-control" type="text" readonly="">
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.region, new { @class = "control-label" })
+                    @Html.DropDownListFor(model => model.region, (SelectList)ViewBag.City, "Select your region", new { @class = "form-control", @id = "region", onchange = "selectRegion(1);showHideSelect(this)" })
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.district, new { @class = "control-label", @id = "districtLbl" })
+                    @Html.DropDownListFor(model => model.district, Enumerable.Empty<SelectListItem>(), "Select your district", new { @class = "form-control", @id = "district", onchange = "selectRegion(2);showHideSelect(this)" })
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.suburb, new { @class = "control-label", @id = "suburbLbl" })
+                    @Html.DropDownListFor(model => model.suburb, Enumerable.Empty<SelectListItem>(), "Select your suburb", new { @class = "form-control", @id = "suburb", @onchange = "showHideSelect(this)" })
                 </div>
 
                 <div class="form-group">

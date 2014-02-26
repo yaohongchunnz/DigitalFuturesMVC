@@ -31,8 +31,8 @@
     @foreach (var item in Model)
     {
 
-        <div class="job-block drop-shadow-lite">
-            <div class="row">
+        <div class="">
+            <div class="row job-block drop-shadow-lite">
 
                 <br />
                 @{
@@ -43,12 +43,12 @@
                 @if (firstPhoto == null)
                 {
 
-                    <div class="col-md-3"><img src="~/Images/nophotoavailable.jpg" class="img-responsive thumbnail" /></div>
+                    <div class="col-md-3"><img src="~/Images/nophotoavailable.jpg" class="img-rounded drop-shadow-lite img-responsive" /></div>
 
                 }
                 else
                 {
-                    <div class="col-md-3"><a href="#" onclick="showpic(@item.jobid)"><img src="@Url.Content(firstPhoto.photo)" class="thumbnail img-responsive " width="200" /></a></div>
+                    <div class="col-md-3"><a href="#" onclick="showpic(@item.jobid)"><img src="@Url.Content(firstPhoto.photo)" class="img-rounded drop-shadow-lite img-responsive " width="200" /></a></div>
 
 
                     <div class="modal fade" id="@item.jobid">
@@ -71,9 +71,10 @@
 
 
                 <div class="col-md-9">
-                    <p class="job-block-title">@Html.ActionLink(item.title, "Details", new { id = item.jobid }, new { @style = "color:#497769;" }) </p>
-
-                    <p style="font-size:14px">@item.description</p>
+                    <p>
+                        @Html.ActionLink(item.title, "Details", new { id = item.jobid }, new { @style = "color:#497769;", @class = "job-block-title" })<br />
+                        @item.description
+                    </p>
 
                     <div class="row">
                         <div class="job-block-detail-left col-md-6">
@@ -124,7 +125,7 @@
                 </div>
             </div>
 
-        </div>
+    </div>
         <br />
     }
 

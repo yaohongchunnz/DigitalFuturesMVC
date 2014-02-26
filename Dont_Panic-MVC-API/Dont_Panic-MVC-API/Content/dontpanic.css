@@ -341,10 +341,17 @@
 }
 
 .job-block {
-    padding: 5px;
-    border: 1.5px solid #65A592;
+    padding-left: 5px;
+    padding-right: 5px;
+    padding-bottom: 5px;
+    padding-top:5px;
     border-radius: 5px;
-    background-color: rgba(117, 191, 169, 0.36);
+    margin-left:5px;
+    background-image: -webkit-linear-gradient(top, #f3f3f3, #d0d0d0);
+    background-image: -moz-linear-gradient(top,#f3f3f3, #d0d0d0);
+    background-image: -ms-linear-gradient(top,#f3f3f3, #d0d0d0);
+    background-image: -o-linear-gradient(top, #f3f3f3, #d0d0d0);
+    background-image: linear-gradient(to bottom,#f3f3f3, #d0d0d0);
 }
 
 .job-block-title {
