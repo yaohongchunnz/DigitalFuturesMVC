@@ -18,6 +18,7 @@ using Microsoft.WindowsAzure.StorageClient;
 using System.Configuration;
 using System.IO;
 using Dont_Panic_MVC_API.API_Models;
+using System.Web.Security;
 
 namespace Dont_Panic_MVC_API.Controllers
 
@@ -86,10 +87,26 @@ namespace Dont_Panic_MVC_API.Controllers
             ServiceAPI sapi = new ServiceAPI();
             APIContext context = new APIContext();
 
-            List<ServiceProviderDetails> providers = new List<ServiceProviderDetails>();
+            List<UsersProviderDetails> providers = new List<UsersProviderDetails>();
             foreach (JobService js in jobproviders)
             {
-                providers.Add(context.ServiceProvidersDetails.First(s => s.userId == js.serviceProviderId));
+                ServiceProviderDetails detail = context.ServiceProvidersDetails.First(s => s.userId == js.serviceProviderId);
+                UsersProviderDetails udetail = new UsersProviderDetails();
+                udetail.about = detail.about;
+                udetail.address = detail.address;
+                udetail.areas_serviced = detail.areas_serviced;
+                udetail.availability = detail.availability;
+                udetail.business_name = detail.business_name;
+                udetail.contact_name = detail.contact_name;
+                udetail.contact_number_1 = detail.contact_number_1;
+                udetail.contact_number_2 = detail.contact_number_2;
+                udetail.description = detail.description;
+                udetail.userId = detail.userId;
+                udetail.website_address = detail.website_address;
+                MembershipUser mu = Membership.GetUser(udetail.userId);
+                udetail.username = mu.UserName;
+                udetail.email = context.emailAndUser.First(u => u.userName == udetail.username).email;
+                providers.Add(udetail);
             }
             return View(providers);
         }
