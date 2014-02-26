@@ -37,7 +37,7 @@ namespace Dont_Panic_MVC_API.Controllers
         [Authorize]
         public ActionResult Previous()
         {
-            return View(jobAPI.GetUserJobs(User.Identity.GetUserId()).ToList());
+            return View(jobAPI.GetExpiredUserJobs(User.Identity.GetUserId()).ToList());
         }
 
         // GET: /Job/

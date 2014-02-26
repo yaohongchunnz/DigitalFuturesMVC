@@ -116,6 +116,12 @@ namespace Dont_Panic_MVC_API.Controllers.API_Controllers
             return jobs.Where(j => j.expireDate > DateTime.Now);
         }
 
+        public IQueryable<Job> GetExpiredUserJobs(string UserId)
+        {
+            IQueryable<Job> jobs = db.Jobs.Where(j => j.UserId == UserId);
+            return jobs.Where(j => j.expireDate < DateTime.Now);
+        }
+
         // Get job from database with certain id
         public Job GetJob(int id)
         {
