@@ -153,10 +153,10 @@
                                 </div>
                                 <div class="modal-body">
                                     <div class="row">
-                                        <div class="col-md-2">
+                                        <div class="col-md-2 modal-button">
                                             <button type="button" class="btn-success btn">Purchase tokens</button>
                                         </div>
-                                        <div class="col-md-2">
+                                        <div class="col-md-2 modal-button">
                                             <button type="button" class="btn-warning btn" data-dismiss="modal">Cancel</button>
                                         </div>
                                     </div>
@@ -175,14 +175,14 @@
                                     <h4 class="modal-title">Are you sure you want to acquire this lead?</h4>
                                 </div>
                                 <div class="modal-body">
-                                    <div class="col-md-2">
+                                    <div class="col-md-2 modal-button">
                                         @using (Html.BeginForm("AcquireLead", "Job", FormMethod.Post))
                                         {
                                             @Html.Hidden("jobid", @Model.jobid);
                                             <input type="submit" value="Yes" class="btn-success btn" />
                                         }
                                     </div>
-                                    <div class="col-md-2">
+                                    <div class="col-md-2 modal-button">
                                         <button type="button" class="btn-warning btn" data-dismiss="modal">No</button>
 
                                     </div>

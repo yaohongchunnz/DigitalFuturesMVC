@@ -2,6 +2,11 @@
 @using Dont_Panic_MVC_API.Controllers.API_Controllers;
 @using Dont_Panic_MVC_API.Models.API_Models;
 
+<script type="text/javascript" language="javascript">
+    function showpic(id) {
+        $('#' + id).modal('show');
+    }
+</script>
 
 @{
     ViewBag.Title = "Previous Jobs";
@@ -37,7 +42,7 @@
     <br />
     @foreach (var item in Model)
     {
-         <div class="row job-block drop-shadow-lite">
+        <div class="row job-block drop-shadow-lite">
             <br />
             @{
         PhotoAPI api = new PhotoAPI();
@@ -81,16 +86,20 @@
                 </p>
 
                 <div class="row">
-                    <div class="job-block-detail-left col-md-6">                       
+                    <div class="job-block-detail-left col-md-6">
                         <p class="text-primary" style="font-size:12px">
                             Category: @item.jobtype<br />Located in: @item.region
                         </p>
                     </div>
-                    <div class="job-block-detail-right col-md-6">
-                        <p>@item.leadsAccquired interested pros</p>
-                        <input type="button" onclick="location.href='/Job/Details/@item.jobid'" value="View Job" class="btn-dontpanic" />
 
+                    <div class="job-block-detail-right col-md-6">
+                        @using (Html.BeginForm("RepostJob", "Job", FormMethod.Post))
+                        {
+                            @Html.Hidden("jobid", @item.jobid);
+                            <input type="submit" value="Repost Job" class="btn-dontpanic" />
+                        }
                     </div>
+
                 </div>
             </div>
         </div>
