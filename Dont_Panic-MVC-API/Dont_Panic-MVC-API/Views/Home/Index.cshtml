@@ -13,11 +13,11 @@
             window.location.href = "/Job/Create";
         }
     }
-    $(document).ready(function () {
-        if (sessionStorage.jobsuburb != test) {
+    window.onloadedmetadata = function () {
+        if (sessionStorage.jobsuburb != null) {
             window.location.href = "/Job/Create";
         }
-    });
+    }
 </script>
 <div class="outerintroblock">
     <div class="introblock ">

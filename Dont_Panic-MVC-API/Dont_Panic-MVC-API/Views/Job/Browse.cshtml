@@ -75,12 +75,12 @@ else
                 @if (firstPhoto == null)
                 {
 
-                    <div class="col-md-3"><img src="~/Images/nophotoavailable.jpg" class="img-rounded drop-shadow-lite img-responsive" width="200" height="200" /></div>
+                    <div class="col-md-3"><a href="/Job/Details/@item.jobid"><img src="~/Images/nophotoavailable.jpg" class="img-rounded drop-shadow-lite img-responsive" width="200" height="200" /></a></div>
 
                 }
                 else
                 {
-                    <div class="col-md-3"><a href="#" onclick="showpic(@item.jobid)"><img src="@Url.Content(firstPhoto.photo)" class="img-rounded drop-shadow-lite img-responsive " height="200" width="200" /></a></div>
+                    <div class="col-md-3"><a href="/Job/Details/@item.jobid" onclick="showpic(@item.jobid)"><img src="@Url.Content(firstPhoto.photo)" class="img-rounded drop-shadow-lite img-responsive " height="200" width="200" /></a></div>
 
 
                     <div class="modal fade" id="@item.jobid">
