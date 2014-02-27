@@ -5,12 +5,17 @@
 
 <!DOCTYPE html>
 
+<link rel="icon" type="img/png" href="~/Images/Favicon3.png">
 <html>
 <head>
-    <meta name="viewport" content="width=device-width" />
-    <title>Protect</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">    
+    @Styles.Render("~/Content/css")
+    <title>Good Job</title>
 </head>
 <body>
+
+    <link href="~/Content/dontpanic.css" rel="stylesheet">
 @model Dont_Panic_MVC_API.Models.ProtectLoginModel
 
 @{
@@ -18,7 +23,7 @@
 
 }
 <div class="container rounded-corners">
-    <h2 class="centertext">log in</h2>
+    <h2 class="centertext">This site has been locked. Enter the password to unlock it.</h2>
     <hr />
     <div class="form-horizontal container-form">
         <section id="loginForm">
@@ -32,7 +37,7 @@
                 <div class="form-group">
                     <div class="login-buttons">
                         <div class="login-dontpanic">
-                            <input type="submit" value="Log in" class="btn-sm" />
+                            <input type="submit" value="Unlock" class="btn btn-success" />
                         </div>
                     </div>
                 </div>
