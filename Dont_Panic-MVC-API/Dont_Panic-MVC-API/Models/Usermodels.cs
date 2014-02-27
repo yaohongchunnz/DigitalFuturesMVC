@@ -70,12 +70,12 @@ namespace Dont_Panic_MVC_API.Models
         public int tokens { get; set; }
     }
 
-        public class UsersProviderDetails
+    public class UsersProviderDetails
     {
         [Required]
         [Key]
         public string userId { get; set; }
-                
+
         [Required]
         public string business_name { get; set; }
         [Required]
@@ -104,5 +104,5 @@ namespace Dont_Panic_MVC_API.Models
 
         public string email { get; set; }
         public string username { get; set; }
-
+    }
 }
