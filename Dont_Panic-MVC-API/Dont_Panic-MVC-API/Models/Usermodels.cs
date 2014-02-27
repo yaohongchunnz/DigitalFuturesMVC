@@ -40,6 +40,10 @@ namespace Dont_Panic_MVC_API.Models
         [Required]
         [Key]
         public string userId { get; set; }
+
+        public string userName { get; set; }
+
+        public string email { get; set; }
                 
         [Required]
         public string business_name { get; set; }

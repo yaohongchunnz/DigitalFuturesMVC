@@ -20,6 +20,9 @@ using System.IO;
 using Dont_Panic_MVC_API.API_Models;
 using System.Web.Security;
 
+using System.Net.Mail;
+using SendGridMail;
+
 namespace Dont_Panic_MVC_API.Controllers
 
 
@@ -79,8 +82,10 @@ namespace Dont_Panic_MVC_API.Controllers
 
         // GET: /Job/InterestedPros
         [HttpGet]
+        [Authorize]
         public ActionResult InterestedPros(int jobid)
         {
+
             JobServiceAPI api = new JobServiceAPI();
             IQueryable<JobService> jobproviders = api.getJobsProviders(jobid);
 
@@ -103,9 +108,8 @@ namespace Dont_Panic_MVC_API.Controllers
                 udetail.description = detail.description;
                 udetail.userId = detail.userId;
                 udetail.website_address = detail.website_address;
-                MembershipUser mu = Membership.GetUser(udetail.userId);
-                udetail.username = mu.UserName;
-                udetail.email = context.emailAndUser.First(u => u.userName == udetail.username).email;
+                udetail.username = detail.userName;
+                udetail.email = detail.email;
                 providers.Add(udetail);
             }
             return View(providers);
@@ -193,18 +197,17 @@ namespace Dont_Panic_MVC_API.Controllers
             {
                // Console.WriteLine(fakejobmodel.region.Text.ToString());
 
-                RegionDropDown regions = new RegionDropDown();
-                
-                jobmodel.region = regions.RegionList.ElementAt(viewJob.region-1).Text;
-
                 APIContext context = new APIContext();
+
+                jobmodel.region = context.region.First(r => r.regionid == viewJob.region).region;
+
 
                 jobmodel.district =  context.district.First(d => d.districtid == viewJob.district).district;
                 jobmodel.suburb = context.suburb.First(d => d.suburbid == viewJob.suburb).suburb; ;
                 jobmodel.description = viewJob.description;
                 jobmodel.jobtype = viewJob.jobtype;
                 jobmodel.title = viewJob.title;
-
+                
                 jobmodel.submitDate = DateTime.Now;
                 
                 switch (viewJob.duration)
@@ -227,18 +230,44 @@ namespace Dont_Panic_MVC_API.Controllers
                 jobmodel.username = User.Identity.GetUserName();
                 jobAPI.PostJob(jobmodel);
 
-                APIContext db = new APIContext();
-
-                
-
                 List<string> images = ImageUpload();
                 foreach(string image in images){
                     Photos photo = new Photos();
                     photo.jobid = jobmodel.jobid;
                     photo.photo = image;
-                    db.photos.Add(photo);
+                    context.photos.Add(photo);
                 }
-                db.SaveChanges();
+                context.SaveChanges();
+                
+                List<ServiceProviderDetails> providers = context.ServiceProvidersDetails.ToList();
+
+                foreach (ServiceProviderDetails detail in providers)
+                {
+                    if (detail.userId != null)
+                    {
+                       
+
+                        // Create the email object first, then add the properties.
+                        SendGrid myMessage = SendGrid.GetInstance();
+                        myMessage.AddTo(detail.email);
+                        myMessage.From = new MailAddress("no.reply-notifications@GoodJob.co.nz", "GoodJob.co.nz");
+                        myMessage.Subject = "New job - " + jobmodel.title;
+                        myMessage.Text = "Job Description\n" + jobmodel.description + "\n" + "www.GoodJob.co.nz/Job/Details/" + jobmodel.jobid;
+
+                        // Create credentials, specifying your user name and password.
+                        var credentials = new NetworkCredential("azure_1e527e7b7ec0d7c5eb3d21f6d1643c1e@azure.com", "9sixwieb");
+
+                        // Create a REST transport for sending email.
+                        var transportREST = Web.GetInstance(credentials);
+
+                        // Send the email.
+                        transportREST.Deliver(myMessage);
+                    }
+                }
+
+               
+
+
                 return RedirectToAction("Index");
             }
             ViewBag.City = (new RegionDropDown()).RegionList;

@@ -5,6 +5,10 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 
+using System.Net;
+using System.Net.Mail;
+
+
 namespace Dont_Panic_MVC_API.Controllers
 {
     public class HomeController : Controller
