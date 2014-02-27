@@ -193,11 +193,12 @@ namespace Dont_Panic_MVC_API.Controllers
             {
                // Console.WriteLine(fakejobmodel.region.Text.ToString());
 
-                RegionDropDown regions = new RegionDropDown();
-                
-                jobmodel.region = regions.RegionList.ElementAt(viewJob.region-1).Text;
 
                 APIContext context = new APIContext();
+
+                jobmodel.region = context.region.First(d => d.regionid == viewJob.region).region;
+
+               
 
                 jobmodel.district =  context.district.First(d => d.districtid == viewJob.district).district;
                 jobmodel.suburb = context.suburb.First(d => d.suburbid == viewJob.suburb).suburb; ;
