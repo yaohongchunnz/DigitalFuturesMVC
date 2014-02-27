@@ -26,7 +26,7 @@ namespace Dont_Panic_MVC_API.Controllers
                 if (model.Password == "shaft")
                 {
                     Session["Login"] = model.Password;
-                    Response.Redirect("~/Home");
+                    Response.Redirect("~/");
                 }
             return View();
         }
