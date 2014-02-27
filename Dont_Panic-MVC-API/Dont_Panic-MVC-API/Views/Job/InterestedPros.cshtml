@@ -23,24 +23,24 @@
     {
         <div class="row job-block drop-shadow-lite">
             <br />
-            <div class="col-md-3"><a href="@item.website_address"><img src="~/Images/nophotoavailable.jpg" class="img-rounded drop-shadow-lite img-responsive" width="200" height="200" /></a></div>
+            <div class="col-md-3"><a href="http://@item.website_address"><img src="~/Images/nophotoavailable.jpg" class="img-rounded drop-shadow-lite img-responsive" width="200" height="200" /></a></div>
 
 
             <div class="col-md-9">
                 <p>
-                    <a href="@item.website_address" class="job-block-title">@item.business_name</a><br />
+                    <a href="http://@item.website_address" class="job-block-title">@item.business_name</a><br />
                     @item.description
                 </p>
 
                 <div class="row">
-                    <div class="job-block-detail-left col-md-6">
+                    <div class="job-block-detail-left col-md-8">
                         <p class="text-primary" style="font-size:12px">
-                            Business: @item.business_name<br />Contact name: @item.contact_name
-                            <br />Contact Number: @item.contact_number_1
-                            <br />Contact Email: @item.email
+                            Name: @item.contact_name
+                            <br />Phone: @item.contact_number_1
+                            <br />Email: @item.email
                         </p>
                     </div>
-                    <div class="job-block-detail-right col-md-6">
+                    <div class="job-block-detail-right col-md-4">
                         <input type="button" value="Hire Pro" class="btn-dontpanic" />
                     </div>
                 </div>
