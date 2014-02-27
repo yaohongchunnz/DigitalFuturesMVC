@@ -2,7 +2,6 @@
 @{
     ViewBag.Title = "Sign up";
 }
-
 <br />
 <div class="container rounded-corners">
 
@@ -40,7 +39,7 @@
 
             <div class="form-group">
                 @Html.LabelFor(m => m.phoneNumber, new { @class = " control-label" })
-                @Html.TextBoxFor(m => m.phoneNumber, new { @class = "form-control",type="number", @placeholder = "1234567" })
+                @Html.TextBoxFor(m => m.phoneNumber, new { @class = "form-control", @type="tel", @placeholder = "04 456 1337" })
                 @Html.ValidationMessageFor(m => m.phoneNumber)
             </div>
 
