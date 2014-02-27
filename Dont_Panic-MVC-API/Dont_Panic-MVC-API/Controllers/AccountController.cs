@@ -179,6 +179,8 @@ namespace Dont_Panic_MVC_API.Controllers
 
                     ServiceProviderDetails details = new ServiceProviderDetails();
                     details.about = model.about;
+                    details.email = model.email;
+                    details.userName = model.UserName;
                     details.address = model.address;
                     details.areas_serviced = model.areas_serviced;
                     details.availability = model.availability;
