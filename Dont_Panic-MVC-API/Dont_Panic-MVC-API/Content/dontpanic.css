@@ -1,4 +1,5 @@
-﻿body {
+﻿html, body {
+    height:100%;
 }
 
 
@@ -301,30 +302,6 @@
 
 .postjob-text {
 }
-
-.supportBar {
-    background-color: #fff;
-    margin: 0;
-    padding-bottom: 10px;
-    text-align: center;
-}
-
-    .supportBar > p > a {
-        color: #497769;
-    }
-
-.footerBar {
-    margin: 0;
-    padding-top: 10px;
-    padding-bottom: 3px;
-    text-align: center;
-    background-color: #497769;
-}
-
-    .footerBar > footer > p {
-        color: #fff;
-    }
-
 .contentBackground {
     background-image: url('../Images/background.jpg');
     background-color: #77B783;
@@ -550,4 +527,25 @@
     transform: translate(0, 50%) !important;
     -ms-transform: translate(0, 50%) !important; /* IE 9 */
     -webkit-transform: translate(0, 50%) !important; /* Safari and Chrome */
+}
+
+.layer-footer{
+    padding:10px;
+    border-top: 5px solid #497769;
+    background-image: -webkit-linear-gradient(top, rgba(73, 119, 105, 0.91), #3c6357);
+    background-image: -moz-linear-gradient(top,rgba(73, 119, 105, 0.89), #3c6357);
+    background-image: -ms-linear-gradient(top,rgba(73, 119, 105, 0.88), #3c6357);
+    background-image: -o-linear-gradient(top, rgba(73, 119, 105, 0.89), #3c6357);
+    background-image: linear-gradient(to top,rgba(73, 119, 105, 0.87), #3c6357);
+    line-height:1.5;
+}
+
+.layer-footerwrap{
+    margin:0 auto;
+    text-align:center;
+    color:#fff;
+}
+
+.layer-footerwrap > p > a{
+    color:#fff;
 }

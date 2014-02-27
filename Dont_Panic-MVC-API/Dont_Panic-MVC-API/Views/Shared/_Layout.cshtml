@@ -6,9 +6,9 @@
 @{
     Dont_Panic_MVC_API.API_Models.IdentityManager im = new Dont_Panic_MVC_API.API_Models.IdentityManager();
     if (Session["Login"] == null)
-         {
-             Response.Redirect("~/Home/Protect");
-         }
+    {
+        Response.Redirect("~/Home/Protect");
+    }
 }
 
 <link rel="icon" type="img/png" href="~/Images/Favicon3.png">
@@ -37,6 +37,7 @@
     <link rel="stylesheet" href="~/Content/owl.theme.css">
 </head>
 <body>
+
     <div class="navbar navbar-inverse navbar-fixed-top drop-shadow green-border">
         <div class="container">
             <div class="navbar-header">
@@ -55,33 +56,33 @@
                     {
                         if (im.UserContainsRole(User.Identity.GetUserId(), "User"))
                         {
-                            <li @if (@ViewContext.RouteData.GetRequiredString("action").ToLower() == "index" && @ViewContext.RouteData.GetRequiredString("controller").ToLower() == "job") { @Html.AttributeEncode("class=active")                        ; }>
+                            <li @if (@ViewContext.RouteData.GetRequiredString("action").ToLower() == "index" && @ViewContext.RouteData.GetRequiredString("controller").ToLower() == "job") { @Html.AttributeEncode("class=active")                           ; }>
                                 @Html.ActionLink("current jobs", "Index", "Job")
                             </li>
-                            <li @if (@ViewContext.RouteData.GetRequiredString("action").ToLower() == "previous" && @ViewContext.RouteData.GetRequiredString("controller").ToLower() == "job") { @Html.AttributeEncode("class=active")                        ; }>
+                            <li @if (@ViewContext.RouteData.GetRequiredString("action").ToLower() == "previous" && @ViewContext.RouteData.GetRequiredString("controller").ToLower() == "job") { @Html.AttributeEncode("class=active")                           ; }>
 
                                 @Html.ActionLink("previous jobs", "Previous", "Job")
                             </li>
-                            <li @if (@ViewContext.RouteData.GetRequiredString("action").ToLower() == "create" && @ViewContext.RouteData.GetRequiredString("controller").ToLower() == "job") { @Html.AttributeEncode("class=active")                       ; }>
+                            <li @if (@ViewContext.RouteData.GetRequiredString("action").ToLower() == "create" && @ViewContext.RouteData.GetRequiredString("controller").ToLower() == "job") { @Html.AttributeEncode("class=active")                          ; }>
 
                                 @Html.ActionLink("post job", "Create", "Job")
                             </li>
                         }
                         else if (im.UserContainsRole(User.Identity.GetUserId(), "Provider"))
                         {
-                            <li @if (@ViewContext.RouteData.GetRequiredString("action").ToLower() == "index" && @ViewContext.RouteData.GetRequiredString("controller").ToLower() == "job") { @Html.AttributeEncode("class=active")                       ; }>
+                            <li @if (@ViewContext.RouteData.GetRequiredString("action").ToLower() == "index" && @ViewContext.RouteData.GetRequiredString("controller").ToLower() == "job") { @Html.AttributeEncode("class=active")                          ; }>
 
                                 @Html.ActionLink("current jobs", "Index", "Job")
                             </li>
-                            <li @if (@ViewContext.RouteData.GetRequiredString("action").ToLower() == "previous" && @ViewContext.RouteData.GetRequiredString("controller").ToLower() == "job") { @Html.AttributeEncode("class=active")                       ; }>
+                            <li @if (@ViewContext.RouteData.GetRequiredString("action").ToLower() == "previous" && @ViewContext.RouteData.GetRequiredString("controller").ToLower() == "job") { @Html.AttributeEncode("class=active")                          ; }>
 
                                 @Html.ActionLink("previous jobs", "Previous", "Job")
                             </li>
-                            <li @if (@ViewContext.RouteData.GetRequiredString("action").ToLower() == "browse" && @ViewContext.RouteData.GetRequiredString("controller").ToLower() == "job") { @Html.AttributeEncode("class=active")                       ; }>
+                            <li @if (@ViewContext.RouteData.GetRequiredString("action").ToLower() == "browse" && @ViewContext.RouteData.GetRequiredString("controller").ToLower() == "job") { @Html.AttributeEncode("class=active")                          ; }>
 
                                 @Html.ActionLink("browse jobs", "Browse", "Job")
                             </li>
-                            <li @if (@ViewContext.RouteData.GetRequiredString("action").ToLower() == "purchasetokens" && @ViewContext.RouteData.GetRequiredString("controller").ToLower() == "account") { @Html.AttributeEncode("class=active")                       ; }>
+                            <li @if (@ViewContext.RouteData.GetRequiredString("action").ToLower() == "purchasetokens" && @ViewContext.RouteData.GetRequiredString("controller").ToLower() == "account") { @Html.AttributeEncode("class=active")                          ; }>
 
                                 @Html.ActionLink("purchase tokens", "PurchaseTokens", "Account")
                             </li>
@@ -90,7 +91,7 @@
                     }
                     else
                     {
-                        <li @if (@ViewContext.RouteData.GetRequiredString("controller").ToLower() == "job") { @Html.AttributeEncode("class=active")                        ; }>
+                        <li @if (@ViewContext.RouteData.GetRequiredString("controller").ToLower() == "job") { @Html.AttributeEncode("class=active")                           ; }>
 
                             @Html.ActionLink("post job", "Create", "Job")
 
@@ -122,19 +123,15 @@
     </div>
 
 
+    <div class="layer-footer">
+        <div class="layer-footerwrap">
+            <p>
 
+                <a href="/Home/About">About</a> | <a href="/Home/Contact">Contact</a> | <a href="/Home/Support">Support</a>
 
-    <br />
-    <div class="supportBar">
-        <p>
-            <a href="/Home/About">About</a> | <a href="/Home/Contact">Contact</a> | <a href="/Home/Support">Support</a>
-
-        </p>
-    </div>
-    <div class="footerBar">
-        <footer>
-            <p>&copy; @DateTime.Now.Year - Rarespawn</p>
-        </footer>
+                <br />&copy; @DateTime.Now.Year - Rarespawn
+            </p>
+        </div>
     </div>
 
     @Scripts.Render("~/bundles/jquery")
@@ -143,8 +140,6 @@
     @Scripts.Render("~/Scripts/jasny-bootstrap.min.js")
     @Scripts.Render("~/Scripts/spin.min.js")
     @Scripts.Render("~/Scripts/ladda.min.js")
-    @Scripts.Render("~/Scripts/owl.carousel.min.js");
-
-
+    @Scripts.Render("~/Scripts/owl.carousel.min.js")
 </body>
 </html>
